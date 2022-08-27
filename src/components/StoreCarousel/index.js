@@ -45,6 +45,7 @@ const StyledSlider = styled(Slider)`
 const SliderImage = styled.div`
   position: relative;
   width: 100vw;
+
   min-height: 400px;
 
   img {
