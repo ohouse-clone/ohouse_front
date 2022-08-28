@@ -75,19 +75,19 @@ export default function Carousel() {
     <>
       <StyledSlider {...settings} ref={customSliderRef}>
         <SliderImage>
-          <img src="/store-main-image/image1.webp" alt="" />
+          <img src="/store-main-image/image1.jpg" alt="" />
         </SliderImage>
         <SliderImage>
-          <img src="/store-main-image/image2.webp" alt="" />
+          <img src="/store-main-image/image2.jpg" alt="" />
         </SliderImage>
         <SliderImage>
-          <img src="/store-main-image/image3.webp" alt="" />
+          <img src="/store-main-image/image3.jpg" alt="" />
         </SliderImage>
         <SliderImage>
-          <img src="/store-main-image/image4.webp" alt="" />
+          <img src="/store-main-image/image4.jpg" alt="" />
         </SliderImage>
         <SliderImage>
-          <img src="/store-main-image/image5.webp" alt="" />
+          <img src="/store-main-image/image5.jpg" alt="" />
         </SliderImage>
       </StyledSlider>
       <div>

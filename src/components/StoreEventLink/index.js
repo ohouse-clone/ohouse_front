@@ -23,21 +23,6 @@ export default function StoreEventLink() {
             <EventLink src={data.src} name={data.name} />
           </a>
         </Link>
-        <Link href={data.href}>
-          <a>
-            <EventLink src={data.src} name={data.name} />
-          </a>
-        </Link>
-        <Link href={data.href}>
-          <a>
-            <EventLink src={data.src} name={data.name} />
-          </a>
-        </Link>
-        <Link href={data.href}>
-          <a>
-            <EventLink src={data.src} name={data.name} />
-          </a>
-        </Link>
       </StoreEventWrapper>
     </>
   );
