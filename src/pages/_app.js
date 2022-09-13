@@ -1,6 +1,8 @@
+
 import '/styles/globals.css';
 import '/styles/style.css';
 import Layout from 'components/layout';
+
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -17,15 +19,21 @@ const theme = {
   },
 };
 
+
 export default function MyApp({ Component, pageProps }) {
   return (pageProps && pageProps.pathname) === '/login' ||
     (pageProps && pageProps.pathname) === '/signup' ? (
+
+export default function App({ Component, pageProps }) {
+  return (
+
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
     </>
+
   ) : (
     <>
       <GlobalStyle />
@@ -35,5 +43,6 @@ export default function MyApp({ Component, pageProps }) {
         </Layout>
       </ThemeProvider>
     </>
+
   );
 }
