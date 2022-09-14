@@ -68,7 +68,10 @@ const ProductLinkContainer = styled.a`
   }
 `;
 
-export default function Product({ previewImageUrl, ref }) {
+export default function Product({
+  previewImageUrl = '/store-main-image/product1.jpg',
+  ref,
+}) {
   return (
     <>
       <Link href="/store">
