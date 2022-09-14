@@ -1,6 +1,0 @@
-.ul > li > span:nth-child(1) > img {
-  transition: transform 100ms ease;
-}
-.ul > li > span:nth-child(1) > img:hover {
-  transform: scale(1.1);
-}

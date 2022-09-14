@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import styled from 'styled-components';
-
 import Image from 'next/image';
 import Slider from 'react-slick';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+import { AiFillRead } from 'react-icons/ai';
+
 const Section = styled.section`
   height: 564px;
   display: flex;
   gap: 0 20px;
   .img-area {
     position: relative;
+    &:hover ${'.more'} {
+      background-color: #35c5f0;
+      border: 1px solid #35c5f0;
+    }
   }
   .img-area::after {
     width: 100%;
@@ -82,33 +88,86 @@ const Section = styled.section`
       font-weight: 700;
       border-radius: 4px;
       border: 1px solid #fff;
-      // background-color: #35c5f0;
+      transition: all 200ms ease;
     }
   }
+  // 메인배너
   .slider-area {
     width: 269px;
+    position: relative;
+    cursor: pointer;
+
+    &:hover ${'button'} {
+      opacity: 1;
+    }
+    .slick-slider {
+      height: 100%;
+    }
+  }
+  .slick-list {
     height: 100%;
-    background:red;
-    div:nth-child(1){
-      width:100%;
-      height:100%;
-    }
-    div:nth-child(2){
-      width:269px;
-      height:100%;
-      position:relative;
+    display: flex;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+  .slick-list div:first-child {
+    display: flex;
+  }
+  .slick-track {
+    div:nth-child(1) {
+      width: 100%;
+      height: 100%;
+      img {
+        transition: transform 200ms;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
     }
   }
-  .slick-prev:before {
-    opaicty: 1; // 기존에 숨어있던 화살표 버튼이 보이게
-    color: black; // 버튼 색은 검은색으로
-    left: 0;
+  button {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: #fff;
+    border: none;
+    position: absolute;
+    top: 50%;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+    cursor: pointer;
+    transition: opacity 200ms ease-in-out;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    z-index: 900;
+    opacity: 0;
   }
-  .slick-next:before {
-    opacity: 1;
-    color: black;
+
+  .slick-prev {
+    left: -20px;
+  }
+  .slick-next {
+    right: -20px;
   }
 `;
+
+function SampleNextArrow(props) {
+  const { className, onClick } = props;
+
+  return (
+    <button className={className} onClick={onClick}>
+      <MdKeyboardArrowRight />
+    </button>
+  );
+}
+function SamplePrevArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <button className={className} onClick={onClick}>
+      <MdKeyboardArrowLeft />
+    </button>
+  );
+}
 
 export default class SectionMain extends Component {
   render() {
@@ -118,6 +177,12 @@ export default class SectionMain extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      arrow: true,
+      pauseOnHover: true,
+      autoplay: true,
+      autoPlaySpeed: 500,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
     };
     return (
       <Section>
@@ -130,7 +195,11 @@ export default class SectionMain extends Component {
               <h3>40년 넘은 구옥, 의미있는 신혼집으로-</h3>
               <div className="profile">
                 <span>
-                  <Image src="/community-main/profile.jpg" alt="profile" layout="fill" />
+                  <Image
+                    src="/community-main/profile.jpg"
+                    alt="profile"
+                    layout="fill"
+                  />
                 </span>
                 <span>성수부부</span>
               </div>
@@ -142,18 +211,30 @@ export default class SectionMain extends Component {
         </div>
         <div className="slider-area">
           <Slider {...settings}>
-            <div>
-              <Image src="/community-main/banner01.jpg" alt="banner" layout="fill" />
-            </div>
-            <div>
-              <Image src="/community-main/banner02.jpg" alt="banner" layout="fill" />
-            </div>
-            <div>
-              <Image src="/community-main/banner03.jpg" alt="banner" layout="fill" />
-            </div>
-            <div>
-              <Image src="/community-main/banner04.jpg" alt="banner" layout="fill" />
-            </div>
+            <Image
+              src="/community-main/banner01.jpg"
+              alt="banner"
+              width={269}
+              height="100%"
+            />
+            <Image
+              src="/community-main/banner02.jpg"
+              alt="banner"
+              width={269}
+              height="100%"
+            />
+            <Image
+              src="/community-main/banner03.jpg"
+              alt="banner"
+              width={269}
+              height="100%"
+            />
+            <Image
+              src="/community-main/banner04.jpg"
+              alt="banner"
+              width={269}
+              height="100%"
+            />
           </Slider>
         </div>
       </Section>

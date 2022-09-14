@@ -1,31 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import styled from 'styled-components';
-
-const Section = styled.section`
-  padding: 30px 0;
-
-  ul {
-    display: flex;
-    flex-direction: row;
-    gap: 0 24px;
-  }
-  ul li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #2f3438;
-    gap: 8px 0;
-  }
-  ul li span:first-child {
-    width: 89px;
-    height: 78px;
-    position: relative;
-  }
-`;
+import * as S from './main-styled';
 const SectionNav = () => {
   return (
-    <Section>
+    <S.Section nav>
       <ul>
         <li>
           <span>
@@ -88,7 +66,7 @@ const SectionNav = () => {
           <span>행복주택</span>
         </li>
       </ul>
-    </Section>
+    </S.Section>
   );
 };
 
