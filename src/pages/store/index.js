@@ -1,8 +1,8 @@
-import StoreCarousel from 'components/StoreCarousel';
-import StoreCategory from 'components/StoreCategory';
-import StoreEventLink from 'components/StoreEventLink';
-import StoreinfiniteProducts from 'components/StoreInfiniteProducts';
-import StoreProductContainer from 'components/StoreProductContainer';
+import StoreCarousel from 'components/StoreMain/StoreCarousel';
+import StoreCategory from 'components/StoreMain/StoreCategory';
+import StoreEventLink from 'components/StoreMain/StoreEventLink';
+import StoreinfiniteProducts from 'components/StoreMain/StoreInfiniteProducts';
+import StoreProductContainer from 'components/StoreMain/StoreProductContainer';
 
 import React from 'react';
 import styled from 'styled-components';
