@@ -14,6 +14,10 @@ const ProductLinkContainer = styled.a`
   cursor: pointer;
   width: 25%;
 
+  @media (max-width: 1200px) {
+    width: 33.3%;
+  }
+
   header {
     padding: 0 10px;
     img {
@@ -64,27 +68,27 @@ const ProductLinkContainer = styled.a`
   }
 `;
 
-export default function Product() {
+export default function Product({
+  previewImageUrl = '/store-main-image/product1.jpg',
+  ref,
+}) {
   return (
     <>
       <Link href="/store">
         <ProductLinkContainer>
           <header>
             <ImageWrapper>
-              <Image src="/store-main-image/product1.jpg" layout="fill" />
+              <Image src={previewImageUrl} layout="fill" ref={ref} />
             </ImageWrapper>
           </header>
           <main>
             <h1>
-              <div>company</div>
-              <div>
-                [오늘의딜][10%쿠폰/사은품증정]부드러운 카스테라 옥수수솜
-                사계절/가을 차렵이불세트
-              </div>
+              <div>brandName</div>
+              <div>title</div>
             </h1>
             <h3>
-              <span>50%</span>
-              <span>50,000</span>
+              <span>rateDiscount%</span>
+              <span>price</span>
             </h3>
             <h5>
               <span>★5.0</span>
