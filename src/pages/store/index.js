@@ -1,6 +1,7 @@
 import StoreCarousel from 'components/StoreCarousel';
 import StoreCategory from 'components/StoreCategory';
 import StoreEventLink from 'components/StoreEventLink';
+import StoreinfiniteProducts from 'components/StoreInfiniteProducts';
 import StoreProductContainer from 'components/StoreProductContainer';
 
 import React from 'react';
@@ -28,7 +29,7 @@ export default function Store() {
           <h3>카테고리</h3>
           <StoreCategory />
           <h3>인기 상품</h3>
-          <StoreProductContainer />
+          <StoreinfiniteProducts />
         </DummyWrapper>
       </LayoutWrapper>
     </>
