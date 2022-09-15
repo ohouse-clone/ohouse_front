@@ -6,12 +6,12 @@ import { useRouter } from 'next/router';
 const User_Area = [
   {
     name: '로그인',
-    path: '/login',
+    path: '/Login',
     id: 1,
   },
   {
     name: '회원가입',
-    path: '/register',
+    path: '/Register',
     id: 2,
   },
   {
@@ -24,11 +24,11 @@ const UserAreaBlock = styled.div`
   display: flex;
   align-content: center;
 
-  .loginArea {
+  .LoginArea {
     display: flex;
     margin: 0px 10px 0 8px;
   }
-  .loginArea a {
+  .LoginArea a {
     height: 18px;
     margin-top: 13px;
     display: inline-block;
@@ -38,7 +38,7 @@ const UserAreaBlock = styled.div`
     padding: 0 10px;
     border-left: 1px solid #eaedef;
   }
-  .loginArea a:first-child {
+  .LoginArea a:first-child {
     border-left: none;
   }
   .writeBtn {
@@ -69,10 +69,10 @@ function UserArea() {
   const router = useRouter();
   return (
     <UserAreaBlock>
-      <div className="loginArea">
+      <div className="LoginArea">
         {User_Area.map(user => (
           <Link key={user.id} href={user.path}>
-            <a currentPath={router.pathname} pathName={menubar.path}>
+            <a currentPath={router.pathname} pathName={user.path}>
               {user.name}
             </a>
           </Link>
