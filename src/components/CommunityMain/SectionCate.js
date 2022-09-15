@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import * as S from './main-styled';
+import * as S from './main.styles';
 import { CATE_LIST } from '../../constants/communityMain';
 
 const SectionCate = () => {

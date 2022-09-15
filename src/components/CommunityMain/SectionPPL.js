@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import * as S from './main-styled';
+import * as S from './main.styles';
 import { PPL_LIST } from '../../constants/communityMain';
 
 const SectionPPL = () => {

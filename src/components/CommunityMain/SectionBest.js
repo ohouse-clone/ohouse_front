@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import * as S from './main-styled';
+import * as S from './main.styles';
 import { BEST_DATE, BEST_LIST } from '../../constants/communityMain';
 
 const SectionBest = () => {

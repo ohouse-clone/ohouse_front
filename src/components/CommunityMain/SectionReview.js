@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { TiStarFullOutline } from 'react-icons/ti';
-import * as S from './main-styled';
+import * as S from './main.styles';
 import { REVIEW_DATE } from '../../constants/communityMain';
 
 const SectionReview = () => {

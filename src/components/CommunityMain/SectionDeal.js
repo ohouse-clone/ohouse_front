@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { TiStarFullOutline } from 'react-icons/ti';
 import MoveBtn from './MoveBtn';
-import * as S from './main-styled';
+import * as S from './main.styles';
 import { DEAL_DATA } from '../../constants/communityMain';
 const SectionDeal = () => {
   return (
