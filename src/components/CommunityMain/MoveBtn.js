@@ -2,6 +2,18 @@ import React from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import styled from 'styled-components';
 
+const MoveBtn = props => {
+  return (
+    <BtnBlock>
+      <button>
+        <MdKeyboardArrowLeft className="btn" />
+      </button>
+      <button>
+        <MdKeyboardArrowRight className="btn" />
+      </button>
+    </BtnBlock>
+  );
+};
 const BtnBlock = styled.div`
   width: 100%;
   position: absolute;
@@ -33,17 +45,5 @@ const BtnBlock = styled.div`
     right: -20px;
   }
 `;
-const MoveBtn = props => {
-  return (
-    <BtnBlock>
-      <button>
-        <MdKeyboardArrowLeft className="btn" />
-      </button>
-      <button>
-        <MdKeyboardArrowRight className="btn" />
-      </button>
-    </BtnBlock>
-  );
-};
 
 export default MoveBtn;

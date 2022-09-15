@@ -1,25 +1,11 @@
-import styled from 'styled-components';
 import Link from 'next/link';
-const H1 = styled.h1`
-  display: flex;
-  align-items: center;
-  width: 82px;
-  height: 38px;
-  overflow: hidden;
-  margin-right: 35px;
-  margin-top: 11px;
-`;
+import { H1 } from './Header.styles';
 function Logo() {
   return (
     <H1>
       <Link href="/">
-        <a >
-          <svg
-           
-            width="74"
-            height="30"
-            
-          >
+        <a>
+          <svg width="74" height="30">
             <g fill="none">
               <path
                 fill="#000"

@@ -20,8 +20,8 @@ const theme = {
 };
 
 export default function MyApp({ Component, pageProps }) {
-  return (pageProps && pageProps.pathname) === '/login' ||
-    (pageProps && pageProps.pathname) === '/signup' ? (
+  return (pageProps && pageProps.pathname) === '/Login' ||
+    (pageProps && pageProps.pathname) === '/Register' ? (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
