@@ -2,14 +2,14 @@ import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
   padding: 30px 0;
-  div:nth-child(1) {
+  h2 {
+    font-weight: 700;
+    font-size: 20px;
+  }
+  > div:nth-child(1) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    h2 {
-      font-weight: 700;
-      font-size: 20px;
-    }
     span {
       font-size: 15px;
       color: #35c5f0;
@@ -39,7 +39,6 @@ export const Section = styled.section`
             }
           }
         }
-
         .content {
           padding: 12px;
           width: 100%;
@@ -76,6 +75,99 @@ export const Section = styled.section`
       }
     }
   }
+  // story 개별작업
+  ${props => {
+    if (props.story) {
+      return css`
+        .story-wrap {
+          display: flex;
+          gap: 0 20px;
+          padding-top: 20px;
+        }
+        .ul-area {
+          width: auto;
+          padding: 0;
+          ul {
+            li {
+              > span:nth-child(1) {
+                height: 180px;
+              }
+            }
+          }
+        }
+        .ul-area ul li p {
+          font-size: 15px;
+          line-height: 20px;
+          font-weight: 700;
+          word-break: break-all;
+          padding-bottom: 10px;
+        }
+        .ul-area ul li > div:nth-child(2) {
+          padding: 15px 10px;
+        }
+        .ul-area ul li div > div {
+          display: flex;
+          flex-direction: row;
+          gap: 0 5px;
+          align-items: center;
+          font-size: 13px;
+        }
+        .ul-area ul li div .profile {
+          width: 22px;
+          height: 22px;
+          position: relative;
+          img {
+            border-radius: 50%;
+          }
+        }
+
+        .story-wrap ol {
+          width: 269px;
+          margin-bottom: 1px;
+        }
+        .story-wrap ol li {
+          background-color: #f5f5f5;
+          border-radius: 6px;
+          height: 106px;
+          display: flex;
+          padding: 12.5px 10%;
+          justify-content: center;
+          flex-direction: column;
+          border-bottom: 1px solid #fff;
+          cursor: pointer;
+          transition: background-color 0.4s;
+          &:hover {
+            background-color: #ededed;
+          }
+        }
+        .story-wrap ol li:last-child {
+          border: none;
+        }
+        .story-wrap ol li h3 {
+          font-size: 13px;
+          color: #757575;
+          padding-bottom: 10px;
+        }
+        .story-wrap ol li div {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+        }
+        .story-wrap ol li div h4 {
+          font-size: 15px;
+          color: #424242;
+          font-weight: 700;
+        }
+        .story-wrap ol li div span {
+          width: 5px;
+          height: 5px;
+          border: 1px solid #757575;
+          border-width: 1px 1px 0 0;
+          transform: rotate(45deg);
+        }
+      `;
+    }
+  }}
   // nav 개별작업
   ${props => {
     if (props.nav) {

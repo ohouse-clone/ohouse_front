@@ -5,50 +5,7 @@ import Logo from './Logo';
 import UserArea from './UserArea';
 import Nav from './Nav';
 import Banner from './Banner';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-const Cate_List = [
-  {
-    name: '홈',
-    id: 1,
-  },
-  {
-    name: '팔로잉',
-    id: 2,
-  },
-  {
-    name: '사진',
-    id: 3,
-  },
-  {
-    name: '집들이',
-    id: 4,
-  },
-  {
-    name: '노하우',
-    id: 5,
-  },
-  {
-    name: '전문가집들이',
-    id: 6,
-  },
-  {
-    name: '셀프가이드',
-    id: 7,
-  },
-  {
-    name: '질문과 답변',
-    id: 8,
-  },
-  {
-    name: '3D 인테리어',
-    id: 9,
-  },
-  {
-    name: '이벤트',
-    id: 10,
-  },
-];
 
 const HeaderWrap = styled.header`
   width: 100%;
@@ -59,8 +16,6 @@ const HeaderWrap = styled.header`
   flex-direction: column;
   background: #fff;
   gap: 12px;
-
-  height: 80px;
   z-index: 900;
   a:link,
   a:visited {
@@ -106,8 +61,21 @@ const CateWrap = styled.div`
   }
 `;
 function Header() {
+  let cate_list = [
+    '홈',
+    '팔로잉',
+    '사진',
+    '집들이',
+    '노하우',
+    '전문가집들이',
+    '셀프가이드',
+    '질문과 답변',
+    '3D 인테리어',
+    '이벤트',
+  ];
+
   const [remove, setRemove] = useState(true);
-  const [Scroll, setScroll] = useState(false);
+  const [scroll, setScroll] = useState(false);
   function handleScroll() {
     if (window.pageYOffset >= 50) {
       setScroll(true);
@@ -127,7 +95,7 @@ function Header() {
   return (
     <>
       {remove ? <Banner onRemove={setRemove} /> : null}
-      <HeaderWrap className={Scroll ? 'fixed-header' : ''}>
+      <HeaderWrap className={scroll ? 'fixed-header' : ''}>
         <div className="top">
           <Logo />
           <Nav />
@@ -138,14 +106,16 @@ function Header() {
           </div>
         </div>
       </HeaderWrap>
-      <CateWrap className={Scroll ? 'fixed-cate' : ''}>
+      <CateWrap className={scroll ? 'fixed-cate' : ''}>
         <div className="cate">
           <ul>
-            {Cate_List.map(menu => (
-              <li key={menu.path}>
-                <span>{menu.name}</span>
-              </li>
-            ))}
+            {cate_list.map((e, i) => {
+              return (
+                <li key={[i]}>
+                  <span href="#">{cate_list[i]}</span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </CateWrap>

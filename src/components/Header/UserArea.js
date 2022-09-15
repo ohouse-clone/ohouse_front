@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { IoChevronDown } from 'react-icons/io5';
 import { useRouter } from 'next/router';
 
-
 const User_Area = [
   {
     name: '로그인',
@@ -75,7 +74,7 @@ function UserArea() {
           <Link key={user.id} href={user.path}>
             <a>{user.name}</a>
           </Link>
-          ))}
+        ))}
       </div>
       <p>
         <button className="writeBtn" type="button">

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import { AiFillRead } from 'react-icons/ai';
 
 const Section = styled.section`
   height: 564px;
@@ -11,9 +10,13 @@ const Section = styled.section`
   gap: 0 20px;
   .img-area {
     position: relative;
+    cursor: pointer;
     &:hover ${'.more'} {
       background-color: #35c5f0;
       border: 1px solid #35c5f0;
+    }
+    &:hover ${'img'} {
+      transform: scale(1.05);
     }
   }
   .img-area::after {
@@ -31,15 +34,11 @@ const Section = styled.section`
   .main-img {
     width: 847px;
     height: 100%;
-    cursor: pointer;
     > span {
       border-radius: 6px;
     }
     img {
       transition: transform 0.2s;
-      &:hover {
-        transform: scale(1.1);
-      }
     }
   }
   .img-title {
@@ -171,10 +170,11 @@ function SamplePrevArrow(props) {
 
 export default class SectionMain extends Component {
   render() {
+    let bannerMapping = ['1', '2', '3', '4'];
     const settings = {
       dots: false,
       infinite: true,
-      speed: 500,
+      speed: 1000,
       slidesToShow: 1,
       slidesToScroll: 1,
       arrow: true,
@@ -211,30 +211,15 @@ export default class SectionMain extends Component {
         </div>
         <div className="slider-area">
           <Slider {...settings}>
-            <Image
-              src="/community-main/banner01.jpg"
-              alt="banner"
-              width={269}
-              height="100%"
-            />
-            <Image
-              src="/community-main/banner02.jpg"
-              alt="banner"
-              width={269}
-              height="100%"
-            />
-            <Image
-              src="/community-main/banner03.jpg"
-              alt="banner"
-              width={269}
-              height="100%"
-            />
-            <Image
-              src="/community-main/banner04.jpg"
-              alt="banner"
-              width={269}
-              height="100%"
-            />
+            {bannerMapping.map((e, i) => (
+              <Image
+                key={i}
+                src={'/community-main/banner0' + (i + 1) + '.jpg'}
+                alt="banner"
+                width={269}
+                height="100%"
+              />
+            ))}
           </Slider>
         </div>
       </Section>

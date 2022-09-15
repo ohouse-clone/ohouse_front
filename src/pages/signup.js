@@ -1,29 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
-    body{
-        height:100%;
-    }
-`;
 const CommonWrapper = styled.div`
-  width: 100%;
-  min-height: 100%;
   letter-spacing: -0.4px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  position: relative;
   background-color: #fafafa;
 `;
 const SignupWrapper = styled.main`
-  display: flex;
   width: calc(100% - 30px);
+  display: flex;
   padding-top: 40px;
-  flex-grow: 1;
   section {
     width: 360px;
     margin: 60px auto;
@@ -120,6 +109,8 @@ const SignupWrapper = styled.main`
             font-size: 17px;
             cursor: poiner;
           }
+          .empty {
+          }
         }
       }
       .section-chk > div:nth-child(2) {
@@ -210,7 +201,6 @@ const SignupWrapper = styled.main`
 const Signup = () => {
   return (
     <CommonWrapper>
-      <GlobalStyle />
       <SignupWrapper>
         <h2>
           <Link href="/">
@@ -297,7 +287,7 @@ const Signup = () => {
                   <div>
                     <span>
                       <input
-                        className="common-element"
+                        className="common-element email-id"
                         type="text"
                         placeholder="이메일"
                       />
@@ -323,7 +313,7 @@ const Signup = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="certified">
+                  <div className="certified ">
                     <button>이메일 인증하기</button>
                   </div>
                 </div>

@@ -22,18 +22,18 @@ const SearchBlock = styled.div`
     height: 100%;
   }
   input {
-    display:flex;
-    line-height:40px;
-    align-items:center;
+    display: flex;
+    line-height: 40px;
+    align-items: center;
     border: none;
     outline: none;
     color: #2f3438;
     box-sizing: border-box;
     padding: 0 6px;
     font-size: 16px;
-    &::placeholder{
-      color:#c2c8cc;
-      font-weight:700;
+    &::placeholder {
+      color: #c2c8cc;
+      font-weight: 700;
     }
   }
   button {

@@ -13,13 +13,8 @@ function Logo() {
   return (
     <H1>
       <Link href="/">
-        <a >
-          <svg
-           
-            width="74"
-            height="30"
-            
-          >
+        <a>
+          <svg width="74" height="30">
             <g fill="none">
               <path
                 fill="#000"
