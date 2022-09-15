@@ -1,16 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import * as S from './main-styled';
-let name = [
-  'suhou_s',
-  '애3있는집',
-  'joy__ful.m.j',
-  'soro_day',
-  'BlauesHaus',
-  '쥬디포레스트',
-  '숨한모금',
-  '넷이사는집',
-];
+import { PPL_LIST } from '../../constants/communityMain';
+
 const SectionPPL = () => {
   return (
     <S.Section width={269} height={269} ppl>
@@ -20,7 +12,7 @@ const SectionPPL = () => {
       </div>
       <div className="ul-area">
         <ul>
-          {name.map((e, i) => (
+          {PPL_LIST.map((e, i) => (
             <li key={i}>
               <span>
                 <Image
@@ -37,7 +29,7 @@ const SectionPPL = () => {
                     layout="fill"
                   />
                 </span>
-                <span>{name[i]}</span>
+                <span>{PPL_LIST[i]}</span>
               </div>
             </li>
           ))}

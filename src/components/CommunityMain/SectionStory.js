@@ -1,34 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import * as S from './main-styled';
-const STORY_DATE = [
-  {
-    title: '붙박이 기본 옵션도 빈티지 하게 살 수 있어!',
-    name: '우재wooz',
-  },
-  {
-    title: '붙박이 기본 옵션도 빈티지 하게 살 수 있어!',
-    name: 'yoonseuly',
-  },
-  {
-    title: '전형적인 신축은 No! 가족의 일상 담은 집',
-    name: 'Narxi',
-  },
-];
-const STORY_LIST = [
-  {
-    title: '예쁜집 구경하기',
-    move: '집들이',
-  },
-  {
-    title: '전문가 시공사례',
-    move: '전문가 집들이',
-  },
-  {
-    title: '인테리어 꿀팁 총 집합',
-    move: '노하우',
-  },
-];
+import { STORY_DATA, STORY_LIST } from '../../constants/communityMain';
+
 const SectionStory = () => {
   return (
     <S.Section story width={269}>
@@ -36,7 +10,7 @@ const SectionStory = () => {
       <div className="story-wrap">
         <div className="ul-area">
           <ul>
-            {STORY_DATE.map((data, i) => (
+            {STORY_DATA.map((data, i) => (
               <li key={i}>
                 <span>
                   <Image

@@ -10,13 +10,6 @@ import SectionExhibition from './SectionExhibition';
 import SectionPremium from './SectionPremium';
 import SectionBest from './SectionBest';
 
-
-const MainBlock = styled.div`
-  padding: 30px 0;
-  width: 1136px;
-  margin: 0 auto;
-`;
-
 function Main() {
   return (
     <MainBlock>
@@ -33,5 +26,10 @@ function Main() {
     </MainBlock>
   );
 }
+const MainBlock = styled.div`
+  padding: 30px 0;
+  width: 1136px;
+  margin: 0 auto;
+`;
 
 export default Main;

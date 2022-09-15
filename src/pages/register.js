@@ -9,7 +9,7 @@ const CommonWrapper = styled.div`
   align-items: center;
   background-color: #fafafa;
 `;
-const SignupWrapper = styled.main`
+const RegisterWrapper = styled.main`
   width: calc(100% - 30px);
   display: flex;
   padding-top: 40px;
@@ -201,7 +201,7 @@ const SignupWrapper = styled.main`
 const Signup = () => {
   return (
     <CommonWrapper>
-      <SignupWrapper>
+      <RegisterWrapper>
         <h2>
           <Link href="/">
             <a>
@@ -413,7 +413,7 @@ const Signup = () => {
             </div>
           </div>
         </section>
-      </SignupWrapper>
+      </RegisterWrapper>
     </CommonWrapper>
   );
 };

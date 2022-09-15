@@ -11,7 +11,7 @@ const User_Area = [
   },
   {
     name: '회원가입',
-    path: '/signup',
+    path: '/register',
     id: 2,
   },
   {
@@ -72,7 +72,9 @@ function UserArea() {
       <div className="loginArea">
         {User_Area.map(user => (
           <Link key={user.id} href={user.path}>
-            <a>{user.name}</a>
+            <a currentPath={router.pathname} pathName={menubar.path}>
+              {user.name}
+            </a>
           </Link>
         ))}
       </div>

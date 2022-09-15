@@ -21,7 +21,7 @@ const theme = {
 
 export default function MyApp({ Component, pageProps }) {
   return (pageProps && pageProps.pathname) === '/login' ||
-    (pageProps && pageProps.pathname) === '/signup' ? (
+    (pageProps && pageProps.pathname) === '/register' ? (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
@@ -39,4 +39,3 @@ export default function MyApp({ Component, pageProps }) {
     </>
   );
 }
-

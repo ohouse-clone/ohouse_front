@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 const Menu_List = [
@@ -40,12 +41,15 @@ const CateBlock = styled.ul`
   }
 `;
 function Nav() {
+  const router = useRouter();
   return (
     <CateBlock>
       {Menu_List.map(menu => (
         <li key={menu.path}>
           <Link href={menu.path}>
-            <a>{menu.name}</a>
+            <a currentPath={router.pathname} pathName={menu.path}>
+              {menu.name}
+            </a>
           </Link>
         </li>
       ))}
