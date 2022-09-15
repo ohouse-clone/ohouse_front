@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { RegisterWrapper } from './Register.styles';
-import { CommonWrapper, Footer } from '../../../styles/style';
+import { CommonWrapper } from '../../../styles/style';
 
 function Register() {
   return (

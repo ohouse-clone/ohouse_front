@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { LoginWrapper } from './Login.styles';
-import { CommonWrapper, Footer } from '../../../styles/style';
+import { LoginWrapper, Footer } from './Login.styles';
+import { CommonWrapper } from '../../../styles/style';
 
 const User_Area = [
   {

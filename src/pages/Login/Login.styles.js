@@ -104,3 +104,16 @@ export const LoginWrapper = styled.main`
     text-align: center;
   }
 `;
+export const Footer = styled.footer`
+  width: 100%;
+  color: #757575;
+  font-size: 10px;
+  line-height: 20px;
+  margin: -5px 0 25px;
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  bottom: 0;
+  right: 0;
+`;
