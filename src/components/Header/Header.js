@@ -4,9 +4,11 @@ import Logo from './Logo';
 import UserArea from './UserArea';
 import Nav from './Nav';
 import Banner from './Banner';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { HeaderWrap, CateWrap } from './Header.styles';
 import { CATE_LIST } from '../../constants/Header';
+import { Router } from 'next/router';
 function Header() {
   const [remove, setRemove] = useState(true);
   const [scroll, setScroll] = useState(false);
@@ -43,10 +45,20 @@ function Header() {
       <CateWrap className={scroll ? 'fixed-cate' : ''}>
         <div className="cate">
           <ul>
-            {CATE_LIST.map((e, i) => {
+            {CATE_LIST.map((data, i) => {
               return (
                 <li key={[i]}>
-                  <span href="#">{CATE_LIST[i]}</span>
+                  {/* <Link href={menu.path}>
+                    <a currentPath={router.pathname} pathName={menu.path}>
+                      {menu.name}
+                    </a>
+                  </Link> */}
+
+                  <Link href={data.path}>
+                    <a currentPath={Router.pathname} pathName={data.path}>
+                      {data.name}
+                    </a>
+                  </Link>
                 </li>
               );
             })}
