@@ -32,14 +32,44 @@ export const USER_AREA = [
 ];
 
 export const CATE_LIST = [
-  '홈',
-  '팔로잉',
-  '사진',
-  '집들이',
-  '노하우',
-  '전문가집들이',
-  '셀프가이드',
-  '질문과 답변',
-  '3D 인테리어',
-  '이벤트',
+  {
+    name: '홈',
+    path: '/',
+  },
+  {
+    name: '팔로잉',
+    path: '/',
+  },
+  {
+    name: '사진',
+    path: '/',
+  },
+  {
+    name: '집들이',
+    path: '/Community/Party',
+  },
+  {
+    name: '노하우',
+    path: '/',
+  },
+  {
+    name: '전문가집들이',
+    path: '/',
+  },
+  {
+    name: '셀프가이드',
+    path: '/',
+  },
+  {
+    name: '질문과 답변',
+    path: '/',
+  },
+  {
+    name: '3D 인테리어',
+    path: '/',
+  },
+  {
+    name: '이벤트',
+    path: '/',
+  },
 ];
