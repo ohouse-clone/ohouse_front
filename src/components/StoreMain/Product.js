@@ -53,6 +53,7 @@ const ProductLinkContainer = styled.a`
 
     h3 {
       margin: 0;
+      font-weight: 800;
       span:first-child {
         margin-right: 10px;
         color: #35c5f0;
@@ -60,7 +61,9 @@ const ProductLinkContainer = styled.a`
     }
 
     h5 {
-      margin: 0;
+      margin: 5px 0 0 0;
+      font-size: 12px;
+      font-weight: 800;
       span:first-child {
         margin-right: 5px;
       }
@@ -71,10 +74,11 @@ const ProductLinkContainer = styled.a`
 export default function Product({
   previewImageUrl = '/store-main-image/product1.jpg',
   ref,
+  id = 1,
 }) {
   return (
     <>
-      <Link href="/store">
+      <Link href={`/productions/${id}`}>
         <ProductLinkContainer>
           <header>
             <ImageWrapper>
