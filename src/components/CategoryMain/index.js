@@ -1,11 +1,28 @@
 import StoreinfiniteProducts from 'components/StoreMain/StoreInfiniteProducts';
+
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const furnitureCategories = [
   { title: '침대', hash: 1 },
   { title: '매트리스, 토퍼', hash: 2 },
   { title: '소파', hash: 3 },
+];
+
+const dummyImageData = [
+  {
+    src: 1,
+  },
+  {
+    src: 2,
+  },
+  {
+    src: 3,
+  },
 ];
 
 const LayoutWrapper = styled.div`
@@ -22,10 +39,18 @@ const CategoryWrapper = styled.div`
   min-width: 250px;
 `;
 
+const DummyImage = styled.div`
+  width: 100%;
+  height: 130px;
+  background-color: #ededed;
+  border: 1px solid blue;
+`;
+
 export default function CategoryMain() {
   const [categoryClick, setCategoryClick] = useState('가구');
   const [fetchApiAddress, setFetchApiAddress] = useState('가구');
   const [data, setData] = useState();
+  const [imageIndex, setImageIndex] = useState(0);
 
   const categoryClickToggle = e => {
     setCategoryClick(e.dataset);
@@ -33,8 +58,14 @@ export default function CategoryMain() {
   };
 
   useEffect(() => {
-    fetch(fetchApiAddress).then(res => setData(res));
+    // fetch(fetchApiAddress).then(res => setData(res));
   }, [fetchApiAddress]);
+
+  useEffect(() => {
+    if (imageIndex === dummyImageData.length) {
+      setImageIndex(0);
+    }
+  }, [imageIndex]);
 
   // 1. 클릭 이벤트시
   //  타이틀이 맨 위로 올라와야함 / categories.title 을 map해서 리스트화 시켜야 함 /
@@ -109,7 +140,19 @@ export default function CategoryMain() {
         </>
         <div>
           <h1>가구</h1>
-          <div>슬라이더</div>
+          <div>
+            {dummyImageData.slice(imageIndex, imageIndex + 1).map((data, i) => {
+              return <DummyImage key={i}>{data.src}</DummyImage>;
+            })}
+            <button
+              onClick={() => {
+                setImageIndex(imageIndex + 1);
+              }}
+            >
+              next
+            </button>
+          </div>
+
           {/* <div>{data.property_groups.map}</div> */}
 
           <div>공간별가구 찾기</div>
