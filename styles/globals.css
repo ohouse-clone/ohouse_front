@@ -2,7 +2,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-
   font-weight: 100;
   font-family: San Francisco;
 }
@@ -36,7 +35,7 @@ a {
   }
 
   body {
-    color: white;
-    background: black;
+    color: #000;
+    background-color: #fff;
   }
 }

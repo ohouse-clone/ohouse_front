@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import SectionMain from './SectionMain';
 import SectionNav from './SectionNav';
 import SectionStory from './SectionStory';
@@ -10,6 +9,7 @@ import SectionExhibition from './SectionExhibition';
 import SectionPremium from './SectionPremium';
 import SectionBest from './SectionBest';
 import { MainBlock } from './main.styles';
+import * as S from './main.styles';
 function Main() {
   return (
     <MainBlock>

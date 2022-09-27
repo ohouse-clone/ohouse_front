@@ -153,6 +153,7 @@ export const SearchBlock = styled.div`
     box-sizing: border-box;
     padding: 0 6px;
     font-size: 16px;
+    background-color: #fff;
     &::placeholder {
       color: #c2c8cc;
       font-weight: 700;
