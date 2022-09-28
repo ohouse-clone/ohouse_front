@@ -16,7 +16,6 @@ export default function StoreProductContainer() {
         <Product />
         <Product />
         <Product />
-        <Product />
       </ProductContainer>
     </>
   );

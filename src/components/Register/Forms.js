@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AGREE_DATA } from '../../constants/Register';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 export const Forms = () => {
+  const [allChecked, setAllChecked] = useState(false);
+  const [checkedItems, setCheckedItems] = useState([]);
+
   const validationSchema = yup.object().shape({
     email: yup.string().required('이메일을 입력해주세요.'),
     password: yup
@@ -40,6 +43,15 @@ export const Forms = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
+
+  const allAgreeHandler = checked => {
+    setAllChecked(!allChecked);
+    if (checked) {
+      setCheckedItems([...checkedItems, value]);
+    } else if (!checked && checkedItems.includes(value)) {
+      setCheckedItems(checkedItems.filter(el => el !== value));
+    }
+  };
 
   return (
     <div>
