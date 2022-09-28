@@ -12,7 +12,7 @@ const User_Area = [
   },
   {
     name: '회원가입',
-    path: '/signup',
+    path: '/Register',
     id: 2,
   },
 ];

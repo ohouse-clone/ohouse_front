@@ -5,9 +5,24 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 export const Forms = () => {
-  const [allChecked, setAllChecked] = useState(false);
-  const [checkedItems, setCheckedItems] = useState([]);
+  const [checkItem, setCheckItem] = useState([]);
 
+  const handleSingleChk = (checked, id) => {
+    if (checked) {
+      setCheckItem(prev => [...prev, id]);
+    } else {
+      setCheckItem(checkItem.filter(el => el !== id));
+    }
+  };
+  const handleAllChk = checked => {
+    if (checked) {
+      const idArray = [];
+      AGREE_DATA.forEach(el => idArray.push(el.id));
+      setCheckItem(idArray);
+    } else {
+      setCheckItem([]);
+    }
+  };
   const validationSchema = yup.object().shape({
     email: yup.string().required('이메일을 입력해주세요.'),
     password: yup
@@ -43,15 +58,6 @@ export const Forms = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
-
-  const allAgreeHandler = checked => {
-    setAllChecked(!allChecked);
-    if (checked) {
-      setCheckedItems([...checkedItems, value]);
-    } else if (!checked && checkedItems.includes(value)) {
-      setCheckedItems(checkedItems.filter(el => el !== value));
-    }
-  };
 
   return (
     <div>
@@ -156,7 +162,16 @@ export const Forms = () => {
             <h4>약관동의</h4>
             <div>
               <div>
-                <input type="checkbox" className="common-element" />
+                <input
+                  type="checkbox"
+                  className="common-element"
+                  name="select-all"
+                  onChange={e => handleAllChk(e.target.checked)}
+                  checked={
+                    checkItem.length === AGREE_DATA.length ? true : false
+                  }
+                />
+
                 <span>
                   <strong>전체동의</strong>
                   <span>선택항목에 대한 동의 포함</span>
@@ -168,9 +183,12 @@ export const Forms = () => {
                     <input
                       type="checkbox"
                       title={'checkbox' + (i + 1)}
+                      name={`select-${data.id}`}
                       className="common-element"
+                      onChange={e => handleSingleChk(e.target.checked, data.id)}
+                      checked={checkItem.includes(data.id) ? true : false}
                     />
-                    <span>{data}</span>
+                    <span>{data.title}</span>
                   </div>
                 ))}
               </div>
