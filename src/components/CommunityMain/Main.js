@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import SectionMain from './SectionMain';
 import SectionNav from './SectionNav';
 import SectionStory from './SectionStory';
@@ -9,7 +8,8 @@ import SectionReview from './SectionReview';
 import SectionExhibition from './SectionExhibition';
 import SectionPremium from './SectionPremium';
 import SectionBest from './SectionBest';
-
+import { MainBlock } from './main.styles';
+import * as S from './main.styles';
 function Main() {
   return (
     <MainBlock>
@@ -26,10 +26,5 @@ function Main() {
     </MainBlock>
   );
 }
-const MainBlock = styled.div`
-  padding: 30px 0;
-  width: 1136px;
-  margin: 0 auto;
-`;
 
 export default Main;

@@ -104,6 +104,7 @@ const Section = styled.section`
     }
   }
   .slick-list {
+    width: 100%;
     height: 100%;
     display: flex;
     overflow: hidden;
@@ -140,6 +141,9 @@ const Section = styled.section`
     align-items: center;
     z-index: 900;
     opacity: 0;
+    svg {
+      color: #000;
+    }
   }
 
   .slick-prev {

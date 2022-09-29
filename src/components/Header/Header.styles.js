@@ -153,6 +153,7 @@ export const SearchBlock = styled.div`
     box-sizing: border-box;
     padding: 0 6px;
     font-size: 16px;
+    background-color: #fff;
     &::placeholder {
       color: #c2c8cc;
       font-weight: 700;
@@ -173,49 +174,49 @@ export const SearchBlock = styled.div`
 `;
 // userArea
 export const UserAreaBlock = styled.div`
-display: flex;
-align-content: center;
-
-.LoginArea {
   display: flex;
-  margin: 0px 10px 0 8px;
-}
-.LoginArea a {
-  height: 18px;
-  margin-top: 13px;
-  display: inline-block;
-  font-size: 14px;
-  line-height: 18px;
-  color: #2f3438;
-  padding: 0 10px;
-  border-left: 1px solid #eaedef;
-}
-.LoginArea a:first-child {
-  border-left: none;
-}
-.writeBtn {
-  display: inline-block;
-  font-size: 14px;
-  line-height: 18px;
-  height: 40px;
-  border-radius: 4px;
-  padding: 0 16px;
-  box-sizing: border-box;
-  text-align: center;
-  color: #fff;
-  background-color: #35c5f0;
-  overflow: hidden;
-  border: none;
-  outline: none;
-}
-.writeBtn span {
-  margin-left: 6px;
-  vertical-align: bottom;
-}
-.writeBtn svg {
-  vertical-align: middle;
-  font-size: 18px;
-}
+  align-content: center;
+
+  .LoginArea {
+    display: flex;
+    margin: 0px 10px 0 8px;
+  }
+  .LoginArea a {
+    height: 18px;
+    margin-top: 13px;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 18px;
+    color: #2f3438;
+    padding: 0 10px;
+    border-left: 1px solid #eaedef;
+  }
+  .LoginArea a:first-child {
+    border-left: none;
+  }
+  .writeBtn {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 18px;
+    height: 40px;
+    border-radius: 4px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    background-color: #35c5f0;
+    overflow: hidden;
+    border: none;
+    outline: none;
+  }
+  .writeBtn span {
+    margin-left: 6px;
+    vertical-align: bottom;
+  }
+  .writeBtn svg {
+    vertical-align: middle;
+    font-size: 18px;
+  }
 `;
 //cart
 export const CartBlock = styled.div`
@@ -244,10 +245,10 @@ export const CateWrap = styled.div`
       display: flex;
       padding: 12px 0;
       gap: 15px;
-      li span {
+      li {
         color: #2f3438;
         cursor: pointer;
-        &:hover {
+        a:hover {
           color: #35c5f0;
         }
       }

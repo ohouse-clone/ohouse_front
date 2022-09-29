@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
 import { LoginWrapper, Footer } from './Login.styles';
 import { CommonWrapper } from '../../../styles/style';
@@ -11,7 +12,7 @@ const User_Area = [
   },
   {
     name: '회원가입',
-    path: '/signup',
+    path: '/Register',
     id: 2,
   },
 ];
@@ -19,6 +20,9 @@ const User_Area = [
 function Login() {
   return (
     <>
+      <Head>
+        <title>로그인</title>
+      </Head>
       <CommonWrapper>
         <LoginWrapper>
           <div className="loginInn">

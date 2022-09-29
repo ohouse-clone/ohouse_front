@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-
+export const MainBlock = styled.div`
+  padding: 30px 0;
+  width: 1136px;
+  margin: 0 auto;
+  background-color: #fff;
+`;
 export const Section = styled.section`
   padding: 30px 0;
   h2 {
