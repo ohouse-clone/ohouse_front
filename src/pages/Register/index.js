@@ -4,22 +4,16 @@ import Link from 'next/link';
 import { RegisterWrapper } from './Register.styles';
 import { CommonWrapper } from '../../../styles/style';
 import { Forms } from '../../components/Register/Forms';
-import Auth from '../../Auth';
 function Register() {
-
-  const REST_API_KEY = "[eefe9fe438cfb94fa9dd0ebb82d50f0b]";
-  const REDIRECT_URI = "http://localhost:3000/api/auth/kakao";
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  
   return (
     <>
       <Head>
         <title>회원가입</title>
       </Head>
-
       <CommonWrapper>
         <RegisterWrapper>
           <h2>
+            <Link href="/">
               <a>
                 <svg width="88" height="31">
                   <g fill="none">
@@ -38,6 +32,7 @@ function Register() {
                   </g>
                 </svg>
               </a>
+            </Link>
           </h2>
           <section>
             <h3>회원가입</h3>
@@ -61,7 +56,7 @@ function Register() {
                   </a>
                 </li>
                 <li>
-                  <a href={KAKAO_AUTH_URL}>
+                  <a>
                     <svg width="48" height="48">
                       <g fill="none">
                         <path
@@ -75,9 +70,6 @@ function Register() {
                       </g>
                     </svg>
                   </a>
-                {/* <Link href="/oauth/kakao/callback">
-                  <a><Auth/></a>
-                </Link> */}
                 </li>
                 <li>
                   <a>

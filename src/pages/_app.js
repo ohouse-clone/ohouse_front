@@ -4,7 +4,6 @@ import Layout from 'components/layout';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import reset from 'styled-reset';
 
-
 const GlobalStyle = createGlobalStyle`
 ${reset}
   body {
@@ -21,15 +20,13 @@ const theme = {
 };
 
 export default function MyApp({ Component, pageProps }) {
-
-
   return (pageProps && pageProps.pathname) === '/Login' ||
     (pageProps && pageProps.pathname) === '/Register' ? (
     <>
-        <GlobalStyle />
-        <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
-        </ThemeProvider>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   ) : (
     <>

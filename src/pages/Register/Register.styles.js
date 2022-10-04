@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+// export const CommonWrapper = styled.div`
+//   letter-spacing: -0.4px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background-color: #fafafa;
+// `;
 export const RegisterWrapper = styled.main`
   width: calc(100% - 30px);
   display: flex;
@@ -37,9 +44,6 @@ export const RegisterWrapper = styled.main`
         display: flex;
         justify-content: center;
         gap: 0 20px;
-      }
-      a{
-        cursor:pointer;
       }
     }
     form {
