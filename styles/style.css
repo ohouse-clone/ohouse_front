@@ -18,3 +18,20 @@
   margin-bottom: 40px;
 }
 
+.show-active {
+  /* opacity: 1; */
+  animation: showList 300ms forwards ;
+}
+
+@keyframes showList {
+  0% {
+    opacity: 0;
+    top: -1rem;
+  }
+
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}

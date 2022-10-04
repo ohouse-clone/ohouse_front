@@ -56,6 +56,7 @@ function Login() {
                   placeholder="이메일"
                   type="text"
                   title="email"
+                  clicked
                 />
                 <input
                   id="user-pw"
@@ -63,6 +64,7 @@ function Login() {
                   placeholder="비밀번호"
                   type="password"
                   title="password"
+                  clicked
                 />
                 <button type="submit">로그인</button>
                 <section className="userArea">

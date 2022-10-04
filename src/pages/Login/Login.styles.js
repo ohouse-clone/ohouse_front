@@ -23,6 +23,10 @@ export const LoginWrapper = styled.main`
   }
   form {
     width: 300px;
+    .userArea a {
+      color: #424242;
+      font-weight: 400;
+    }
   }
   input {
     display: block;
@@ -37,15 +41,6 @@ export const LoginWrapper = styled.main`
     &:hover {
       background-color: #fafafa;
     }
-    ${props =>
-      props.clicked &&
-      css`
-        background: #f00;
-        &:active {
-          background: blue;
-        }
-        transform: translate(-50%, 50%) rotate(45deg);
-      `}
   }
   input:first-child {
     border-radius: 4px 4px 0 0;
@@ -70,6 +65,9 @@ export const LoginWrapper = styled.main`
     transition: color 0.1s, background-color 0.1s, border-color 0.1s;
     border-radius: 4px;
     cursor: pointer;
+    &:hover {
+      background-color: #009fce;
+    }
   }
   section {
     text-align: center;

@@ -194,7 +194,9 @@ export const UserAreaBlock = styled.div`
   .LoginArea a:first-child {
     border-left: none;
   }
-  .writeBtn {
+  .btn-area {
+    position: relative;
+  button {
     display: inline-block;
     font-size: 14px;
     line-height: 18px;
@@ -208,14 +210,61 @@ export const UserAreaBlock = styled.div`
     overflow: hidden;
     border: none;
     outline: none;
+    cursor: pointer;
+    &:hover {
+      background-color: #009fce;
+    }
+
+    span {
+      margin-left: 6px;
+      vertical-align: bottom;
+    }
+    svg {
+      vertical-align: middle;
+      font-size: 18px;
+    }
   }
-  .writeBtn span {
-    margin-left: 6px;
-    vertical-align: bottom;
+  .ul-area {
+    z-index: 900;
+    width: 340px;
+    padding: 8px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-125px, 55px);
+    box-shadow:rgb(63 71 77 / 20%) 0 4px 10px 0;
+    border-radius:6px;
+    background-color:#fff;
+    // opacity:1;
+
+    li{
+      padding:15px;
+      display:flex;
+      gap: 0 12px;
+      cursor:pointer;
+      &:hover{
+        background-color:rgb(247, 249, 250);
+      }
+      .title{
+        display:flex;
+        flex-direction:column;
+        h3{
+          font-size:15px;
+          font-weight:700;
+          line-height:21px;
+          color:rgb(47, 52, 56);
+        }
+        p{
+          font-size:12px;
+          line-height:16px;
+          color:rgb(130, 140, 148);
+        }
+      }
+    }
   }
-  .writeBtn svg {
-    vertical-align: middle;
-    font-size: 18px;
+  .show-active{
+    // opacity:1;
+
   }
 `;
 //cart
