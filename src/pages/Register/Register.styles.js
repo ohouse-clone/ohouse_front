@@ -11,6 +11,18 @@ export const RegisterWrapper = styled.main`
   width: calc(100% - 30px);
   display: flex;
   padding-top: 40px;
+  //////////////////////////// 공통작업
+  input,
+  select {
+    background-color: #fff;
+  }
+  .text-danger {
+    margin: 10px 0 0 5px;
+    font-size: 14px;
+    color: red;
+  }
+  /////////////////////////////
+
   section {
     width: 360px;
     margin: 60px auto;
@@ -51,10 +63,10 @@ export const RegisterWrapper = styled.main`
         transition: all 100ms ease;
         padding: 0 15px;
         font-size: 15px;
-        &:placeholder {
+        &::placeholder {
           color: #bfbfbf;
         }
-        &:hover {
+        &::hover {
           background-color: #fafafa;
           border-color: #bdbdbd;
         }
@@ -113,6 +125,7 @@ export const RegisterWrapper = styled.main`
         padding: 18px;
         border: 1px solid #eaedef;
         font-size: 15px;
+        background-color: #fff;
         div {
           display: flex;
           align-items: center;
@@ -120,6 +133,7 @@ export const RegisterWrapper = styled.main`
           input {
             width: 20px;
             height: 20px;
+            border-radius: 100px;
             border-color: #c2c8cc;
           }
           span:nth-child(2) {

@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+<<<<<<< HEAD
     "framer-motion": "^7.4.0",
+=======
+    "formik": "^2.2.9",
+>>>>>>> c66b4002fa9b7dbd79d0fd67c792a10569d1eff1
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -19,7 +23,8 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
-    "styled-reset": "^4.4.2"
+    "styled-reset": "^4.4.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.7",

@@ -3,9 +3,6 @@ import StoreinfiniteProducts from 'components/StoreMain/StoreInfiniteProducts';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const furnitureCategories = [
