@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import ProductForm from 'components/ProductionAdd/ProductForm';
+import React, { useEffect, useMemo, useState } from 'react';
 
 export default function Add() {
   const URL = '/api';
@@ -11,6 +12,10 @@ export default function Add() {
   const [contentImageFile, setContentImageFile] = useState();
   const [contentImageId, setContentImageId] = useState(0);
   const [previewImageId, setPreviewImageId] = useState(0);
+
+  const [storePostId, setStorePostId] = useState();
+
+  const [productArr, setProductArr] = useState([{ name: 1 }, { name: 2 }]);
 
   // item 로직 ----------------------------------------------
 
@@ -72,7 +77,30 @@ export default function Add() {
   };
 
   // storePost 로직 ----------------------------------------
+  const submitStorePost = e => {
+    e.preventDefault();
+    const storePostData = {
+      author: e.target[0].value,
+      title: e.target[1].value,
+      contentImageId,
+      previewImageId,
+    };
 
+    axios
+      .post(`${URL}/store/api/v1/post`, storePostData)
+      .then(res => {
+        setStorePostId(res);
+      })
+      .catch(err => console.log(err));
+  };
+
+  // product 로직 -------------------------------------------
+
+  const submitProducts = e => {
+    e.preventDefault();
+    console.log(e);
+    const Products = [];
+  };
   return (
     <>
       <h2>제품 등록</h2>
@@ -109,7 +137,7 @@ export default function Add() {
 
       <div>현재 itemId : {itemId}</div>
 
-      <h2>이미지 등록</h2>
+      <h2>image 등록</h2>
       <form>
         <label htmlFor="previewImage">Preview Image</label>
         <input
@@ -129,32 +157,49 @@ export default function Add() {
         ></input>
       </form>
       <button onClick={submitImage}>imageid 얻기</button>
+
       <h2>storePost 등록</h2>
-      <form>
-        <label>글쓴이</label>
-        <input></input>
-        <label>제목</label>
-        <input></input>
+      <form onSubmit={submitStorePost}>
+        <label htmlFor="author">글쓴이</label>
+        <input id="author"></input>
+        <label htmlFor="title">제목</label>
+        <input id="title"></input>
         <div>현재 contentImageId : {contentImageId}</div>
         <div>현재 previewImageId : {previewImageId}</div>
+        <button>storePostId 얻기</button>
       </form>
-      <button>storePostId 얻기</button>
 
-      <div>현재 storePostId : {0}</div>
+      <div>현재 storePostId : {storePostId}</div>
 
       <h2>products 등록</h2>
-      <form>
-        <label>가격</label>
-        <input></input>
-        <label>제품 이름</label>
-        <input></input>
-        <label>할인율</label>
-        <input></input>
-        <label>재고</label>
-        <input></input>
-      </form>
+      <form onSubmit={submitProducts}>
+        {productArr.map(res => (
+          <>
+            <div key={res.name}>{res.name}</div>
+            <ProductForm i={res.name} />
+          </>
+        ))}
 
-      <button>프로덕트 생성</button>
+        <button>프로덕트 생성</button>
+      </form>
+      <div>productIndex</div>
+      <button
+        onClick={() =>
+          setProductArr(res => [...res, { name: productArr.length + 1 }])
+        }
+      >
+        추가
+      </button>
+      <button
+        onClick={() => {
+          const newArr = [...productArr];
+          if (newArr.length === 1) return;
+          newArr.pop();
+          setProductArr(newArr);
+        }}
+      >
+        제거
+      </button>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://www.cloneohouse.shop/store/api';
+const URL = '/api';
 
 export const getStoreCategoryData = async id => {
   const { data } = await axios.get(`${URL}/v1/category/${id}`);
