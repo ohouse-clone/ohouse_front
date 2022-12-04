@@ -5,6 +5,14 @@ const nextConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://cloneohouse.shop/:path*',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

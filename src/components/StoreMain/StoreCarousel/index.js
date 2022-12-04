@@ -16,24 +16,19 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 5000,
 };
-
 export default function Carousel() {
   const customSliderRef = useRef();
 
-  const SlickNext = () => {
+  const SlickNextImage = () => {
     customSliderRef.current.slickNext();
   };
 
-  const SlickPrev = () => {
+  const SlickPrevImage = () => {
     customSliderRef.current.slickPrev();
   };
 
   const SlickGoTo = (num, e) => {
     customSliderRef.current.slickGoTo(num);
-    console.log('datasetnum', e.target.dataset.num);
-
-    console.log(customSliderRef.current.innerSlider.state.currentSlide);
-    console.log(customSliderRef);
   };
 
   return (
@@ -71,8 +66,8 @@ export default function Carousel() {
         <button onClick={e => SlickGoTo(4, e)} data-num="4">
           특가 찬스
         </button>
-        <button onClick={SlickPrev}>Prev</button>
-        <button onClick={SlickNext}>Next</button>
+        <button onClick={SlickPrevImage}>Prev</button>
+        <button onClick={SlickNextImage}>Next</button>
       </SliderButtonContainer>
     </>
   );
