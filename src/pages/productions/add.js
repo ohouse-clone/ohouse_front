@@ -15,7 +15,7 @@ export default function Add() {
 
   const [storePostId, setStorePostId] = useState();
 
-  const [productArr, setProductArr] = useState([{ name: 1 }, { name: 2 }]);
+  const [productArr, setProductArr] = useState([{ name: 1 }]);
 
   // item 로직 ----------------------------------------------
 
@@ -25,14 +25,18 @@ export default function Add() {
     setItemPostPath(path);
   };
 
+  const parseFormToObj = e => {
+    const formlength = e.target.length - 1;
+    const data = {};
+    for (let i = 0; i < formlength; i++) {
+      data[e.target[i].id] = e.target[i].value;
+    }
+    return data;
+  };
+
   const submitItemPost = e => {
     e.preventDefault();
-    const formlength = e.target.length - 1;
-    const itemData = {};
-    for (let i = 0; i < formlength; i++) {
-      itemData[e.target[i].id] = e.target[i].value;
-    }
-    console.log(itemData);
+    const itemData = parseFormToObj(e);
     axios
       .post(`${URL}/store/api/v1/item/${itemPostPath}`, itemData)
       .then(res => setItemId(res))
@@ -96,10 +100,35 @@ export default function Add() {
 
   // product 로직 -------------------------------------------
 
+  const increaseProductForm = () => {
+    setProductArr(res => [...res, { name: productArr.length + 1 }]);
+  };
+
+  const decreaseProductForm = () => {
+    const newArr = [...productArr];
+    if (newArr.length === 1) return;
+    newArr.pop();
+    setProductArr(newArr);
+  };
+
+  const parseProductsFormToArr = e => {
+    const formLength = e.target.length - 1;
+    const productObjLength = 4;
+    const arr = [];
+    let data = {};
+    for (let i = 0; i < formLength; i++) {
+      data[e.target[i].id] = e.target[i].value;
+      if ((i + 1) % productObjLength === 0) {
+        arr.push(data);
+        data = {};
+      }
+    }
+    return arr;
+  };
+
   const submitProducts = e => {
     e.preventDefault();
-    console.log(e);
-    const Products = [];
+    const productData = parseProductsFormToArr(e);
   };
   return (
     <>
@@ -183,23 +212,8 @@ export default function Add() {
         <button>프로덕트 생성</button>
       </form>
       <div>productIndex</div>
-      <button
-        onClick={() =>
-          setProductArr(res => [...res, { name: productArr.length + 1 }])
-        }
-      >
-        추가
-      </button>
-      <button
-        onClick={() => {
-          const newArr = [...productArr];
-          if (newArr.length === 1) return;
-          newArr.pop();
-          setProductArr(newArr);
-        }}
-      >
-        제거
-      </button>
+      <button onClick={increaseProductForm}>추가</button>
+      <button onClick={decreaseProductForm}>제거</button>
     </>
   );
 }
