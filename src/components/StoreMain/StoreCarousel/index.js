@@ -1,10 +1,11 @@
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
 import Image from 'next/image';
-import styled from 'styled-components';
+
 import { useRef } from 'react';
+import {
+  SliderButtonContainer,
+  SliderImage,
+  StyledSlider,
+} from './storeCarousel.style';
 
 const settings = {
   dots: true,
@@ -15,75 +16,19 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 5000,
 };
-
-const StyledSlider = styled(Slider)`
-  .slick-dots {
-    bottom: 40px;
-
-    li {
-      width: 2px;
-      height: 2px;
-      margin: 0 7px;
-
-      button {
-        width: 2px;
-        height: 2px;
-      }
-      button:before {
-        width: 2px;
-        height: 2px;
-        color: white;
-      }
-    }
-  }
-`;
-
-const SliderImage = styled.div`
-  position: relative;
-  width: 100vw;
-  min-height: 400px;
-
-  img {
-    width: 100%;
-    height: 40vh;
-    object-fit: cover;
-    object-position: center center;
-  }
-`;
-
-const SliderButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  button {
-    background-color: transparent;
-    border: 1px solid #ededed;
-    height: 40px;
-    padding: 0 10px;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #ededed;
-    transition: 0.5s;
-  }
-`;
-
 export default function Carousel() {
   const customSliderRef = useRef();
 
-  const SlickNext = () => {
+  const SlickNextImage = () => {
     customSliderRef.current.slickNext();
   };
 
-  const SlickPrev = () => {
+  const SlickPrevImage = () => {
     customSliderRef.current.slickPrev();
   };
 
   const SlickGoTo = (num, e) => {
     customSliderRef.current.slickGoTo(num);
-    console.log('datasetnum', e.target.dataset.num);
-
-    console.log(customSliderRef.current.innerSlider.state.currentSlide);
-    console.log(customSliderRef);
   };
 
   return (
@@ -121,8 +66,8 @@ export default function Carousel() {
         <button onClick={e => SlickGoTo(4, e)} data-num="4">
           특가 찬스
         </button>
-        <button onClick={SlickPrev}>Prev</button>
-        <button onClick={SlickNext}>Next</button>
+        <button onClick={SlickPrevImage}>Prev</button>
+        <button onClick={SlickNextImage}>Next</button>
       </SliderButtonContainer>
     </>
   );

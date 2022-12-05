@@ -3,9 +3,7 @@ import StoreinfiniteProducts from 'components/StoreMain/StoreInfiniteProducts';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const furnitureCategories = [
   { title: '침대', hash: 1 },
@@ -44,6 +42,11 @@ const DummyImage = styled.div`
   height: 130px;
   background-color: #ededed;
   border: 1px solid blue;
+`;
+
+const Row = styled(motion.div)`
+  position: absolute;
+  width: 100%;
 `;
 
 export default function CategoryMain() {
@@ -140,10 +143,32 @@ export default function CategoryMain() {
         </>
         <div>
           <h1>가구</h1>
+
           <div>
-            {dummyImageData.slice(imageIndex, imageIndex + 1).map((data, i) => {
-              return <DummyImage key={i}>{data.src}</DummyImage>;
-            })}
+            <AnimatePresence initial={false}>
+              {dummyImageData.slice(imageIndex, imageIndex + 1).map(data => {
+                return (
+                  <Row
+                    initial={{ x: 1000 }}
+                    animate={{ x: 0 }}
+                    exit={{ x: -1000 }}
+                    transition={{ type: 'tween', duration: 1 }}
+                    key={imageIndex}
+                  >
+                    <DummyImage key={imageIndex}>{data.src}</DummyImage>
+                  </Row>
+                );
+              })}
+            </AnimatePresence>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <button
               onClick={() => {
                 setImageIndex(imageIndex + 1);
@@ -152,6 +177,8 @@ export default function CategoryMain() {
               next
             </button>
           </div>
+
+          <br />
 
           {/* <div>{data.property_groups.map}</div> */}
 

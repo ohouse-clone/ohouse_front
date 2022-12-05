@@ -5,6 +5,7 @@ import StoreinfiniteProducts from 'components/StoreMain/StoreInfiniteProducts';
 import StoreProductContainer from 'components/StoreMain/StoreProductContainer';
 
 import React from 'react';
+
 import styled from 'styled-components';
 
 const LayoutWrapper = styled.div`
@@ -61,4 +62,3 @@ export default function StoreMain() {
     </>
   );
 }
-
