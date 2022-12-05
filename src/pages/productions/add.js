@@ -13,7 +13,7 @@ export default function Add() {
   const [contentImageId, setContentImageId] = useState(0);
   const [previewImageId, setPreviewImageId] = useState(0);
 
-  const [storePostId, setStorePostId] = useState();
+  const [storePostId, setStorePostId] = useState(0);
 
   const [productArr, setProductArr] = useState([{ name: 1 }]);
 
@@ -25,21 +25,23 @@ export default function Add() {
     setItemPostPath(path);
   };
 
-  const parseFormToObj = e => {
-    const formlength = e.target.length - 1;
+  const parseFormToObj = target => {
+    const formlength = target.length - 1;
     const data = {};
     for (let i = 0; i < formlength; i++) {
-      data[e.target[i].id] = e.target[i].value;
+      data[target[i].id] = target[i].value;
     }
     return data;
   };
 
   const submitItemPost = e => {
     e.preventDefault();
-    const itemData = parseFormToObj(e);
+    const itemData = parseFormToObj(e.target);
     axios
       .post(`${URL}/store/api/v1/item/${itemPostPath}`, itemData)
-      .then(res => setItemId(res))
+      .then(res => {
+        setItemId(res.data);
+      })
       .catch(err => console.log(err));
   };
 
@@ -73,9 +75,8 @@ export default function Add() {
     axios
       .post(`${URL}/store/api/v1/post/images`, formData)
       .then(res => {
-        console.log(res);
-        setContentImageId(res[0]);
-        setPreviewImageId(res[1]);
+        setContentImageId(res.data[0]);
+        setPreviewImageId(res.data[1]);
       })
       .catch(err => console.log(err));
   };
@@ -93,7 +94,7 @@ export default function Add() {
     axios
       .post(`${URL}/store/api/v1/post`, storePostData)
       .then(res => {
-        setStorePostId(res);
+        setStorePostId(res.data);
       })
       .catch(err => console.log(err));
   };
@@ -111,24 +112,36 @@ export default function Add() {
     setProductArr(newArr);
   };
 
-  const parseProductsFormToArr = e => {
-    const formLength = e.target.length - 1;
+  const parseProductsFormToArr = target => {
+    const formLength = target.length - 1;
     const productObjLength = 4;
     const arr = [];
-    let data = {};
+    let data = { storePostId, itemId };
     for (let i = 0; i < formLength; i++) {
-      data[e.target[i].id] = e.target[i].value;
+      data[target[i].id] = target[i].value;
       if ((i + 1) % productObjLength === 0) {
         arr.push(data);
-        data = {};
+        data = { storePostId, itemId };
       }
     }
     return arr;
   };
 
+  const postProducts = arr => {
+    const postArr = [];
+    arr.map(obj => {
+      postArr.push(axios.post(`${URL}/store/api/v1/product/`, obj));
+    });
+    console.log(postArr);
+    Promise.all(postArr)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
+
   const submitProducts = e => {
     e.preventDefault();
-    const productData = parseProductsFormToArr(e);
+    const productsData = parseProductsFormToArr(e.target);
+    postProducts(productsData);
   };
   return (
     <>
