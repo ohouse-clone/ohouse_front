@@ -3,6 +3,7 @@ import React from 'react';
 export default function ProductForm({ i }) {
   return (
     <div key={'product' + i}>
+      <div>{i}</div>
       <label htmlFor={`price`}>가격</label>
       <input id={`price`}></input>
       <label htmlFor={`productName`}>제품 이름</label>
