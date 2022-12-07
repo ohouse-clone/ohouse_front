@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import {
   contentImageIdAtom,
@@ -6,6 +5,7 @@ import {
   storePostIdAtom,
 } from 'lib/data/productionAddAtoms';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { storePostDataPOST } from 'lib/apis/productionAddApi';
 
 export default function StorePostAdd() {
   const [storePostId, setStorePostId] = useRecoilState(storePostIdAtom);
@@ -21,8 +21,7 @@ export default function StorePostAdd() {
       previewImageId,
     };
 
-    axios
-      .post(`${URL}/store/api/v1/post`, storePostData)
+    storePostDataPOST(storePostData)
       .then(res => {
         setStorePostId(res.data);
       })

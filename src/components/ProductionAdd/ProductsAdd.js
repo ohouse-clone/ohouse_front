@@ -1,8 +1,8 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { itemIdAtom, storePostIdAtom } from 'lib/data/productionAddAtoms';
 import { useRecoilValue } from 'recoil';
 import ProductForm from './ProductForm';
+import { productsDataPOST } from 'lib/apis/productionAddApi';
 
 export default function ProductsAdd() {
   const [productArr, setProductArr] = useState([{ name: 1 }]);
@@ -38,9 +38,9 @@ export default function ProductsAdd() {
   const postProducts = arr => {
     const postArr = [];
     arr.map(obj => {
-      postArr.push(axios.post(`${URL}/store/api/v1/product/`, obj));
+      postArr.push(productsDataPOST(obj));
     });
-    console.log(postArr);
+
     Promise.all(postArr)
       .then(res => console.log(res))
       .catch(err => console.log(err));

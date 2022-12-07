@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { itemIdAtom } from 'lib/data/productionAddAtoms';
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
+import { itemIdAtom } from 'lib/data/productionAddAtoms';
+import { itemDataPOST } from 'lib/apis/productionAddApi';
 
 export default function ItemAdd() {
   const [itemPostPath, setItemPostPath] = useState('');
@@ -25,8 +25,7 @@ export default function ItemAdd() {
   const submitItemPost = e => {
     e.preventDefault();
     const itemData = parseFormToObj(e.target);
-    axios
-      .post(`${URL}/store/api/v1/item/${itemPostPath}`, itemData)
+    itemDataPOST(itemPostPath, itemData)
       .then(res => {
         setItemId(res.data);
       })

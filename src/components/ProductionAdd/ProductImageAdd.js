@@ -4,7 +4,7 @@ import {
   contentImageIdAtom,
   previewImageIdAtom,
 } from 'lib/data/productionAddAtoms';
-import axios from 'axios';
+import { imageDataPOST } from 'lib/apis/productionAddApi';
 
 export default function ProductImageAdd() {
   const [previewImageFile, setPreviewImageFile] = useState();
@@ -37,8 +37,7 @@ export default function ProductImageAdd() {
     formData.append('data', contentImageFile);
     formData.append('data', previewImageFile);
 
-    axios
-      .post(`${URL}/store/api/v1/post/images`, formData)
+    imageDataPOST(formData)
       .then(res => {
         setContentImageId(res.data[0]);
         setPreviewImageId(res.data[1]);
