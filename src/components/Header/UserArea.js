@@ -11,10 +11,8 @@ function UserArea() {
     <UserAreaBlock>
       <div className="LoginArea">
         {USER_AREA.map(user => (
-          <Link key={user.id} href={user.path}>
-            <a currentPath={router.pathname} pathName={user.path}>
-              {user.name}
-            </a>
+          <Link key={user.key} href={user.path}>
+            <a>{user.name}</a>
           </Link>
         ))}
       </div>

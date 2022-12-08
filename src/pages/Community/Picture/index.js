@@ -1,15 +1,15 @@
 import React from 'react';
 import { MainBlock } from 'components/CommunityMain/main.styles';
-import { FilterBar } from './Party.styles';
-import { PARTY_FILTER } from '../../../constants/communityParty';
+import { FilterBar } from './Picture.styles';
+import { Picture_FILTER } from '../../../constants/communityPicture';
 const index = () => {
   return (
     <MainBlock>
       <FilterBar>
-        {PARTY_FILTER.map((e, i) => (
+        {Picture_FILTER.map((e, i) => (
           <li key={i}>
             <button>
-              {PARTY_FILTER[i]}
+              {Picture_FILTER[i]}
               <span>
                 <svg
                   width="12"

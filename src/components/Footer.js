@@ -7,10 +7,10 @@ const FooterBlock = styled.div`
   font-size: 12px;
   .footer-inn {
     position: relative;
-    width:1136px;
+    width: 1136px;
     margin: 0 auto;
     color: #2f3438;
-    letter-spacing:-0.4px;
+    letter-spacing: -0.4px;
   }
   h3 {
     font-weight: 700;
@@ -26,8 +26,8 @@ const FooterBlock = styled.div`
     margin-top: 6px;
   }
   .social-link {
-    display:flex;
-    gap:0 14px;
+    display: flex;
+    gap: 0 14px;
     position: absolute;
     top: 0;
     right: 0px;
@@ -232,18 +232,18 @@ function Footer() {
           <p className="footer-fnb-top">
             {fnbTop.map(item => (
               // eslint-disable-next-line react/jsx-key
-              <span>{item}</span>
+              <span key={item.key}>{item}</span>
             ))}
           </p>
           <p className="footer-fnb-bottom">
             {fnbBot1.map(item => (
               // eslint-disable-next-line react/jsx-key
-              <span>{item}</span>
+              <span key={item.key}>{item}</span>
             ))}
             <br />
             {fnbBot2.map(item => (
               // eslint-disable-next-line react/jsx-key
-              <span>{item}</span>
+              <span key={item.key}>{item}</span>
             ))}
           </p>
           <div className="desc">

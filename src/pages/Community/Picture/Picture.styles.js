@@ -15,5 +15,6 @@ export const FilterBar = styled.ul`
     display: flex;
     flex-direction: row;
     gap: 0 3px;
+    align-items: center;
   }
 `;

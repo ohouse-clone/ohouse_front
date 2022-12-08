@@ -56,7 +56,6 @@ function Login() {
                   placeholder="이메일"
                   type="text"
                   title="email"
-                  clicked
                 />
                 <input
                   id="user-pw"
@@ -64,7 +63,6 @@ function Login() {
                   placeholder="비밀번호"
                   type="password"
                   title="password"
-                  clicked
                 />
                 <button type="submit">로그인</button>
                 <section className="userArea">
@@ -93,6 +91,7 @@ function Login() {
                     </g>
                   </svg>
                 </a>
+
                 <a>
                   <svg width="48" height="48">
                     <g fill="none">
@@ -107,21 +106,20 @@ function Login() {
                     </g>
                   </svg>
                 </a>
+
                 <a>
-                  <a>
-                    <svg width="48" height="48">
-                      <g fill="none">
-                        <path
-                          fill="#00C63B"
-                          d="M0 24C0 10.745 10.745 0 24 0s24 10.745 24 24-10.745 24-24 24S0 37.255 0 24z"
-                        ></path>
-                        <path
-                          fill="#FFF"
-                          d="M21 25.231V34h-7V15h7l6 8.769V15h7v19h-7l-6-8.769z"
-                        ></path>
-                      </g>
-                    </svg>
-                  </a>
+                  <svg width="48" height="48">
+                    <g fill="none">
+                      <path
+                        fill="#00C63B"
+                        d="M0 24C0 10.745 10.745 0 24 0s24 10.745 24 24-10.745 24-24 24S0 37.255 0 24z"
+                      ></path>
+                      <path
+                        fill="#FFF"
+                        d="M21 25.231V34h-7V15h7l6 8.769V15h7v19h-7l-6-8.769z"
+                      ></path>
+                    </g>
+                  </svg>
                 </a>
               </div>
             </section>

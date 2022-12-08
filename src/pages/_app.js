@@ -21,7 +21,9 @@ const theme = {
 
 export default function MyApp({ Component, pageProps }) {
   return (pageProps && pageProps.pathname) === '/Login' ||
-    (pageProps && pageProps.pathname) === '/Register' ? (
+    (pageProps && pageProps.pathname) === '/Register' ||
+    (pageProps && pageProps.pathname) === '/Writing' ||
+    (pageProps && pageProps.pathname) === '/admin' ? (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
