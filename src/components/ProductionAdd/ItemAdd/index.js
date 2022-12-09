@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { itemIdAtom } from 'lib/data/productionAddAtoms';
 import { itemDataPOST } from 'lib/apis/productionAddApi';
+import { ItemForm, ItemSelect, SubjectWrapper } from './index.style';
+import { AddForm } from '../index.style';
 
 export default function ItemAdd() {
   const [itemPostPath, setItemPostPath] = useState('');
@@ -34,14 +36,14 @@ export default function ItemAdd() {
 
   return (
     <>
-      <div>어떤 아이템을 판매하시나요?</div>
-      <select onClick={changeItemPost}>
+      <SubjectWrapper>어떤 아이템을 판매하시나요?</SubjectWrapper>
+      <ItemSelect onClick={changeItemPost}>
         <option value="">선택</option>
         <option value="bed?category=20_22_20_20">일반침대</option>
         <option value="storagebed?category=20_22_20_21">수납침대</option>
-      </select>
+      </ItemSelect>
 
-      <form onSubmit={submitItemPost}>
+      <AddForm onSubmit={submitItemPost}>
         <label htmlFor="brandName">브랜드이름</label>
         <input id="brandName"></input>
         <label htmlFor="modelName">모델이름</label>
@@ -63,7 +65,7 @@ export default function ItemAdd() {
           </>
         )}
         <button>itemId 얻기</button>
-      </form>
+      </AddForm>
 
       <div>현재 itemId : {itemId}</div>
     </>

@@ -5,6 +5,7 @@ import {
   previewImageIdAtom,
 } from 'lib/data/productionAddAtoms';
 import { imageDataPOST } from 'lib/apis/productionAddApi';
+import { AddForm } from './index.style';
 
 export default function ProductImageAdd() {
   const [previewImageFile, setPreviewImageFile] = useState();
@@ -47,7 +48,7 @@ export default function ProductImageAdd() {
   return (
     <>
       <h2>image 등록</h2>
-      <form>
+      <AddForm>
         <label htmlFor="previewImage">Preview Image</label>
         <input
           id="previewImage"
@@ -64,7 +65,7 @@ export default function ProductImageAdd() {
           type="file"
           onChange={onContentImageChange}
         ></input>
-      </form>
+      </AddForm>
       <button onClick={submitImage}>imageid 얻기</button>
     </>
   );
