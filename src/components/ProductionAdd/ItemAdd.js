@@ -2,8 +2,20 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { itemIdAtom } from 'lib/data/productionAddAtoms';
 import { itemDataPOST } from 'lib/apis/productionAddApi';
-import { ItemForm, ItemSelect, SubjectWrapper } from './index.style';
-import { AddForm } from '../index.style';
+import { AddForm } from './ProductionAddPage.style';
+import styled from 'styled-components';
+
+const SubjectWrapper = styled.h3`
+  font-weight: 900;
+  font-size: 20px;
+  margin: 20px 10px;
+`;
+
+const ItemSelect = styled.select`
+  width: 300px;
+  height: 30px;
+`;
+
 
 export default function ItemAdd() {
   const [itemPostPath, setItemPostPath] = useState('');

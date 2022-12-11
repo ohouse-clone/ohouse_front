@@ -5,7 +5,7 @@ import {
   previewImageIdAtom,
 } from 'lib/data/productionAddAtoms';
 import { imageDataPOST } from 'lib/apis/productionAddApi';
-import { AddForm } from './index.style';
+import { AddForm } from './ProductionAddPage.style';
 
 export default function ProductImageAdd() {
   const [previewImageFile, setPreviewImageFile] = useState();

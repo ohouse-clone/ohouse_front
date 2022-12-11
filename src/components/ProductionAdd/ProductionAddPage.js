@@ -1,4 +1,4 @@
-import { AddH2, AddWrapper } from './index.style';
+import { AddH2, AddWrapper } from './ProductionAddPage.style';
 import ItemAdd from './ItemAdd';
 import ProductImageAdd from './ProductImageAdd';
 import ProductsAdd from './ProductsAdd';
