@@ -5,7 +5,7 @@ import {
   previewImageIdAtom,
 } from 'lib/data/productionAddAtoms';
 import { imageDataPOST } from 'lib/apis/productionAddApi';
-import { AddForm } from './ProductionAddPage.style';
+import { AddForm, SubjectWrapper } from './ProductionAddPage.style';
 
 export default function ProductImageAdd() {
   const [previewImageFile, setPreviewImageFile] = useState();
@@ -47,26 +47,30 @@ export default function ProductImageAdd() {
   };
   return (
     <>
-      <h2>image 등록</h2>
+      <SubjectWrapper>판매관련 이미지 첨부</SubjectWrapper>
       <AddForm>
-        <label htmlFor="previewImage">Preview Image</label>
-        <input
-          id="previewImage"
-          name="previewImage"
-          accept="image/*"
-          type="file"
-          onChange={onPreviewImageChange}
-        ></input>
-        <label htmlFor="contentImage">Content Image</label>
-        <input
-          id="contentImage"
-          name="contentImage"
-          accept="image/*"
-          type="file"
-          onChange={onContentImageChange}
-        ></input>
+        <div>
+          <label htmlFor="previewImage">Preview Image</label>
+          <input
+            id="previewImage"
+            name="previewImage"
+            accept="image/*"
+            type="file"
+            onChange={onPreviewImageChange}
+          ></input>
+        </div>
+        <div>
+          <label htmlFor="contentImage">Content Image</label>
+          <input
+            id="contentImage"
+            name="contentImage"
+            accept="image/*"
+            type="file"
+            onChange={onContentImageChange}
+          ></input>
+        </div>
+        <button onClick={submitImage}>imageid 얻기</button>
       </AddForm>
-      <button onClick={submitImage}>imageid 얻기</button>
     </>
   );
 }

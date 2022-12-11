@@ -3,6 +3,7 @@ import { itemIdAtom, storePostIdAtom } from 'lib/data/productionAddAtoms';
 import { useRecoilValue } from 'recoil';
 import ProductForm from './ProductForm';
 import { productsDataPOST } from 'lib/apis/productionAddApi';
+import { AddForm, SubjectWrapper } from './ProductionAddPage.style';
 
 export default function ProductsAdd() {
   const [productArr, setProductArr] = useState([{ name: 1 }]);
@@ -54,8 +55,8 @@ export default function ProductsAdd() {
 
   return (
     <>
-      <h2>products 등록</h2>
-      <form onSubmit={submitProducts}>
+      <SubjectWrapper>products 등록</SubjectWrapper>
+      <AddForm onSubmit={submitProducts}>
         {productArr.map(res => (
           <>
             <ProductForm i={res.name} />
@@ -63,7 +64,7 @@ export default function ProductsAdd() {
         ))}
 
         <button>프로덕트 생성</button>
-      </form>
+      </AddForm>
       <div>productIndex</div>
       <button onClick={increaseProductForm}>추가</button>
       <button onClick={decreaseProductForm}>제거</button>
