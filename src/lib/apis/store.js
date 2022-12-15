@@ -7,14 +7,16 @@ export const getStoreCategoryData = async id => {
   return data;
 };
 
-export const getStoreItemData = async category => {
-  const { data } = await axios.get(`${URL}/v1/item/items?category=${category}`);
+export const getStoreProductsData = async category => {
+  const { data } = await axios.get(
+    `${URL}/store/category?category=${category}`,
+  );
   return data;
 };
 
-export const getStoreProductsData = async (itemId, price, productName) => {
+export const getStoreProductDetailData = async storePostId => {
   const { data } = await axios.get(
-    `${URL}/v1/product/products?itemId=${itemId}`,
+    `${URL}/store/api/v1/post/productswith/${storePostId}`,
   );
   return data;
 };

@@ -24,22 +24,29 @@ export const AddForm = styled.form`
   width: 50%;
   label {
     position: absolute;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 14px;
     margin-top: 10px;
-    line-height: 30px;
+    line-height: 40px;
   }
   input {
     margin-left: 400px;
     margin-top: 10px;
-    width: 200px;
-    height: 30px;
-    border: 1px solid #7d7d7d;
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #c2c8cc;
     border-radius: 5px;
   }
   button {
+    width: 200px;
     margin-top: 20px;
-    width: 120px;
+    margin-bottom: 5px;
+    padding: 12px 20px;
+    background-color: #35c5f0;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
   }
 `;
 
