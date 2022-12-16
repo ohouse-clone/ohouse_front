@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getStoreProductsData } from 'lib/apis/store';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Product from '../Product';
@@ -11,20 +12,16 @@ const Wrapper = styled.div`
 `;
 
 export default function StoreinfiniteProducts() {
-  const [randomImageList, setRandomImageList] = useState([]);
+  const [dataList, setDataList] = useState([]);
   const [page, setPage] = useState(1);
 
   const [lastIntersectingImage, setLastIntersectingImage] = useState(null);
 
-  const getRandomImageThenSet = async () => {
-    try {
-      const { data } = await axios.get(
-        `https://picsum.photos/v2/list?page=${page}&limit=12`,
-      );
-      setRandomImageList(randomImageList.concat(data));
-    } catch {
-      console.error('fetching error');
-    }
+  const getDataThenSet = async () => {
+    getStoreProductsData('20_22_20_20').then(res => {
+      setDataList(res.previewPosts);
+      console.log(res);
+    });
   };
 
   const onIntersect = (entries, observer) => {
@@ -39,7 +36,7 @@ export default function StoreinfiniteProducts() {
 
   useEffect(() => {
     console.log('page ? ', page);
-    getRandomImageThenSet();
+    getDataThenSet();
   }, [page]);
 
   useEffect(() => {
@@ -55,13 +52,16 @@ export default function StoreinfiniteProducts() {
   return (
     <>
       <Wrapper>
-        {randomImageList?.map((randomImage, index) => {
-          if (index === randomImageList.length - 1) {
+        {dataList?.map((data, index) => {
+          if (index === dataList.length - 1) {
             return (
               <>
                 <Product
-                  key={randomImage.id}
-                  previewImageUrl={randomImage.download_url}
+                  key={data.id}
+                  previewImageUrl={data.previewImageUrl}
+                  title={data.title}
+                  price={data.price}
+                  discountRate={data.discountRate}
                 />
                 <div ref={setLastIntersectingImage}>last</div>
               </>
@@ -70,8 +70,11 @@ export default function StoreinfiniteProducts() {
             return (
               <>
                 <Product
-                  key={randomImage.id}
-                  previewImageUrl={randomImage.download_url}
+                  key={data.id}
+                  previewImageUrl={data.previewImageUrl}
+                  title={data.title}
+                  price={data.price}
+                  discountRate={data.discountRate}
                 />
               </>
             );

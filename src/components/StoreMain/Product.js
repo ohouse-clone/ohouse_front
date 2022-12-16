@@ -72,9 +72,13 @@ const ProductLinkContainer = styled.a`
 `;
 
 export default function Product({
-  previewImageUrl = '/store-main-image/product1.jpg',
+  previewImageUrl = '',
   ref,
-  id = 1,
+  id,
+  discountRate,
+  price,
+  title,
+  brandName = 'test',
 }) {
   return (
     <>
@@ -87,16 +91,16 @@ export default function Product({
           </header>
           <main>
             <h1>
-              <div>brandName</div>
-              <div>title</div>
+              <div>{brandName}</div>
+              <div>{title}</div>
             </h1>
             <h3>
-              <span>rateDiscount%</span>
-              <span>price</span>
+              <span>{discountRate}%</span>
+              <span>{price}</span>
             </h3>
             <h5>
               <span>★5.0</span>
-              <span>리뷰 29,034 </span>
+              <span>리뷰 0 </span>
             </h5>
           </main>
         </ProductLinkContainer>
