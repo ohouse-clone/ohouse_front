@@ -1,12 +1,15 @@
+import { furnitureData, getCategory } from 'lib/apis/categoryApi';
 import { useEffect, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import CategoryInfiniteProducts from './CategoryInfiniteProducts';
+import CategoryListTab from './CategoryListTab';
 
 const furnitureCategories = [
   { title: '침대', hash: '20_22_20_20' },
-  { title: '매트리스, 토퍼', hash: '20_22_20_21' },
-  { title: '소파', hash: '20_22_20_22' },
+  { title: '수납침대', hash: '20_22_20_21' },
+  { title: '저상형침대', hash: '20_22_20_22' },
 ];
 
 const LayoutWrapper = styled.div`
@@ -47,8 +50,13 @@ const SelectSubCategory = styled.ul`
 `;
 
 export default function CategoryMain() {
-  const [categoryClick, setCategoryClick] = useState('가구');
   const [fetchApiAddress, setFetchApiAddress] = useState('가구');
+  const [categoryClick, setCategoryClick] = useState('가구');
+  const [data, setData] = useState(furnitureData);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <LayoutWrapper>
@@ -61,27 +69,15 @@ export default function CategoryMain() {
               {categoryClick}
             </SelectMainCategory>
             <SelectSubCategory>
-              {categoryClick === '가구' && (
-                <>
-                  {furnitureCategories.map((data, i) => {
-                    return (
-                      <li key={i} onClick={() => setFetchApiAddress(data.hash)}>
-                        {data.title}
-                      </li>
-                    );
-                  })}
-                </>
-              )}
-              {categoryClick === '패브릭' && (
-                <>
-                  <li>침구세트</li>
-                  <li>커튼</li>
-                  <li>러그</li>
-                </>
-              )}
+              {data.map(res => {
+                return (
+                  <>
+                    <CategoryListTab res={res} />
+                  </>
+                );
+              })}
             </SelectSubCategory>
-            <br />
-            <br />
+
             <MainCategory>
               {categoryClick === '가구' || (
                 <li
