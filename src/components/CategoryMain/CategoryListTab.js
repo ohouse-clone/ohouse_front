@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import CategoryLastListTab from './CategoryLastListTab';
 
 export default function CategoryListTab({ res }) {
   const [list, setList] = useState(false);
+
   const onListToggle = () => {
     setList(res => !res);
   };
+
   return (
     <>
       <div key={res.category}>
@@ -12,7 +15,7 @@ export default function CategoryListTab({ res }) {
         {list &&
           res.list.map(res2 => (
             <>
-              <li>{res2.category}</li>
+              <CategoryLastListTab res2={res2} />
             </>
           ))}
       </div>

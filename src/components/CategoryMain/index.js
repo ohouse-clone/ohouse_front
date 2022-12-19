@@ -46,6 +46,8 @@ const SelectSubCategory = styled.ul`
     list-style: none;
     font-size: 14px;
     margin-bottom: 15px;
+    user-select: none;
+    cursor: pointer;
   }
 `;
 
@@ -55,6 +57,7 @@ export default function CategoryMain() {
   const [data, setData] = useState(furnitureData);
 
   useEffect(() => {
+    getCategory(3).then(res => console.log(res));
     console.log(data);
   }, [data]);
 
