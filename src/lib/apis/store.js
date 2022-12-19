@@ -19,4 +19,4 @@ export const getStoreProductDetailData = async storePostId => {
     `${URL}/store/api/v1/post/productswith/${storePostId}`,
   );
   return data;
-};
+}; 

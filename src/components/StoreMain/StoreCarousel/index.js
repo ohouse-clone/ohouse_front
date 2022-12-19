@@ -66,8 +66,8 @@ export default function Carousel() {
         <button onClick={e => SlickGoTo(4, e)} data-num="4">
           특가 찬스
         </button>
-        <button onClick={SlickPrevImage}>Prev</button>
-        <button onClick={SlickNextImage}>Next</button>
+        <button onClick={SlickPrevImage}>&lt;</button>
+        <button onClick={SlickNextImage}>&gt;</button>
       </SliderButtonContainer>
     </>
   );
