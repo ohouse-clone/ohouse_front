@@ -1,9 +1,12 @@
+import { categoryFetchApiState } from 'lib/data/categoryAtoms';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 export default function CategoryLastListTab({ res2 }) {
   const [list2, setList2] = useState(false);
+  const setCategoryApi = useSetRecoilState(categoryFetchApiState);
   const onList2Toggle = () => {
     setList2(res => !res);
   };
@@ -35,7 +38,14 @@ export default function CategoryLastListTab({ res2 }) {
         res2.list.map(res3 => {
           return (
             <>
-              <List2Wrapper>{res3.category}</List2Wrapper>
+              <List2Wrapper
+                onClick={() => {
+                  let hash = res3.hash ? res3.hash : '20_22_20_20';
+                  setCategoryApi(hash);
+                }}
+              >
+                {res3.category}
+              </List2Wrapper>
             </>
           );
         })}
@@ -61,7 +71,7 @@ const ListWrapper = styled.div`
   margin-bottom: 15px;
 `;
 
-const List2Wrapper = styled.div`
+const List2Wrapper = styled.li`
   margin-left: 20px;
   color: #424242;
   font-size: 13px;

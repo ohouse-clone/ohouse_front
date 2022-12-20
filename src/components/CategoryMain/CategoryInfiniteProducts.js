@@ -30,9 +30,6 @@ export default function CategoryInfiniteProducts({ categoryNumber }) {
   };
 
   useEffect(() => {
-    if (!categoryNumber) {
-      getDataThenSet('20_22_20_20');
-    }
     getDataThenSet(categoryNumber);
   }, [categoryNumber]);
 

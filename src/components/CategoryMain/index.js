@@ -1,5 +1,7 @@
-import { furnitureList, getCategory } from 'lib/apis/categoryApi';
+import { fabricList, furnitureList, lightList } from 'lib/apis/categoryApi';
+import { categoryFetchApiState } from 'lib/data/categoryAtoms';
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import styled from 'styled-components';
 
@@ -54,7 +56,9 @@ const CategoryProductWrapper = styled.div`
 `;
 
 export default function CategoryMain() {
-  const [fetchApiAddress, setFetchApiAddress] = useState('가구');
+  const [fetchApiAddress, setFetchApiAddress] = useRecoilState(
+    categoryFetchApiState,
+  );
   const [categoryClick, setCategoryClick] = useState('가구');
   const [data, setData] = useState(furnitureList);
 
@@ -83,6 +87,7 @@ export default function CategoryMain() {
                 <li
                   onClick={() => {
                     setCategoryClick('가구');
+                    setData(furnitureList);
                     setFetchApiAddress('20_22_20_20');
                   }}
                 >
@@ -93,6 +98,7 @@ export default function CategoryMain() {
               {categoryClick === '패브릭' || (
                 <li
                   onClick={() => {
+                    setData(fabricList);
                     setCategoryClick('패브릭');
                   }}
                 >
@@ -103,12 +109,16 @@ export default function CategoryMain() {
               {categoryClick === '조명' || (
                 <li
                   onClick={() => {
+                    setData(lightList);
                     setCategoryClick('조명');
                   }}
                 >
                   조명
                 </li>
               )}
+              <li>주방용품</li>
+              <li>식품</li>
+              <li>수납정리</li>
             </MainCategory>
           </CategoryWrapper>
         </>

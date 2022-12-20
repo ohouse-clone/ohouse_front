@@ -1,10 +1,13 @@
+import { categoryFetchApiState } from 'lib/data/categoryAtoms';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import CategoryLastListTab from './CategoryLastListTab';
 
 export default function CategoryListTab({ res }) {
   const [list, setList] = useState(false);
+  const setCategoryApi = useSetRecoilState(categoryFetchApiState);
 
   const onListToggle = () => {
     setList(res => !res);
@@ -18,29 +21,37 @@ export default function CategoryListTab({ res }) {
           {list &&
             res.list.map(res2 => (
               <>
-                <CategoryLastListTab res2={res2} />
+                <CategoryLastListTab
+                  onClick={() => {
+                    let hash = res2.hash ? res2.hash : '20_22_20_20';
+                    setCategoryApi(hash);
+                  }}
+                  res2={res2}
+                />
               </>
             ))}
         </div>
-        <ListArrowWrapper>
-          {list ? (
-            <Image
-              alt="up"
-              src="/arrow-up.png"
-              width="12px"
-              height="12px"
-              objectFit="contain"
-            />
-          ) : (
-            <Image
-              alt="down"
-              src="/arrow-down.png"
-              width="12px"
-              height="12px"
-              objectFit="contain"
-            />
-          )}
-        </ListArrowWrapper>
+        {!(res.list.length === 0) && (
+          <ListArrowWrapper>
+            {list ? (
+              <Image
+                alt="up"
+                src="/arrow-up.png"
+                width="12px"
+                height="12px"
+                objectFit="contain"
+              />
+            ) : (
+              <Image
+                alt="down"
+                src="/arrow-down.png"
+                width="12px"
+                height="12px"
+                objectFit="contain"
+              />
+            )}
+          </ListArrowWrapper>
+        )}
       </ListWrapper>
     </>
   );
@@ -55,4 +66,8 @@ const ListArrowWrapper = styled.div`
 const ListWrapper = styled.div`
   position: relative;
   margin-left: 12px;
+  li {
+    user-select: none;
+    cursor: pointer;
+  }
 `;

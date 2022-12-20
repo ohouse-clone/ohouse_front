@@ -63,4 +63,96 @@ export const furnitureList = [
   },
 ];
 
-const fabricList = [];
+export const fabricList = [
+  {
+    category: '침구세트',
+    list: [],
+  },
+  {
+    category: '커튼/부자재',
+    list: [
+      {
+        category: '암막커튼',
+        list: [],
+      },
+      {
+        category: '일반커튼',
+        list: [],
+      },
+      {
+        category: '레이스/속커튼',
+        list: [],
+      },
+      {
+        category: '가리개커튼',
+        list: [],
+      },
+    ],
+  },
+  {
+    category: '러그/카페트',
+    list: [
+      {
+        category: '극세사/단모러그',
+        list: [],
+      },
+      {
+        category: '사이잘록러그',
+        list: [],
+      },
+      {
+        category: '샤기러그',
+        list: [],
+      },
+    ],
+  },
+];
+
+export const lightList = [
+  {
+    category: '공간별조명',
+    list: [
+      {
+        category: '거실조명',
+        list: [
+          { category: '샹들리에' },
+          { category: '직부조명' },
+          { category: 'LED거실등' },
+        ],
+      },
+      {
+        category: '방조명',
+        list: [{ category: '직부조명' }, { category: 'LED방등' }],
+      },
+      {
+        category: '주방조명',
+        list: [{ category: '레일조명' }, { category: '펜던트조명' }],
+      },
+    ],
+  },
+  {
+    category: '천장등',
+    list: [
+      {
+        category: '직부조명',
+        list: [],
+      },
+      {
+        category: '팬던트조명',
+        list: [],
+      },
+      {
+        category: '센서등',
+        list: [],
+      },
+      {
+        category: '레일조명',
+        list: [],
+      },
+    ],
+  },
+  {
+    category: '장스탠드',
+    list: [],
+  },
+];
