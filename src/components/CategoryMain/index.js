@@ -1,16 +1,10 @@
-import { furnitureData, getCategory } from 'lib/apis/categoryApi';
-import { useEffect, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { furnitureList, getCategory } from 'lib/apis/categoryApi';
+import { useState } from 'react';
+
 import styled from 'styled-components';
 
 import CategoryInfiniteProducts from './CategoryInfiniteProducts';
 import CategoryListTab from './CategoryListTab';
-
-const furnitureCategories = [
-  { title: '침대', hash: '20_22_20_20' },
-  { title: '수납침대', hash: '20_22_20_21' },
-  { title: '저상형침대', hash: '20_22_20_22' },
-];
 
 const LayoutWrapper = styled.div`
   display: flex;
@@ -23,7 +17,8 @@ const Wrapper = styled.div`
 `;
 
 const CategoryWrapper = styled.div`
-  min-width: 250px;
+  max-width: 160px;
+  width: 160px;
 `;
 
 const MainCategory = styled.div`
@@ -42,24 +37,26 @@ const SelectMainCategory = styled.h1`
 `;
 
 const SelectSubCategory = styled.ul`
+  height: 400px;
   li {
     list-style: none;
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 15px;
     user-select: none;
     cursor: pointer;
   }
 `;
 
+const CategoryProductWrapper = styled.div`
+  margin-left: 20px;
+  width: 900px;
+  min-width: 600px;
+`;
+
 export default function CategoryMain() {
   const [fetchApiAddress, setFetchApiAddress] = useState('가구');
   const [categoryClick, setCategoryClick] = useState('가구');
-  const [data, setData] = useState(furnitureData);
-
-  useEffect(() => {
-    getCategory(3).then(res => console.log(res));
-    console.log(data);
-  }, [data]);
+  const [data, setData] = useState(furnitureList);
 
   return (
     <LayoutWrapper>
@@ -115,13 +112,13 @@ export default function CategoryMain() {
             </MainCategory>
           </CategoryWrapper>
         </>
-        <div>
+        <CategoryProductWrapper>
           <h1>{categoryClick}</h1>
           <div>슬라이더</div>
           <div>공간별가구 찾기</div>
           <div>필터</div>
           <CategoryInfiniteProducts categoryNumber={fetchApiAddress} />
-        </div>
+        </CategoryProductWrapper>
       </Wrapper>
     </LayoutWrapper>
   );

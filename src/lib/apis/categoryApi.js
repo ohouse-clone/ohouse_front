@@ -6,9 +6,10 @@ export const getCategory = async categoryId => {
   await axios.get(`${URL}/store/api/v1/category/${categoryId}`);
 };
 
-export const furnitureData = [
+export const furnitureList = [
   {
     category: '침대',
+    banner: '',
     hash: '20_22_20_20',
     list: [
       {
@@ -43,8 +44,23 @@ export const furnitureData = [
       },
       {
         category: '토퍼',
-        list: undefined,
+        list: [],
+      },
+    ],
+  },
+  {
+    category: '소파',
+    list: [
+      {
+        category: '일반소파',
+        list: [],
+      },
+      {
+        category: '리클라이너',
+        list: [],
       },
     ],
   },
 ];
+
+const fabricList = [];
