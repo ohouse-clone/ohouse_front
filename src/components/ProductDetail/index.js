@@ -1,5 +1,7 @@
 import { DetailDummyData } from 'constants/productDetail';
+import { getStoreProductDetailData } from 'lib/apis/store';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -80,17 +82,12 @@ const DummyProduct = styled.div`
   height: 300vh;
 `;
 
-export default function ProductDetail() {
+export default function ProductDetail({ data }) {
   const [mainImgSrc, setMainImgSrc] = useState();
   const mainImgSrcChange = e => {
     setMainImgSrc();
   };
 
-  const [data, setData] = useState();
-  useEffect(() => {
-    setData(DetailDummyData);
-    console.log(data);
-  }, []);
   return (
     <LayoutWrapper>
       <Wrapper>
@@ -136,27 +133,25 @@ export default function ProductDetail() {
             <DummyImage />
           </ProductDetailImageWrapper>
           <ProductDetailContent>
-            <h2>{data.brand_name}</h2>
-            <h1>{data.name}</h1>
+            <h2>brand_name</h2>
+            <h1>{data.products[0].productName}</h1>
             <div>
-              <span>{data.review_avg}</span>
+              <span>{data.hit}</span>
               <span> / </span>
-              <span>{data.review_count}개</span>
+              <span>{data.hit}개</span>
             </div>
-            <div>{data.cost}</div>
+            <div>{data.products[0].price}</div>
             <div>
-              <span>
-                {Math.ceil(100 - (data.selling_price / data.cost) * 100)}%
-              </span>
-              <span>{data.selling_price}원</span>
-              <span>{Math.ceil(data.selling_price * 0.9)}원</span>
+              <span>{data.products[0].rateDiscount}%</span>
+              <span>{data.products[0].price}원</span>
+              <span>{Math.ceil(data.products[0].price * 0.9)}원</span>
             </div>
             <div>
               <span>혜택</span>
-              <span>{Math.ceil(data.selling_price * 0.001)}P</span>
+              <span>{Math.ceil(data.products[0].price * 0.001)}P</span>
               <span>적립</span>
               <div>
-                월 {Math.ceil(data.selling_price / 8)}원 (8개월) 무이자할부
+                월 {Math.ceil(data.products[0].price / 8)}원 (8개월) 무이자할부
               </div>
             </div>
             <div>

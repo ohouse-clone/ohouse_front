@@ -52,6 +52,7 @@ export default function CategoryInfiniteProducts({ categoryNumber }) {
               <>
                 <Product
                   key={data.id}
+                  id={data.id}
                   previewImageUrl={data.previewImageUrl}
                   title={data.title}
                   price={data.price}
@@ -66,6 +67,7 @@ export default function CategoryInfiniteProducts({ categoryNumber }) {
               <>
                 <Product
                   key={data.id}
+                  id={data.id}
                   previewImageUrl={data.previewImageUrl}
                   title={data.title}
                   price={data.price}
