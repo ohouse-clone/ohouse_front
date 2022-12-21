@@ -1,9 +1,11 @@
 import { fabricList, furnitureList, lightList } from 'lib/apis/categoryApi';
-import { categoryFetchApiState } from 'lib/data/categoryAtoms';
-import { useState } from 'react';
+import { categoryData, categoryFetchApiState } from 'lib/data/categoryAtoms';
+import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import { useRecoilState } from 'recoil';
 
 import styled from 'styled-components';
+import CategoryBanner from './CategoryBanner';
 import CategoryCarousel from './CategoryCarousel';
 
 import CategoryInfiniteProducts from './CategoryInfiniteProducts';
@@ -56,12 +58,18 @@ const CategoryProductWrapper = styled.div`
   min-width: 600px;
 `;
 
+const CategoryBreadcrumb = styled.div`
+  margin: 20px 0px;
+`;
+
 export default function CategoryMain() {
   const [fetchApiAddress, setFetchApiAddress] = useRecoilState(
     categoryFetchApiState,
   );
   const [categoryClick, setCategoryClick] = useState('가구');
   const [data, setData] = useState(furnitureList);
+
+  const cateData = useRecoilValue(categoryData);
 
   return (
     <LayoutWrapper>
@@ -77,7 +85,7 @@ export default function CategoryMain() {
               {data.map(res => {
                 return (
                   <>
-                    <CategoryListTab res={res} />
+                    <CategoryListTab key={res.id} res={res} />
                   </>
                 );
               })}
@@ -124,10 +132,19 @@ export default function CategoryMain() {
           </CategoryWrapper>
         </>
         <CategoryProductWrapper>
-          <h1>{categoryClick}</h1>
-          <div>슬라이더</div>
-          <CategoryCarousel />
-          <div>공간별가구 찾기</div>
+          <CategoryBreadcrumb>{cateData.breadcrumb}</CategoryBreadcrumb>
+          {cateData.carousel.isActive && (
+            <>
+              <div>슬라이더</div>
+              <CategoryCarousel />
+            </>
+          )}
+          {cateData.banner.isActive && (
+            <>
+              <div>홍보배너</div>
+              <CategoryBanner />
+            </>
+          )}
           <div>필터</div>
           <CategoryInfiniteProducts categoryNumber={fetchApiAddress} />
         </CategoryProductWrapper>

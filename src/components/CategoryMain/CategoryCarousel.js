@@ -15,6 +15,7 @@ export default function CategoryCarousel() {
         <ImageContent2 />
         <ImageContent />
       </Slider>
+      <MarginBottom />
     </>
   );
 }
@@ -41,4 +42,9 @@ const ImageContent2 = styled.div`
   width: 100%;
   height: 200px;
   background-color: #4b4b4b;
+`;
+
+const MarginBottom = styled.div`
+  width: 100%;
+  height: 20px;
 `;

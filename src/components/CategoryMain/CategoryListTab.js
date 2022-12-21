@@ -1,6 +1,7 @@
-import { categoryFetchApiState } from 'lib/data/categoryAtoms';
+import { categoryData, categoryFetchApiState } from 'lib/data/categoryAtoms';
 import Image from 'next/image';
 import React, { useState } from 'react';
+
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import CategoryLastListTab from './CategoryLastListTab';
@@ -8,23 +9,27 @@ import CategoryLastListTab from './CategoryLastListTab';
 export default function CategoryListTab({ res }) {
   const [list, setList] = useState(false);
   const setCategoryApi = useSetRecoilState(categoryFetchApiState);
+  const setCategoryData = useSetRecoilState(categoryData);
 
   const onListToggle = () => {
     setList(res => !res);
+    setCategoryData(res);
   };
 
   return (
     <>
-      <ListWrapper key={res.category}>
+      <ListWrapper>
         <li onClick={onListToggle}>{res.category}</li>
         <div>
           {list &&
             res.list.map(res2 => (
               <>
                 <CategoryLastListTab
+                  key={res2.id}
                   onClick={() => {
                     let hash = res2.hash ? res2.hash : '20_22_20_20';
                     setCategoryApi(hash);
+                    console.log(res2);
                   }}
                   res2={res2}
                 />
