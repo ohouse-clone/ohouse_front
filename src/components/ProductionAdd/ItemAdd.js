@@ -36,6 +36,7 @@ export default function ItemAdd() {
     const itemData = parseFormToObj(e.target);
     itemDataPOST(itemPostPath, itemData)
       .then(res => {
+        console.log(res);
         setItemId(res.data);
       })
       .catch(err => console.log(err));

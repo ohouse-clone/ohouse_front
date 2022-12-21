@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 import styled from 'styled-components';
+import CategoryCarousel from './CategoryCarousel';
 
 import CategoryInfiniteProducts from './CategoryInfiniteProducts';
 import CategoryListTab from './CategoryListTab';
@@ -50,7 +51,7 @@ const SelectSubCategory = styled.ul`
 `;
 
 const CategoryProductWrapper = styled.div`
-  margin-left: 20px;
+  margin-left: 50px;
   width: 900px;
   min-width: 600px;
 `;
@@ -125,6 +126,7 @@ export default function CategoryMain() {
         <CategoryProductWrapper>
           <h1>{categoryClick}</h1>
           <div>슬라이더</div>
+          <CategoryCarousel />
           <div>공간별가구 찾기</div>
           <div>필터</div>
           <CategoryInfiniteProducts categoryNumber={fetchApiAddress} />
