@@ -61,6 +61,7 @@ export default function StoreinfiniteProducts() {
                   previewImageUrl={data.previewImageUrl}
                   title={data.title}
                   price={data.price}
+                  brandName={data.brandName}
                   discountRate={data.discountRate}
                 />
                 <div ref={setLastIntersectingImage}>last</div>
@@ -74,6 +75,7 @@ export default function StoreinfiniteProducts() {
                   previewImageUrl={data.previewImageUrl}
                   title={data.title}
                   price={data.price}
+                  brandName={data.brandName}
                   discountRate={data.discountRate}
                 />
               </>

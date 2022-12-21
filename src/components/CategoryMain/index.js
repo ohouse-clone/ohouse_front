@@ -7,6 +7,7 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import CategoryBanner from './CategoryBanner';
 import CategoryCarousel from './CategoryCarousel';
+import CategoryFilter from './CategoryFilter';
 
 import CategoryInfiniteProducts from './CategoryInfiniteProducts';
 import CategoryListTab from './CategoryListTab';
@@ -53,13 +54,28 @@ const SelectSubCategory = styled.ul`
 `;
 
 const CategoryProductWrapper = styled.div`
-  margin-left: 50px;
+  margin-left: 120px;
   width: 900px;
   min-width: 600px;
 `;
 
 const CategoryBreadcrumb = styled.div`
   margin: 20px 0px;
+`;
+
+const CategoryLine = styled.div`
+  width: 100%;
+  height: 2px;
+  background-color: #ebebeb;
+  margin-bottom: 40px;
+`;
+
+const DummyFilter = styled.div``;
+
+const FilterHStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
 `;
 
 export default function CategoryMain() {
@@ -90,7 +106,7 @@ export default function CategoryMain() {
                 );
               })}
             </SelectSubCategory>
-
+            <CategoryLine />
             <MainCategory>
               {categoryClick === '가구' || (
                 <li
@@ -133,19 +149,28 @@ export default function CategoryMain() {
         </>
         <CategoryProductWrapper>
           <CategoryBreadcrumb>{cateData.breadcrumb}</CategoryBreadcrumb>
-          {cateData.carousel.isActive && (
+          {cateData.carousel?.isActive && (
             <>
               <div>슬라이더</div>
               <CategoryCarousel />
             </>
           )}
-          {cateData.banner.isActive && (
+          {cateData.banner?.isActive && (
             <>
               <div>홍보배너</div>
               <CategoryBanner />
             </>
           )}
           <div>필터</div>
+          <FilterHStack>
+            {cateData.filter ? (
+              cateData.filter.map((res, i) => (
+                <CategoryFilter key={'fil' + i} filter={res} />
+              ))
+            ) : (
+              <DummyFilter>Dummy</DummyFilter>
+            )}
+          </FilterHStack>
           <CategoryInfiniteProducts categoryNumber={fetchApiAddress} />
         </CategoryProductWrapper>
       </Wrapper>

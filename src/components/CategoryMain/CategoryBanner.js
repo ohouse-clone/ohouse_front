@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function CategoryBanner() {
-  return <BannerWrapper>CategoryBanner</BannerWrapper>;
+  return <BannerWrapper></BannerWrapper>;
 }
 
 const BannerWrapper = styled.div`

@@ -29,6 +29,13 @@ export const furnitureList = [
             carousel: { isActive: true, src: '' },
             banner: { isActive: false, src: '' },
             breadcrumb: '가구 > 침대 > 침대프레임 > 일반침대',
+            filter: [
+              {
+                name: 'bedsize',
+                value: ['MS', 'S', 'SS', 'D', 'Q', 'K', 'LK', 'CK'],
+              },
+              { name: 'bedcolor', value: ['RED', 'BLUE', 'WHITE'] },
+            ],
             hash: '20_22_20_20',
           },
           {
@@ -37,6 +44,12 @@ export const furnitureList = [
             carousel: { isActive: false, src: '' },
             banner: { isActive: true, src: '' },
             breadcrumb: '가구 > 침대 > 침대프레임 > 일반침대',
+            filter: [
+              {
+                name: 'material',
+                value: ['WOOD', 'STEEL', 'FAKE_LATHER', 'FAKE_WOOD'],
+              },
+            ],
             hash: '20_22_20_21',
           },
           {
