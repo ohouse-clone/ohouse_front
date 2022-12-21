@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export default function Productions() {
   const router = useRouter();
-  const { id, brandName } = router.query;
+  const { id, brandName, breadcrumb } = router.query;
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -21,7 +21,11 @@ export default function Productions() {
       {loading ? (
         <div>loading</div>
       ) : (
-        <ProductDetail data={data} brandName={brandName} />
+        <ProductDetail
+          data={data}
+          brandName={brandName}
+          breadcrumb={breadcrumb}
+        />
       )}
     </>
   );

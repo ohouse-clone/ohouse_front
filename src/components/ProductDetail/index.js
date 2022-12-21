@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import DetailInfo from './DetailInfo';
 
 const LayoutWrapper = styled.div`
   display: flex;
@@ -34,23 +35,6 @@ const ProductDetailImageWrapper = styled.div`
   display: flex;
   ul {
     margin-right: 10px;
-  }
-`;
-
-const ProductDetailContent = styled.div`
-  margin-left: 10px;
-  h2 {
-    font-size: 14px;
-    color: rgba(50, 50, 50, 1);
-  }
-  h1 {
-    font-size: 30px;
-    line-height: 30px;
-    width: 390px;
-    margin-bottom: 30px;
-  }
-  div {
-    margin-bottom: 10px;
   }
 `;
 
@@ -117,7 +101,7 @@ const StickyOption = styled.div`
   position: sticky;
   top: 135px;
   height: 100vh;
-  width: 300px;
+  width: 340px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -142,7 +126,7 @@ const HStack = styled.div`
   flex-direction: row;
 `;
 
-export default function ProductDetail({ data, brandName }) {
+export default function ProductDetail({ data, brandName, breadcrumb }) {
   useEffect(() => {
     console.log(data.contentUrl);
   }, [data]);
@@ -150,23 +134,7 @@ export default function ProductDetail({ data, brandName }) {
     <LayoutWrapper>
       <Wrapper>
         <CategoryUl>
-          <li>
-            <Link href="/">
-              <a>가구</a>
-            </Link>
-          </li>
-          <div>&gt;</div>
-          <li>
-            <Link href="/">
-              <a>의자</a>
-            </Link>
-          </li>
-          <div>&gt;</div>
-          <li>
-            <Link href="/">
-              <a>인테리어의자</a>
-            </Link>
-          </li>
+          <li>{breadcrumb}</li>
         </CategoryUl>
 
         <ProductDetailMain>
@@ -198,44 +166,7 @@ export default function ProductDetail({ data, brandName }) {
               />
             </DummyImage>
           </ProductDetailImageWrapper>
-          <ProductDetailContent>
-            <h2>{brandName}</h2>
-            <h1>{data.products[0].productName}</h1>
-            <div>
-              <span>{data.hit}</span>
-              <span> / </span>
-              <span>{data.hit}개</span>
-            </div>
-            <div>{data.products[0].price}</div>
-            <div>
-              <span>{data.products[0].rateDiscount}%</span>
-              <span>{data.products[0].price}원</span>
-              <span>{Math.ceil(data.products[0].price * 0.9)}원</span>
-            </div>
-            <div>
-              <span>혜택</span>
-              <span>{Math.ceil(data.products[0].price * 0.001)}P</span>
-              <span>적립</span>
-              <div>
-                월 {Math.ceil(data.products[0].price / 8)}원 (8개월) 무이자할부
-              </div>
-            </div>
-            <div>
-              <span>배송</span>
-              <span>
-                <div>무료배송</div>
-                <span>
-                  지금 주문시 <h5>내일 출발</h5>
-                </span>
-                <span>일반택배</span>
-              </span>
-              <div>
-                <span>지역별 자동배송비</span>
-                <span>제주도/도서산간 지역 5,000원</span>
-              </div>
-              <div>{Date.now()} 도착 예정</div>
-            </div>
-          </ProductDetailContent>
+          <DetailInfo brandName={brandName} data={data}></DetailInfo>
         </ProductDetailMain>
 
         <ProductDetailStickyMenu>

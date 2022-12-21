@@ -79,14 +79,20 @@ export default function Product({
   price,
   title,
   brandName = 'test',
+  breadcrumb,
 }) {
   return (
     <>
-      <Link href={{ pathname: `/productions/${id}`, query: { brandName } }}>
+      <Link
+        href={{
+          pathname: `/productions/${id}`,
+          query: { brandName, breadcrumb },
+        }}
+      >
         <ProductLinkContainer>
           <header>
             <ImageWrapper>
-              <Image src={previewImageUrl} layout="fill" ref={ref} />
+              <Image alt="" src={previewImageUrl} layout="fill" ref={ref} />
             </ImageWrapper>
           </header>
           <main>

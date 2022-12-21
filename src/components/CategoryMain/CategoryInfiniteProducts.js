@@ -10,7 +10,10 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-export default function CategoryInfiniteProducts({ categoryNumber }) {
+export default function CategoryInfiniteProducts({
+  categoryNumber,
+  breadcrumb,
+}) {
   const [dataList, setDataList] = useState([]);
 
   const [lastIntersectingImage, setLastIntersectingImage] = useState(null);
@@ -58,6 +61,7 @@ export default function CategoryInfiniteProducts({ categoryNumber }) {
                   price={data.price}
                   brandName={data.brandName}
                   discountRate={data.discountRate}
+                  breadcrumb={breadcrumb}
                 />
                 <div ref={setLastIntersectingImage}>last</div>
               </>
@@ -73,6 +77,7 @@ export default function CategoryInfiniteProducts({ categoryNumber }) {
                   price={data.price}
                   brandName={data.brandName}
                   discountRate={data.discountRate}
+                  breadcrumb={breadcrumb}
                 />
               </>
             );
