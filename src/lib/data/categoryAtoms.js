@@ -23,3 +23,8 @@ export const categoryData = atom({
     ],
   },
 });
+
+export const categoryFilterState = atom({
+  key: 'categoryFilterState',
+  default: '',
+});

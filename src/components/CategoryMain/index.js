@@ -1,5 +1,9 @@
 import { fabricList, furnitureList, lightList } from 'lib/apis/categoryApi';
-import { categoryData, categoryFetchApiState } from 'lib/data/categoryAtoms';
+import {
+  categoryData,
+  categoryFetchApiState,
+  categoryFilterState,
+} from 'lib/data/categoryAtoms';
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useRecoilState } from 'recoil';
@@ -86,6 +90,10 @@ export default function CategoryMain() {
   const [data, setData] = useState(furnitureList);
 
   const cateData = useRecoilValue(categoryData);
+
+  useEffect(() => {
+    console.log(fetchApiAddress);
+  }, [fetchApiAddress]);
 
   return (
     <LayoutWrapper>
