@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import {
   contentImageIdAtom,
@@ -6,6 +5,8 @@ import {
   storePostIdAtom,
 } from 'lib/data/productionAddAtoms';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { storePostDataPOST } from 'lib/apis/productionAddApi';
+import { AddForm, SubjectWrapper } from './ProductionAddPage.style';
 
 export default function StorePostAdd() {
   const [storePostId, setStorePostId] = useRecoilState(storePostIdAtom);
@@ -21,8 +22,7 @@ export default function StorePostAdd() {
       previewImageId,
     };
 
-    axios
-      .post(`${URL}/store/api/v1/post`, storePostData)
+    storePostDataPOST(storePostData)
       .then(res => {
         setStorePostId(res.data);
       })
@@ -30,16 +30,20 @@ export default function StorePostAdd() {
   };
   return (
     <>
-      <h2>storePost 등록</h2>
-      <form onSubmit={submitStorePost}>
-        <label htmlFor="author">글쓴이</label>
-        <input id="author"></input>
-        <label htmlFor="title">제목</label>
-        <input id="title"></input>
+      <SubjectWrapper>storePost 등록</SubjectWrapper>
+      <AddForm onSubmit={submitStorePost}>
+        <div>
+          <label htmlFor="author">글쓴이</label>
+          <input id="author"></input>
+        </div>
+        <div>
+          <label htmlFor="title">제목</label>
+          <input id="title"></input>
+        </div>
         <div>현재 contentImageId : {contentImageId}</div>
         <div>현재 previewImageId : {previewImageId}</div>
         <button>storePostId 얻기</button>
-      </form>
+      </AddForm>
 
       <div>현재 storePostId : {storePostId}</div>
     </>

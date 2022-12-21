@@ -4,7 +4,8 @@ import {
   contentImageIdAtom,
   previewImageIdAtom,
 } from 'lib/data/productionAddAtoms';
-import axios from 'axios';
+import { imageDataPOST } from 'lib/apis/productionAddApi';
+import { AddForm, SubjectWrapper } from './ProductionAddPage.style';
 
 export default function ProductImageAdd() {
   const [previewImageFile, setPreviewImageFile] = useState();
@@ -37,8 +38,7 @@ export default function ProductImageAdd() {
     formData.append('data', contentImageFile);
     formData.append('data', previewImageFile);
 
-    axios
-      .post(`${URL}/store/api/v1/post/images`, formData)
+    imageDataPOST(formData)
       .then(res => {
         setContentImageId(res.data[0]);
         setPreviewImageId(res.data[1]);
@@ -47,26 +47,30 @@ export default function ProductImageAdd() {
   };
   return (
     <>
-      <h2>image 등록</h2>
-      <form>
-        <label htmlFor="previewImage">Preview Image</label>
-        <input
-          id="previewImage"
-          name="previewImage"
-          accept="image/*"
-          type="file"
-          onChange={onPreviewImageChange}
-        ></input>
-        <label htmlFor="contentImage">Content Image</label>
-        <input
-          id="contentImage"
-          name="contentImage"
-          accept="image/*"
-          type="file"
-          onChange={onContentImageChange}
-        ></input>
-      </form>
-      <button onClick={submitImage}>imageid 얻기</button>
+      <SubjectWrapper>판매관련 이미지 첨부</SubjectWrapper>
+      <AddForm>
+        <div>
+          <label htmlFor="previewImage">Preview Image</label>
+          <input
+            id="previewImage"
+            name="previewImage"
+            accept="image/*"
+            type="file"
+            onChange={onPreviewImageChange}
+          ></input>
+        </div>
+        <div>
+          <label htmlFor="contentImage">Content Image</label>
+          <input
+            id="contentImage"
+            name="contentImage"
+            accept="image/*"
+            type="file"
+            onChange={onContentImageChange}
+          ></input>
+        </div>
+        <button onClick={submitImage}>imageid 얻기</button>
+      </AddForm>
     </>
   );
 }

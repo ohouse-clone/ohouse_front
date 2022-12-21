@@ -1,27 +1,20 @@
-import StoreinfiniteProducts from 'components/StoreMain/StoreInfiniteProducts';
-
+import { fabricList, furnitureList, lightList } from 'lib/apis/categoryApi';
+import {
+  categoryData,
+  categoryFetchApiState,
+  categoryFilterState,
+} from 'lib/data/categoryAtoms';
 import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
+
 import styled from 'styled-components';
+import CategoryBanner from './CategoryBanner';
+import CategoryCarousel from './CategoryCarousel';
+import CategoryFilter from './CategoryFilter';
 
-import { AnimatePresence, motion } from 'framer-motion';
-
-const furnitureCategories = [
-  { title: '침대', hash: 1 },
-  { title: '매트리스, 토퍼', hash: 2 },
-  { title: '소파', hash: 3 },
-];
-
-const dummyImageData = [
-  {
-    src: 1,
-  },
-  {
-    src: 2,
-  },
-  {
-    src: 3,
-  },
-];
+import CategoryInfiniteProducts from './CategoryInfiniteProducts';
+import CategoryListTab from './CategoryListTab';
 
 const LayoutWrapper = styled.div`
   display: flex;
@@ -34,83 +27,101 @@ const Wrapper = styled.div`
 `;
 
 const CategoryWrapper = styled.div`
-  min-width: 250px;
+  max-width: 160px;
+  width: 160px;
 `;
 
-const DummyImage = styled.div`
-  width: 100%;
-  height: 130px;
-  background-color: #ededed;
-  border: 1px solid blue;
+const MainCategory = styled.div`
+  li {
+    list-style: none;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
 `;
 
-const Row = styled(motion.div)`
-  position: absolute;
+const SelectMainCategory = styled.h1`
+  font-size: 22px;
+  font-weight: 600;
+  margin: 20px 0px;
+`;
+
+const SelectSubCategory = styled.ul`
+  height: 400px;
+  li {
+    list-style: none;
+    font-size: 13px;
+    margin-bottom: 15px;
+    user-select: none;
+    cursor: pointer;
+  }
+`;
+
+const CategoryProductWrapper = styled.div`
+  margin-left: 120px;
+  width: 900px;
+  min-width: 600px;
+`;
+
+const CategoryBreadcrumb = styled.div`
+  margin: 20px 0px;
+`;
+
+const CategoryLine = styled.div`
   width: 100%;
+  height: 2px;
+  background-color: #ebebeb;
+  margin-bottom: 40px;
+`;
+
+const DummyFilter = styled.div``;
+
+const FilterHStack = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
 `;
 
 export default function CategoryMain() {
+  const [fetchApiAddress, setFetchApiAddress] = useRecoilState(
+    categoryFetchApiState,
+  );
   const [categoryClick, setCategoryClick] = useState('가구');
-  const [fetchApiAddress, setFetchApiAddress] = useState('가구');
-  const [data, setData] = useState();
-  const [imageIndex, setImageIndex] = useState(0);
+  const [data, setData] = useState(furnitureList);
 
-  const categoryClickToggle = e => {
-    setCategoryClick(e.dataset);
-    setFetchApiAddress(e.dataset);
-  };
+  const cateData = useRecoilValue(categoryData);
 
   useEffect(() => {
-    // fetch(fetchApiAddress).then(res => setData(res));
+    console.log(fetchApiAddress);
   }, [fetchApiAddress]);
-
-  useEffect(() => {
-    if (imageIndex === dummyImageData.length) {
-      setImageIndex(0);
-    }
-  }, [imageIndex]);
-
-  // 1. 클릭 이벤트시
-  //  타이틀이 맨 위로 올라와야함 / categories.title 을 map해서 리스트화 시켜야 함 /
-  // hash를 전달해서 주소를 바꿔야 함 / filter를 map해서 필터를 구현 /
-  // content가 있을시 슬라이더 등 나타나게 / fetch api를 해당 카테고리의 api로 변경
 
   return (
     <LayoutWrapper>
       <Wrapper>
         <>
           <CategoryWrapper>
-            data map.categories.title
-            <div>현재 fetch : {fetchApiAddress}</div>
-            <br />
-            <br />
-            <h1 onClick={() => setFetchApiAddress(categoryClick)}>
+            <SelectMainCategory
+              onClick={() => setFetchApiAddress(categoryClick)}
+            >
               {categoryClick}
-            </h1>
-            <ul>
-              {categoryClick === '가구' && (
-                <>
-                  {furnitureCategories.map((data, i) => {
-                    return (
-                      <li
-                        key={i}
-                        onClick={() => setFetchApiAddress('가구 ' + data.hash)}
-                      >
-                        {data.title}
-                      </li>
-                    );
-                  })}
-                </>
-              )}
-            </ul>
-            <br />
-            <br />
-            <ul>
+            </SelectMainCategory>
+            <SelectSubCategory>
+              {data.map(res => {
+                return (
+                  <>
+                    <CategoryListTab key={res.id} res={res} />
+                  </>
+                );
+              })}
+            </SelectSubCategory>
+            <CategoryLine />
+            <MainCategory>
               {categoryClick === '가구' || (
                 <li
                   onClick={() => {
                     setCategoryClick('가구');
-                    setFetchApiAddress('가구');
+                    setData(furnitureList);
+                    setFetchApiAddress('20_22_20_20');
                   }}
                 >
                   가구
@@ -120,8 +131,8 @@ export default function CategoryMain() {
               {categoryClick === '패브릭' || (
                 <li
                   onClick={() => {
+                    setData(fabricList);
                     setCategoryClick('패브릭');
-                    setFetchApiAddress('패브릭');
                   }}
                 >
                   패브릭
@@ -131,61 +142,45 @@ export default function CategoryMain() {
               {categoryClick === '조명' || (
                 <li
                   onClick={() => {
+                    setData(lightList);
                     setCategoryClick('조명');
-                    setFetchApiAddress('조명');
                   }}
                 >
                   조명
                 </li>
               )}
-            </ul>
+              <li>주방용품</li>
+              <li>식품</li>
+              <li>수납정리</li>
+            </MainCategory>
           </CategoryWrapper>
         </>
-        <div>
-          <h1>가구</h1>
-
-          <div>
-            <AnimatePresence initial={false}>
-              {dummyImageData.slice(imageIndex, imageIndex + 1).map(data => {
-                return (
-                  <Row
-                    initial={{ x: 1000 }}
-                    animate={{ x: 0 }}
-                    exit={{ x: -1000 }}
-                    transition={{ type: 'tween', duration: 1 }}
-                    key={imageIndex}
-                  >
-                    <DummyImage key={imageIndex}>{data.src}</DummyImage>
-                  </Row>
-                );
-              })}
-            </AnimatePresence>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <button
-              onClick={() => {
-                setImageIndex(imageIndex + 1);
-              }}
-            >
-              next
-            </button>
-          </div>
-
-          <br />
-
-          {/* <div>{data.property_groups.map}</div> */}
-
-          <div>공간별가구 찾기</div>
+        <CategoryProductWrapper>
+          <CategoryBreadcrumb>{cateData.breadcrumb}</CategoryBreadcrumb>
+          {cateData.carousel?.isActive && (
+            <>
+              <div>슬라이더</div>
+              <CategoryCarousel />
+            </>
+          )}
+          {cateData.banner?.isActive && (
+            <>
+              <div>홍보배너</div>
+              <CategoryBanner />
+            </>
+          )}
           <div>필터</div>
-          <StoreinfiniteProducts />
-        </div>
+          <FilterHStack>
+            {cateData.filter ? (
+              cateData.filter.map((res, i) => (
+                <CategoryFilter key={'fil' + i} filter={res} />
+              ))
+            ) : (
+              <DummyFilter>Dummy</DummyFilter>
+            )}
+          </FilterHStack>
+          <CategoryInfiniteProducts categoryNumber={fetchApiAddress} />
+        </CategoryProductWrapper>
       </Wrapper>
     </LayoutWrapper>
   );

@@ -1,8 +1,7 @@
-import axios from 'axios';
+import Product from 'components/StoreMain/Product';
 import { getStoreProductsData } from 'lib/apis/store';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Product from '../Product';
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,33 +10,28 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-export default function StoreinfiniteProducts() {
+export default function CategoryInfiniteProducts({ categoryNumber }) {
   const [dataList, setDataList] = useState([]);
-  const [page, setPage] = useState(1);
 
   const [lastIntersectingImage, setLastIntersectingImage] = useState(null);
 
-  const getDataThenSet = async () => {
-    getStoreProductsData('20_22_20_20').then(res => {
+  const getDataThenSet = async categoryNumber => {
+    getStoreProductsData(categoryNumber).then(res => {
       setDataList(res.previewPosts);
-      console.log(res);
     });
   };
 
   const onIntersect = (entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        setPage(prev => prev + 1);
-
         observer.unobserve(entry.target);
       }
     });
   };
 
   useEffect(() => {
-    console.log('page ? ', page);
-    getDataThenSet();
-  }, [page]);
+    getDataThenSet(categoryNumber);
+  }, [categoryNumber]);
 
   useEffect(() => {
     let observer;
