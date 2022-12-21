@@ -82,7 +82,7 @@ export default function Product({
 }) {
   return (
     <>
-      <Link href={`/productions/${id}`}>
+      <Link href={{ pathname: `/productions/${id}`, query: { brandName } }}>
         <ProductLinkContainer>
           <header>
             <ImageWrapper>
