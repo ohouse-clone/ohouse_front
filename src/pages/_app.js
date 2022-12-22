@@ -1,9 +1,10 @@
 import '/styles/globals.css';
 import '/styles/style.css';
-import Layout from 'components/layout';
+
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import reset from 'styled-reset';
 import { RecoilRoot } from 'recoil';
+import Layout from 'components/Layout';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}

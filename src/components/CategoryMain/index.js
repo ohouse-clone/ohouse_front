@@ -179,7 +179,10 @@ export default function CategoryMain() {
               <DummyFilter>Dummy</DummyFilter>
             )}
           </FilterHStack>
-          <CategoryInfiniteProducts categoryNumber={fetchApiAddress} />
+          <CategoryInfiniteProducts
+            categoryNumber={fetchApiAddress}
+            breadcrumb={cateData.breadcrumb}
+          />
         </CategoryProductWrapper>
       </Wrapper>
     </LayoutWrapper>
