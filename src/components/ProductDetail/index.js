@@ -124,6 +124,44 @@ const ContentImage = styled.div`
 const HStack = styled.div`
   display: flex;
   flex-direction: row;
+  width: 100%;
+`;
+
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+const DetailButton = styled.button`
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
+  border: 1px solid #09addb;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  width: 100%;
+  height: 55px;
+  margin: 3px;
+`;
+
+const SaveButton = styled.button`
+  background-color: #fff;
+  color: #bdbdbd;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  width: 150px;
+  height: 55px;
+  margin: 3px;
+`;
+const DetailSelect = styled.select`
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #bdbdbd;
+  border-radius: 3px;
 `;
 
 export default function ProductDetail({ data, brandName, breadcrumb }) {
@@ -190,8 +228,31 @@ export default function ProductDetail({ data, brandName, breadcrumb }) {
             <DummyProduct></DummyProduct>
           </ContentImage>
           <StickyOption>
-            <div>옵션</div>
-            <button>구매하기</button>
+            <VStack>
+              <DetailSelect>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+              </DetailSelect>
+              <DetailSelect>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+              </DetailSelect>
+            </VStack>
+            <HStack>
+              <SaveButton>찜</SaveButton>
+              <DetailButton backgroundColor="#fff" color="#09addb">
+                장바구니
+              </DetailButton>
+              <DetailButton backgroundColor="#09addb" color="#fff">
+                바로구매
+              </DetailButton>
+            </HStack>
           </StickyOption>
         </HStack>
       </Wrapper>

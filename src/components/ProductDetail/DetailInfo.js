@@ -97,8 +97,22 @@ const Dummy = styled.div`
   select {
     height: 40px;
     padding: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
   }
+`;
+
+const DetailButton = styled.button`
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
+  border: 1px solid #09addb;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  width: 100%;
+  height: 55px;
+  margin: 3px;
 `;
 
 export default function DetailInfo({ data, brandName }) {
@@ -180,6 +194,16 @@ export default function DetailInfo({ data, brandName }) {
             <option>1</option>
             <option>1</option>
           </select>
+          <div>주문금액: 0원</div>
+          <HStack>
+            <DetailButton backgroundColor="#fff" color="#09addb">
+              장바구니
+            </DetailButton>
+            <DetailButton backgroundColor="#09addb" color="#fff">
+              바로구매
+            </DetailButton>
+          </HStack>
+          <div>배너</div>
         </Dummy>
       </ProductDetailContent>
     </>
