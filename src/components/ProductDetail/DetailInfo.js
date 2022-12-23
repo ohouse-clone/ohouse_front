@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ProductDetailContent = styled.div`
   margin-left: 10px;
-  width: 450px;
+  width: 500px;
   h2 {
     font-size: 14px;
     color: rgba(50, 50, 50, 1);
@@ -114,6 +114,25 @@ const DetailButton = styled.button`
   height: 55px;
   margin: 3px;
 `;
+const PriceWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 5px;
+  font-weight: 700;
+  font-size: 20px;
+`;
+
+const PurchasePrice = styled.div`
+  font-size: 14px;
+`;
+
+const DetailBanner = styled.div`
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  background-color: #ebebeb;
+`;
 
 export default function DetailInfo({ data, brandName }) {
   const { format } = new Intl.NumberFormat('ko');
@@ -194,7 +213,9 @@ export default function DetailInfo({ data, brandName }) {
             <option>1</option>
             <option>1</option>
           </select>
-          <div>주문금액: 0원</div>
+          <PriceWrapper>
+            <PurchasePrice>주문금액</PurchasePrice> <div>0원</div>
+          </PriceWrapper>
           <HStack>
             <DetailButton backgroundColor="#fff" color="#09addb">
               장바구니
@@ -203,7 +224,7 @@ export default function DetailInfo({ data, brandName }) {
               바로구매
             </DetailButton>
           </HStack>
-          <div>배너</div>
+          <DetailBanner />
         </Dummy>
       </ProductDetailContent>
     </>

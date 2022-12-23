@@ -100,18 +100,18 @@ const ProductDetailStickyMenu = styled.div`
 const StickyOption = styled.div`
   position: sticky;
   top: 135px;
-  height: 100vh;
+  height: 87vh;
   width: 340px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-
+  justify-content: space-between;
   align-items: center;
 `;
 
 const DummyProduct = styled.div`
   width: 100%;
-  height: 300vh;
+  height: 200vh;
 `;
 
 const ContentImage = styled.div`
@@ -164,9 +164,24 @@ const DetailSelect = styled.select`
   border-radius: 3px;
 `;
 
+const PriceWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 5px;
+  font-weight: 700;
+  font-size: 20px;
+`;
+
+const ProductRightDown = styled.div``;
+
+const PurchasePrice = styled.div`
+  font-size: 14px;
+`;
+
 export default function ProductDetail({ data, brandName, breadcrumb }) {
   useEffect(() => {
-    console.log(data.contentUrl);
+    data;
   }, [data]);
   return (
     <LayoutWrapper>
@@ -244,15 +259,20 @@ export default function ProductDetail({ data, brandName, breadcrumb }) {
                 <option>1</option>
               </DetailSelect>
             </VStack>
-            <HStack>
-              <SaveButton>찜</SaveButton>
-              <DetailButton backgroundColor="#fff" color="#09addb">
-                장바구니
-              </DetailButton>
-              <DetailButton backgroundColor="#09addb" color="#fff">
-                바로구매
-              </DetailButton>
-            </HStack>
+            <ProductRightDown>
+              <PriceWrapper>
+                <PurchasePrice>주문금액</PurchasePrice> <div>0원</div>
+              </PriceWrapper>
+              <HStack>
+                <SaveButton>찜</SaveButton>
+                <DetailButton backgroundColor="#fff" color="#09addb">
+                  장바구니
+                </DetailButton>
+                <DetailButton backgroundColor="#09addb" color="#fff">
+                  바로구매
+                </DetailButton>
+              </HStack>
+            </ProductRightDown>
           </StickyOption>
         </HStack>
       </Wrapper>
