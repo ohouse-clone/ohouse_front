@@ -100,18 +100,18 @@ const ProductDetailStickyMenu = styled.div`
 const StickyOption = styled.div`
   position: sticky;
   top: 135px;
-  height: 100vh;
+  height: 87vh;
   width: 340px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-
+  justify-content: space-between;
   align-items: center;
 `;
 
 const DummyProduct = styled.div`
   width: 100%;
-  height: 300vh;
+  height: 200vh;
 `;
 
 const ContentImage = styled.div`
@@ -124,11 +124,64 @@ const ContentImage = styled.div`
 const HStack = styled.div`
   display: flex;
   flex-direction: row;
+  width: 100%;
+`;
+
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+const DetailButton = styled.button`
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
+  border: 1px solid #09addb;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  width: 100%;
+  height: 55px;
+  margin: 3px;
+`;
+
+const SaveButton = styled.button`
+  background-color: #fff;
+  color: #bdbdbd;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  width: 150px;
+  height: 55px;
+  margin: 3px;
+`;
+const DetailSelect = styled.select`
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #bdbdbd;
+  border-radius: 3px;
+`;
+
+const PriceWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 5px;
+  font-weight: 700;
+  font-size: 20px;
+`;
+
+const ProductRightDown = styled.div``;
+
+const PurchasePrice = styled.div`
+  font-size: 14px;
 `;
 
 export default function ProductDetail({ data, brandName, breadcrumb }) {
   useEffect(() => {
-    console.log(data.contentUrl);
+    data;
   }, [data]);
   return (
     <LayoutWrapper>
@@ -190,8 +243,36 @@ export default function ProductDetail({ data, brandName, breadcrumb }) {
             <DummyProduct></DummyProduct>
           </ContentImage>
           <StickyOption>
-            <div>옵션</div>
-            <button>구매하기</button>
+            <VStack>
+              <DetailSelect>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+              </DetailSelect>
+              <DetailSelect>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+              </DetailSelect>
+            </VStack>
+            <ProductRightDown>
+              <PriceWrapper>
+                <PurchasePrice>주문금액</PurchasePrice> <div>0원</div>
+              </PriceWrapper>
+              <HStack>
+                <SaveButton>찜</SaveButton>
+                <DetailButton backgroundColor="#fff" color="#09addb">
+                  장바구니
+                </DetailButton>
+                <DetailButton backgroundColor="#09addb" color="#fff">
+                  바로구매
+                </DetailButton>
+              </HStack>
+            </ProductRightDown>
           </StickyOption>
         </HStack>
       </Wrapper>

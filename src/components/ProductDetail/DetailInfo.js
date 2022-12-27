@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ProductDetailContent = styled.div`
   margin-left: 10px;
-  width: 450px;
+  width: 500px;
   h2 {
     font-size: 14px;
     color: rgba(50, 50, 50, 1);
@@ -97,8 +97,41 @@ const Dummy = styled.div`
   select {
     height: 40px;
     padding: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
   }
+`;
+
+const DetailButton = styled.button`
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
+  border: 1px solid #09addb;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  width: 100%;
+  height: 55px;
+  margin: 3px;
+`;
+const PriceWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 5px;
+  font-weight: 700;
+  font-size: 20px;
+`;
+
+const PurchasePrice = styled.div`
+  font-size: 14px;
+`;
+
+const DetailBanner = styled.div`
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  background-color: #ebebeb;
 `;
 
 export default function DetailInfo({ data, brandName }) {
@@ -180,6 +213,18 @@ export default function DetailInfo({ data, brandName }) {
             <option>1</option>
             <option>1</option>
           </select>
+          <PriceWrapper>
+            <PurchasePrice>주문금액</PurchasePrice> <div>0원</div>
+          </PriceWrapper>
+          <HStack>
+            <DetailButton backgroundColor="#fff" color="#09addb">
+              장바구니
+            </DetailButton>
+            <DetailButton backgroundColor="#09addb" color="#fff">
+              바로구매
+            </DetailButton>
+          </HStack>
+          <DetailBanner />
         </Dummy>
       </ProductDetailContent>
     </>
