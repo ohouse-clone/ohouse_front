@@ -12,8 +12,6 @@ export default function Productions() {
     getStoreProductDetailData(id).then(res => {
       setData(res);
       setLoading(false);
-      console.log(res);
-      console.log(router);
     });
   }, [id]);
   return (

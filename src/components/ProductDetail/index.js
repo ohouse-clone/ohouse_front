@@ -179,9 +179,9 @@ const PurchasePrice = styled.div`
   font-size: 14px;
 `;
 
-export default function ProductDetail({ data, brandName, breadcrumb }) {
+export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
   useEffect(() => {
-    data;
+    console.log(data);
   }, [data]);
   return (
     <LayoutWrapper>
@@ -245,18 +245,23 @@ export default function ProductDetail({ data, brandName, breadcrumb }) {
           <StickyOption>
             <VStack>
               <DetailSelect>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
+                <option>선택</option>
+                {data.products.map(res => {
+                  return (
+                    <>
+                      <option key={res.productName}>
+                        {res.productName} / {res.price}원
+                      </option>
+                    </>
+                  );
+                })}
               </DetailSelect>
               <DetailSelect>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
+                <option>추가 옵션</option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
               </DetailSelect>
             </VStack>
             <ProductRightDown>
