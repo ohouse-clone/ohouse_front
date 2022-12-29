@@ -1,7 +1,9 @@
+import { detailPriceState } from 'lib/data/detailAtoms';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import DetailInfo from './DetailInfo';
 
@@ -180,9 +182,12 @@ const PurchasePrice = styled.div`
 `;
 
 export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  const [selectOptionPrice, setSelectOptionPrice] =
+    useRecoilState(detailPriceState);
+
+  const changeSelectValue = e => {
+    setSelectOptionPrice(e.target.value);
+  };
   return (
     <LayoutWrapper>
       <Wrapper>
@@ -244,12 +249,12 @@ export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
           </ContentImage>
           <StickyOption>
             <VStack>
-              <DetailSelect>
-                <option>선택</option>
+              <DetailSelect onChange={changeSelectValue}>
+                <option value={0}>선택</option>
                 {data.products.map(res => {
                   return (
                     <>
-                      <option key={res.productName}>
+                      <option value={res.price} key={res.productName}>
                         {res.productName} / {res.price}원
                       </option>
                     </>
@@ -266,7 +271,8 @@ export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
             </VStack>
             <ProductRightDown>
               <PriceWrapper>
-                <PurchasePrice>주문금액</PurchasePrice> <div>0원</div>
+                <PurchasePrice>주문금액</PurchasePrice>
+                <div>{selectOptionPrice}원</div>
               </PriceWrapper>
               <HStack>
                 <SaveButton>찜</SaveButton>

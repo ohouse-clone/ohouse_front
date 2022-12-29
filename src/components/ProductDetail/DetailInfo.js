@@ -1,4 +1,6 @@
+import { detailPriceState } from 'lib/data/detailAtoms';
 import React, { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 const ProductDetailContent = styled.div`
@@ -136,7 +138,8 @@ const DetailBanner = styled.div`
 
 export default function DetailInfo({ data, brandName }) {
   const { format } = new Intl.NumberFormat('ko');
-  const [selectOptionPrice, setSelectOptionPrice] = useState(0);
+  const [selectOptionPrice, setSelectOptionPrice] =
+    useRecoilState(detailPriceState);
 
   const changeSelectValue = e => {
     setSelectOptionPrice(e.target.value);
