@@ -1,4 +1,5 @@
 import { detailPriceState } from 'lib/data/detailAtoms';
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
@@ -115,6 +116,7 @@ const DetailButton = styled.button`
   width: 100%;
   height: 55px;
   margin: 3px;
+  cursor: pointer;
 `;
 const PriceWrapper = styled.div`
   display: flex;
@@ -137,6 +139,7 @@ const DetailBanner = styled.div`
 `;
 
 export default function DetailInfo({ data, brandName }) {
+  const router = useRouter();
   const { format } = new Intl.NumberFormat('ko');
   const [selectOptionPrice, setSelectOptionPrice] =
     useRecoilState(detailPriceState);
@@ -144,10 +147,6 @@ export default function DetailInfo({ data, brandName }) {
   const changeSelectValue = e => {
     setSelectOptionPrice(e.target.value);
   };
-
-  useEffect(() => {
-    console.log(selectOptionPrice);
-  }, [selectOptionPrice]);
 
   return (
     <>
@@ -165,8 +164,10 @@ export default function DetailInfo({ data, brandName }) {
           {data.products[0].rateDiscount}%
           <DiscountPrice>
             {format(
-              data.products[0].price *
-                (1 + data.products[0].rateDiscount / 100),
+              Math.ceil(
+                data.products[0].price *
+                  (1 + data.products[0].rateDiscount / 100),
+              ),
             )}
             원
           </DiscountPrice>
@@ -239,7 +240,11 @@ export default function DetailInfo({ data, brandName }) {
             <DetailButton backgroundColor="#fff" color="#09addb">
               장바구니
             </DetailButton>
-            <DetailButton backgroundColor="#09addb" color="#fff">
+            <DetailButton
+              onClick={() => router.push(`/orders/${data.id}`)}
+              backgroundColor="#09addb"
+              color="#fff"
+            >
               바로구매
             </DetailButton>
           </HStack>

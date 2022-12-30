@@ -1,6 +1,7 @@
 import { detailPriceState } from 'lib/data/detailAtoms';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -148,6 +149,7 @@ const DetailButton = styled.button`
   width: 100%;
   height: 55px;
   margin: 3px;
+  cursor: pointer;
 `;
 
 const SaveButton = styled.button`
@@ -186,6 +188,8 @@ const PurchasePrice = styled.div`
 `;
 
 export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
+  const router = useRouter();
+
   const [selectOptionPrice, setSelectOptionPrice] =
     useRecoilState(detailPriceState);
 
@@ -290,7 +294,11 @@ export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
                 <DetailButton backgroundColor="#fff" color="#09addb">
                   장바구니
                 </DetailButton>
-                <DetailButton backgroundColor="#09addb" color="#fff">
+                <DetailButton
+                  onClick={() => router.push(`/orders/${data.id}`)}
+                  backgroundColor="#09addb"
+                  color="#fff"
+                >
                   바로구매
                 </DetailButton>
               </HStack>
