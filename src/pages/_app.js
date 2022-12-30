@@ -1,10 +1,8 @@
 import '/styles/globals.css';
 import '/styles/style.css';
-
+import Layout from 'components/layout';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import reset from 'styled-reset';
-import { RecoilRoot } from 'recoil';
-import Layout from 'components/Layout';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}
@@ -23,13 +21,12 @@ const theme = {
 
 export default function MyApp({ Component, pageProps }) {
   return (pageProps && pageProps.pathname) === '/Login' ||
-    (pageProps && pageProps.pathname) === '/Register' ? (
+    (pageProps && pageProps.pathname) === '/Register' ||
+    (pageProps && pageProps.pathname) === '/Writing' ? (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <RecoilRoot>
-          <Component {...pageProps} />
-        </RecoilRoot>
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   ) : (
@@ -37,9 +34,7 @@ export default function MyApp({ Component, pageProps }) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Layout>
-          <RecoilRoot>
-            <Component {...pageProps} />
-          </RecoilRoot>
+          <Component {...pageProps} />
         </Layout>
       </ThemeProvider>
     </>

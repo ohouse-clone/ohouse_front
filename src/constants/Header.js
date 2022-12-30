@@ -42,7 +42,7 @@ export const CATE_LIST = [
   },
   {
     name: '사진',
-    path: '/',
+    path: '/Community/Picture',
   },
   {
     name: '집들이',

@@ -8,11 +8,9 @@ function Nav() {
   return (
     <NavBlock>
       {MENU_DATE.map(menu => (
-        <li key={menu.path}>
+        <li key={menu.key}>
           <Link href={menu.path}>
-            <a currentPath={router.pathname} pathName={menu.path}>
-              {menu.name}
-            </a>
+            <a>{menu.name}</a>
           </Link>
         </li>
       ))}
