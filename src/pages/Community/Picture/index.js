@@ -1,8 +1,8 @@
 import React from 'react';
-import { MainBlock } from 'components/CommunityMain/main.styles';
-
-import { PARTY_FILTER } from '../../../constants/communityParty';
 import styled from 'styled-components';
+
+import { MainBlock } from 'components/CommunityMain/main.styles';
+import { Picture_FILTER } from '../../../constants/communityPicture';
 
 export const FilterBar = styled.ul`
   display: flex;
@@ -20,17 +20,18 @@ export const FilterBar = styled.ul`
     display: flex;
     flex-direction: row;
     gap: 0 3px;
+    align-items: center;
   }
 `;
 
-const index = () => {
+function index() {
   return (
     <MainBlock>
       <FilterBar>
-        {PARTY_FILTER.map((e, i) => (
+        {Picture_FILTER.map((e, i) => (
           <li key={i}>
             <button>
-              {PARTY_FILTER[i]}
+              {Picture_FILTER[i]}
               <span>
                 <svg
                   width="12"
@@ -47,6 +48,6 @@ const index = () => {
       </FilterBar>
     </MainBlock>
   );
-};
+}
 
 export default index;

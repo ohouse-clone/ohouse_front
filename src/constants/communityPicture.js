@@ -10,3 +10,5 @@ export const PARTY_FILTER = [
   '분야',
   '작업자',
 ];
+
+export const Picture_FILTER = ['정렬', '주거형태', '공간'];

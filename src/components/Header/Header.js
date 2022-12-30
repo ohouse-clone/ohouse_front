@@ -55,9 +55,7 @@ function Header() {
                   </Link> */}
 
                   <Link href={data.path}>
-                    <a currentPath={Router.pathname} pathName={data.path}>
-                      {data.name}
-                    </a>
+                    <a>{data.name}</a>
                   </Link>
                 </li>
               );
