@@ -1,8 +1,12 @@
+import { detailPriceState } from 'lib/data/detailAtoms';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import DetailFooter from './DetailFooter';
 import DetailInfo from './DetailInfo';
 
 const LayoutWrapper = styled.div`
@@ -13,7 +17,7 @@ const LayoutWrapper = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1256px;
+  max-width: 1156px;
 `;
 
 const CategoryUl = styled.ul`
@@ -46,6 +50,9 @@ const DummyImage = styled.div`
   overflow: hidden;
   border-radius: 8px;
   margin-right: 30px;
+  img {
+    object-fit: cover;
+  }
 `;
 
 const DummySubImage = styled.div`
@@ -101,7 +108,7 @@ const StickyOption = styled.div`
   position: sticky;
   top: 135px;
   height: 87vh;
-  width: 340px;
+  width: 400px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -117,7 +124,7 @@ const DummyProduct = styled.div`
 const ContentImage = styled.div`
   display: block;
   position: relative;
-  width: 900px;
+  width: 700px;
   height: 100%;
 `;
 
@@ -142,6 +149,7 @@ const DetailButton = styled.button`
   width: 100%;
   height: 55px;
   margin: 3px;
+  cursor: pointer;
 `;
 
 const SaveButton = styled.button`
@@ -179,10 +187,19 @@ const PurchasePrice = styled.div`
   font-size: 14px;
 `;
 
-export default function ProductDetail({ data, brandName, breadcrumb }) {
+export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
+  const router = useRouter();
+
+  const [selectOptionPrice, setSelectOptionPrice] =
+    useRecoilState(detailPriceState);
+
+  const changeSelectValue = e => {
+    setSelectOptionPrice(e.target.value);
+  };
+
   useEffect(() => {
-    data;
-  }, [data]);
+    console.log(data);
+  }, []);
   return (
     <LayoutWrapper>
       <Wrapper>
@@ -215,7 +232,7 @@ export default function ProductDetail({ data, brandName, breadcrumb }) {
                 src={data.previewImageUrl}
                 width="100%"
                 height="100%"
-                layout="fill"
+                layout="responsive"
               />
             </DummyImage>
           </ProductDetailImageWrapper>
@@ -232,43 +249,56 @@ export default function ProductDetail({ data, brandName, breadcrumb }) {
           <span></span>
         </ProductDetailStickyMenu>
         <HStack>
-          <ContentImage>
-            <Image
-              alt=""
-              src={data.contentUrl}
-              width="100%"
-              height="100%"
-              layout="responsive"
-            />
-            <DummyProduct></DummyProduct>
-          </ContentImage>
+          <VStack>
+            <ContentImage>
+              <Image
+                alt=""
+                src={data.contentUrl}
+                width="100%"
+                height="100%"
+                layout="responsive"
+              />
+              <DummyProduct></DummyProduct>
+            </ContentImage>
+            <DetailFooter />
+          </VStack>
           <StickyOption>
             <VStack>
-              <DetailSelect>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
+              <DetailSelect onChange={changeSelectValue}>
+                <option value={0}>선택</option>
+                {data.products.map(res => {
+                  return (
+                    <>
+                      <option value={res.price} key={res.productName}>
+                        {res.productName} / {res.price}원
+                      </option>
+                    </>
+                  );
+                })}
               </DetailSelect>
               <DetailSelect>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
+                <option>추가 옵션</option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
               </DetailSelect>
             </VStack>
             <ProductRightDown>
               <PriceWrapper>
-                <PurchasePrice>주문금액</PurchasePrice> <div>0원</div>
+                <PurchasePrice>주문금액</PurchasePrice>
+                <div>{selectOptionPrice}원</div>
               </PriceWrapper>
               <HStack>
                 <SaveButton>찜</SaveButton>
                 <DetailButton backgroundColor="#fff" color="#09addb">
                   장바구니
                 </DetailButton>
-                <DetailButton backgroundColor="#09addb" color="#fff">
+                <DetailButton
+                  onClick={() => router.push(`/orders/${data.id}`)}
+                  backgroundColor="#09addb"
+                  color="#fff"
+                >
                   바로구매
                 </DetailButton>
               </HStack>
