@@ -156,7 +156,6 @@ function WriteList({ writeList }) {
                   transform="rotate(4 6.54 3.6)"
                   fill="#DBDBDB"
                   stroke="#000"
-                  stroke-linejoin="round"
                 ></rect>
                 <rect
                   x="2.5"
@@ -166,7 +165,6 @@ function WriteList({ writeList }) {
                   rx="2.5"
                   fill="#fff"
                   stroke="#000"
-                  stroke-linejoin="round"
                 ></rect>
                 <rect
                   x="5"
@@ -177,23 +175,11 @@ function WriteList({ writeList }) {
                   fill="#FFE2C7"
                 ></rect>
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
                   d="M14 7l5 .45v3.5l-5-.45V7zm0 4.5V15l5 .45v-3.5l-5-.45zm6 .55v3.5l5 .45v-3.5l-5-.45zm5-.55V8l-5-.45v3.5l5 .45z"
                   fill="#fff"
                 ></path>
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M5 19l22 2v7L5 26v-7z"
-                  fill="#E6A87C"
-                ></path>
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M5 3.45h5v16l-5 4v-20z"
-                  fill="#F1C8A3"
-                ></path>
+                <path d="M5 19l22 2v7L5 26v-7z" fill="#E6A87C"></path>
+                <path d="M5 3.45h5v16l-5 4v-20z" fill="#F1C8A3"></path>
               </svg>
             </div>
             <div className="title">
@@ -209,16 +195,11 @@ function WriteList({ writeList }) {
             height="36"
             viewBox="0 0 36 36"
           >
-            <g fill="none" fill-rule="evenodd">
+            <g fill="none">
               <path d="M0 0h36v36H0z"></path>
               <path fill="#FFF6E6" d="M27.2 29.31H4.8V14.38h22.4"></path>
               <path fill="#EDE2CD" d="M27.2 17.18H4.8v-2.8h22.4"></path>
-              <path
-                stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M4.8 29.31V14.38h22.4v14.93H4.8z"
-              ></path>
+              <path stroke="#000" d="M4.8 29.31V14.38h22.4v14.93H4.8z"></path>
               <path
                 fill="#FFF"
                 d="M16 19.05a4.67 4.67 0 014.67 4.66v5.6h-9.34v-5.6A4.67 4.67 0 0116 19.05z"
@@ -241,8 +222,6 @@ function WriteList({ writeList }) {
               ></path>
               <path
                 stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
                 d="M2.94 14.38a.9.9 0 01-.81-1.3l3.25-6.6a.9.9 0 01.8-.5h19.64c.34 0 .65.2.8.5h0l3.25 6.6a.9.9 0 01-.8 1.3h0H2.93z"
               ></path>
               <g transform="translate(26 9)">
@@ -295,7 +274,7 @@ function WriteList({ writeList }) {
             height="36"
             viewBox="0 0 36 36"
           >
-            <g fill="none" fill-rule="evenodd">
+            <g fill="none">
               <path d="M0 0h36v36H0z"></path>
               <path fill="#EDEDED" d="M17 10h2v22h-2z"></path>
               <path
@@ -308,8 +287,6 @@ function WriteList({ writeList }) {
               ></path>
               <path
                 stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
                 d="M3 10.2c3.65-1.07 6.98-1.07 10 0h10.16c2.98-1 6.26-1 9.84 0h0v1.97h0V31.2c-5.79-1.62-10.79-1.29-15 1-4.21-2.37-9.21-2.7-15-1z"
               ></path>
               <g transform="translate(11 3)">
@@ -318,24 +295,10 @@ function WriteList({ writeList }) {
                   stroke="#000"
                   d="M7 0a7 7 0 013 13.33V17H4v-3.67A7 7 0 017 0z"
                 ></path>
-                <path
-                  stroke="#000"
-                  stroke-linecap="square"
-                  d="M7 15.68V8.5"
-                ></path>
+                <path stroke="#000" d="M7 15.68V8.5"></path>
                 <circle cx="7" cy="7.5" r="1.5" fill="#000"></circle>
-                <path
-                  fill="#FFF"
-                  stroke="#000"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 16h8v7H3z"
-                ></path>
-                <path
-                  stroke="#000"
-                  stroke-linecap="square"
-                  d="M3 18.5h8m-8 2h8"
-                ></path>
+                <path fill="#FFF" stroke="#000" d="M3 16h8v7H3z"></path>
+                <path stroke="#000" d="M3 18.5h8m-8 2h8"></path>
               </g>
             </g>
           </svg>
@@ -351,9 +314,9 @@ function WriteList({ writeList }) {
             height="36"
             viewBox="0 0 36 36"
           >
-            <g fill="none" fill-rule="evenodd">
+            <g fill="none">
               <path d="M0 0h36v36H0z"></path>
-              <g stroke-linejoin="round" transform="translate(2 3)">
+              <g transform="translate(2 3)">
                 <rect
                   width="4"
                   height="8"
@@ -365,13 +328,7 @@ function WriteList({ writeList }) {
                 ></rect>
                 <rect fill="#FFE2C7" width="24" height="25" rx="3"></rect>
                 <rect fill="#ffe2c7" width="24" height="25" rx="3"></rect>
-                <rect
-                  stroke="#000"
-                  width="24"
-                  height="25"
-                  rx="3"
-                  stroke-width="1.2"
-                ></rect>
+                <rect stroke="#000" width="24" height="25" rx="3"></rect>
                 <rect
                   width="6"
                   height="3"
@@ -403,7 +360,6 @@ function WriteList({ writeList }) {
               <path
                 stroke="#000"
                 d="M26.29 30.85l-3.31 1.17a.9.9 0 01-1.2-.86l.1-3.51c0-.2-.06-.4-.18-.57l-2.14-2.78a.9.9 0 01.45-1.4l3.37-.99a.9.9 0 00.48-.35l1.99-2.9a.9.9 0 011.47 0l1.99 2.9c.11.17.28.3.48.35l3.37 1a.9.9 0 01.45 1.4l-2.14 2.77a.89.89 0 00-.18.57l.1 3.5a.9.9 0 01-1.2.87l-3.3-1.17a.9.9 0 00-.6 0z"
-                stroke-width="1.2"
               ></path>
             </g>
           </svg>
@@ -419,7 +375,7 @@ function WriteList({ writeList }) {
             height="36"
             viewBox="0 0 36 36"
           >
-            <g fill="none" fill-rule="evenodd">
+            <g fill="none">
               <path d="M0 0h36v36H0z"></path>
               <path
                 fill="#FFDB92"
@@ -432,75 +388,43 @@ function WriteList({ writeList }) {
               ></path>
               <path
                 fill="#EDEDED"
-                fill-opacity=".14"
                 d="M17.6 23.92c1.2 0 2.33.3 3.32.8a10.84 10.84 0 01-6.19 1.78c-2.28 0-4.38-.57-6.04-1.67a7.15 7.15 0 013.51-.91h5.4z"
               ></path>
               <path
                 stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
                 d="M5 33.59V30.9a6.59 6.59 0 015.47-6.37"
               ></path>
-              <path
-                d="M10.64 24.6v3.19"
-                fill-rule="nonzero"
-                stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
+              <path d="M10.64 24.6v3.19" stroke="#000"></path>
               <path
                 fill="#B1C0CB"
-                fill-rule="nonzero"
                 stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
                 d="M8.9 33.92l.98-6H21.9l.98 6"
               ></path>
               <path
                 fill="#FFF6E6"
-                fill-rule="nonzero"
                 d="M22.04 14.29c.31.9.48 2.3.48 3.31 0 4.65-3.49 7.2-7.79 7.2s-7.78-2.55-7.78-7.2c0-1.02.17-2.4.48-3.31"
               ></path>
               <path
                 fill="#EDE2CD"
-                fill-rule="nonzero"
                 d="M22.04 14.29c.16.48.29 1.09.37 1.71H7.06c.08-.62.2-1.23.37-1.71h14.6z"
               ></path>
               <path
                 stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
                 d="M22.04 14.29c.31.9.48 2.3.48 3.31 0 4.65-3.49 7.2-7.79 7.2s-7.78-2.55-7.78-7.2c0-1.02.17-2.4.48-3.31"
               ></path>
               <path
                 stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
                 d="M16.29 20.9c-.23.46-.84.79-1.56.79-.72 0-1.33-.33-1.56-.78"
               ></path>
-              <path
-                d="M12 17.55V17m5.46.55V17"
-                fill-rule="nonzero"
-                stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.3"
-              ></path>
+              <path d="M12 17.55V17m5.46.55V17" stroke="#000"></path>
               <path
                 fill="#EFC570"
                 d="M9.5 5l2.88 4.72v-5.9zM19.94 5l-2.89 4.72v-5.9z"
               ></path>
-              <g stroke="#000" stroke-linecap="round">
-                <path
-                  stroke-linejoin="round"
-                  d="M5.75 11.76c0-4.08 2.9-7.45 6.63-7.94v-.3c0-.55.43-1 .95-1h2.84c.53 0 .95.45.95 1v.3c3.74.5 6.63 3.86 6.63 7.94"
-                ></path>
+              <g stroke="#000">
+                <path d="M5.75 11.76c0-4.08 2.9-7.45 6.63-7.94v-.3c0-.55.43-1 .95-1h2.84c.53 0 .95.45.95 1v.3c3.74.5 6.63 3.86 6.63 7.94"></path>
                 <path d="M12.38 5.52v-2c0-.55.43-1 .95-1h2.84c.53 0 .95.45.95 1v2"></path>
-                <path
-                  fill="#F5F5F5"
-                  fill-rule="nonzero"
-                  d="M4.2 14.02h20.7"
-                ></path>
+                <path fill="#F5F5F5" d="M4.2 14.02h20.7"></path>
               </g>
               <g>
                 <path
@@ -530,12 +454,11 @@ function WriteList({ writeList }) {
             height="36"
             viewBox="0 0 36 36"
           >
-            <g fill="none" fill-rule="evenodd">
+            <g fill="none">
               <path d="M0 0h36v36H0z"></path>
               <path
                 fill="#E4F2F6"
                 d="M18 5c8.28 0 15 5.8 15 12.96 0 7.16-6.72 12.96-15 12.96-2.76 0-5.35-.65-7.58-1.77l-5.37 2.37 2-4.7A12.03 12.03 0 013 17.95C3 10.8 9.72 5 18 5z"
-                fill-rule="nonzero"
               ></path>
               <path
                 fill="#CAE5EC"
@@ -543,11 +466,9 @@ function WriteList({ writeList }) {
               ></path>
               <path
                 stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
                 d="M18 5c8.28 0 15 5.76 15 12.86S26.28 30.7 18 30.7c-2.76 0-5.35-.64-7.58-1.75L5.06 31.3l2-4.67A11.9 11.9 0 013 17.86C3 10.76 9.72 5 18 5z"
               ></path>
-              <g fill="#000" fill-rule="nonzero" stroke="#FFF">
+              <g fill="#000" stroke="#FFF">
                 <path d="M18 22.12a1.6 1.6 0 011.13 2.73 1.6 1.6 0 11-2.26-2.26 1.6 1.6 0 011.13-.47zm.26-10.82c1.02 0 1.86.3 2.5.76a3.5 3.5 0 011.35 2.11c.17.82.07 1.72-.35 2.56a4.85 4.85 0 01-1.88 1.97c-.23.13-.38.31-.49.56-.13.32-.19.73-.19 1.24a1.2 1.2 0 11-2.4 0c0-.93.16-1.72.46-2.36.32-.67.8-1.18 1.43-1.52.42-.25.72-.56.9-.89.18-.33.25-.67.2-.98-.06-.3-.22-.57-.48-.75-.26-.2-.62-.3-1.05-.3-.68 0-1.2.11-1.54.4-.33.28-.48.72-.52 1.3a1.2 1.2 0 01-1.3 1.1 1.2 1.2 0 01-1.1-1.29c.1-1.27.57-2.24 1.33-2.9a4.62 4.62 0 013.13-1.01z"></path>
               </g>
             </g>
