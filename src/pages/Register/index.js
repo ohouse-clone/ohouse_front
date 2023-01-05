@@ -183,8 +183,8 @@ export const RegisterWrapper = styled.main`
           font-size: 17px;
           line-height: 26px;
           padding: 11px 10px;
-          background-color: #35c5f0;
-          border: 1px solid #35c5f0;
+          background-color: var(--base-color-blue);
+          border: 1px solid var(--base-color-blue);
           color: #fff;
           font-weight: 700;
           border-radius: 4px;
@@ -221,7 +221,7 @@ function Register() {
                 <svg width="88" height="31">
                   <g fill="none">
                     <path
-                      fill="#35C5F0"
+                      fill="var(--base-color-blue)"
                       d="M23.131 0H5.03C2.424 0 0 2.411 0 5v20c0 2.59 2.424 5 5.029 5h20.114c2.603 0 5.028-2.41 5.028-5V5c0-2.589-2.425-5-5.028-5H23.13z"
                     ></path>
                     <path

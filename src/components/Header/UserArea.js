@@ -40,7 +40,7 @@ export const UserAreaBlock = styled.div`
       box-sizing: border-box;
       text-align: center;
       color: #fff;
-      background-color: #35c5f0;
+      background-color: var(--base-color-blue);
       overflow: hidden;
       border: none;
       outline: none;
@@ -137,7 +137,7 @@ function WriteList({ writeList }) {
     // <div className="ul-area show">
     <div className={writeList ? 'ul-area show-active' : ''}>
       <ul>
-        <Link href="/Writing">
+        <Link href="/writing">
           <li>
             <div>
               <svg
@@ -350,7 +350,7 @@ function WriteList({ writeList }) {
                 <path fill="#FFDB92" stroke="#EDC29B" d="M1.5 12.5h21"></path>
               </g>
               <path
-                fill="#35C5F0"
+                fill="var(--base-color-blue)"
                 d="M26.25 31.53l-3.7 1.32a1 1 0 01-1.34-.97l.1-3.93a.99.99 0 00-.2-.64l-2.4-3.11a1 1 0 01.51-1.57l3.77-1.12a1 1 0 00.55-.39l2.22-3.24a1 1 0 011.65 0l2.22 3.24a1 1 0 00.55.4l3.77 1.1a1 1 0 01.5 1.58l-2.4 3.11a1 1 0 00-.2.64l.11 3.93a1 1 0 01-1.33.97l-3.71-1.32a1 1 0 00-.67 0z"
               ></path>
               <path
@@ -428,7 +428,7 @@ function WriteList({ writeList }) {
               </g>
               <g>
                 <path
-                  fill="#35C5F0"
+                  fill="var(--base-color-blue)"
                   d="M26.25 33.1l-3.71 1.31a1 1 0 01-1.34-.97l.11-3.93a.99.99 0 00-.2-.64l-2.4-3.11a1 1 0 01.5-1.57L23 23.07a1 1 0 00.54-.39l2.23-3.24a1 1 0 011.65 0l2.22 3.24a1 1 0 00.54.4l3.78 1.1a1 1 0 01.5 1.58l-2.4 3.11a1 1 0 00-.2.64l.1 3.93a1 1 0 01-1.33.97l-3.7-1.32a1 1 0 00-.67 0z"
                 ></path>
                 <path

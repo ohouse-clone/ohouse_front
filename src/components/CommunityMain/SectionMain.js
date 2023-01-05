@@ -12,8 +12,8 @@ const Section = styled.section`
     position: relative;
     cursor: pointer;
     &:hover ${'.more'} {
-      background-color: #35c5f0;
-      border: 1px solid #35c5f0;
+      background-color: var(--base-color-blue);
+      border: 1px solid var(--base-color-blue);
     }
     &:hover ${'img'} {
       transform: scale(1.05);

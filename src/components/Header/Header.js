@@ -48,12 +48,6 @@ function Header() {
             {CATE_LIST.map((data, i) => {
               return (
                 <li key={[i]}>
-                  {/* <Link href={menu.path}>
-                    <a currentPath={router.pathname} pathName={menu.path}>
-                      {menu.name}
-                    </a>
-                  </Link> */}
-
                   <Link href={data.path}>
                     <a>{data.name}</a>
                   </Link>

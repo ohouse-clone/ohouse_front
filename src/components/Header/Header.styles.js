@@ -80,7 +80,7 @@ export const HeaderWrap = styled.header`
     display: flex;
   }
   a:hover {
-    color: #35c5f0;
+    color: var(--base-color-blue);
   }
   .top-right {
     display: flex;
@@ -118,9 +118,9 @@ export const NavBlock = styled.ul`
     line-height: 1;
     font-weight: 700;
     text-decoration: none;
-  }
-  li:first-child a {
-    color: #35c5f0;
+    .point {
+      color: var(--base-color-blue);
+    }
   }
 `;
 // search
@@ -204,7 +204,7 @@ export const UserAreaBlock = styled.div`
     box-sizing: border-box;
     text-align: center;
     color: #fff;
-    background-color: #35c5f0;
+    background-color: var(--base-color-blue);
     overflow: hidden;
     border: none;
     outline: none;
@@ -249,7 +249,7 @@ export const CateWrap = styled.div`
         color: #2f3438;
         cursor: pointer;
         a:hover {
-          color: #35c5f0;
+          color: var(--base-color-blue);
         }
       }
     }
