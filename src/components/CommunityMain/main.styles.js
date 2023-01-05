@@ -17,7 +17,7 @@ export const Section = styled.section`
     justify-content: space-between;
     span {
       font-size: 15px;
-      color: #35c5f0;
+      color: var(--base-color-blue);
     }
   }
   .ul-area {
@@ -304,7 +304,7 @@ export const Section = styled.section`
                       display: flex;
                     width: 13px;
                     height: 13px;
-                    color: #35c5f0;
+                    color: var(--base-color-blue);
                   }
                   span: nth-child(2) {
                       color: #424242;
@@ -388,7 +388,7 @@ export const Section = styled.section`
             svg {
               width: 15px;
               height: 15px;
-              color: #35c5f0;
+              color: var(--base-color-blue);
             }
           }
           p {
@@ -428,7 +428,7 @@ export const Section = styled.section`
             font-size: 15px;
             font-weight: 700;
             strong {
-              color: #35c5f0;
+              color: var(--base-color-blue);
               margin-right: 5px;
             }
           }
@@ -457,7 +457,7 @@ export const Section = styled.section`
               font-weight: 700;
             }
             li:first-child {
-              color: #35c5f0;
+              color: var(--base-color-blue);
             }
           }
         }
@@ -494,7 +494,7 @@ export const Section = styled.section`
                   font-size: 15px;
                   font-weight: 700;
                   strong {
-                    color: #35c5f0;
+                    color: var(--base-color-blue);
                     margin-right: 5px;
                   }
                 }

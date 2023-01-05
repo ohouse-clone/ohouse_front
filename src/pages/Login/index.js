@@ -75,7 +75,7 @@ export const LoginWrapper = styled.main`
     padding: 15px 10px;
     font-size: 17px;
     min-height: 50px;
-    background-color: #35c5f0;
+    background-color: var(--base-color-blue);
     border: none;
     color: #fff;
     user-select: none;
@@ -151,7 +151,7 @@ function Login() {
                   <svg width="147" height="50">
                     <g fill="none">
                       <path
-                        fill="#35C5F0"
+                        fill="var(--base-color-blue)"
                         d="M38.42 0H8.35C4.03 0 0 4.02 0 8.33v33.34C0 45.98 4.03 50 8.35 50h33.41c4.33 0 8.35-4.02 8.35-8.33V8.33C50.11 4.02 46.1 0 41.76 0h-3.34z"
                       ></path>
                       <path

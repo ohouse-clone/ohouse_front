@@ -3,7 +3,6 @@ body {
   padding: 0;
   margin: 0;
   font-weight: 100;
-  font-family: San Francisco;
 }
 
 a {
@@ -15,15 +14,6 @@ a {
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: 'HallymGothic-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "San Francisco";
-  font-weight: 400;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+:root {
+  --base-color-blue: #35c5f0;
 }

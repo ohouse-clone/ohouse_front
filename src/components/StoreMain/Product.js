@@ -56,7 +56,7 @@ const ProductLinkContainer = styled.a`
       font-weight: 800;
       span:first-child {
         margin-right: 10px;
-        color: #35c5f0;
+        color: var(--base-color-blue);
       }
     }
 

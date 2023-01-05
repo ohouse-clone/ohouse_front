@@ -43,7 +43,7 @@ export const AddForm = styled.form`
     margin-top: 20px;
     margin-bottom: 5px;
     padding: 12px 20px;
-    background-color: #35c5f0;
+    background-color: var(--base-color-blue);
     border: none;
     border-radius: 5px;
     color: #fff;

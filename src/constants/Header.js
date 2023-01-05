@@ -1,4 +1,4 @@
-export const MENU_DATE = [
+export const MENU_DATA = [
   {
     name: '커뮤니티',
     path: '/',

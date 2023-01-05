@@ -4,6 +4,9 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { average_filter } from '../../constants/writing';
+import { type_filter } from '../../constants/writing';
+import { style_filter } from '../../constants/writing';
 
 export const TopWrapper = styled.div`
   width: 1136px;
@@ -152,7 +155,7 @@ export default function Writing() {
 
   let inputRef;
 
-  const uploadImage = e => {
+  const addImage = e => {
     e.preventDefault();
     const fileReader = new FileReader();
 
@@ -171,7 +174,7 @@ export default function Writing() {
   const deleteImage = () => {
     setImage({
       image_file: '',
-      preview_URL: 'img/default_image.png',
+      preview_URL: '',
     });
   };
 
@@ -180,31 +183,6 @@ export default function Writing() {
     fileInput.current.value = '';
   };
 
-  const reUploadImage = e => {
-    e.preventDefault();
-    const fileReader = new FileReader();
-
-    if (e.target.files[0]) {
-      fileReader.readAsDataURL(e.target.files[0]);
-    }
-    fileReader.onload = () => {
-      setImage({
-        image_file: e.target.files[0],
-        preview_URL: fileReader.result,
-      });
-    };
-    // let file = e.target.files[0];
-    // let fileReader = new FileReader();
-
-    // if (file === undefined) return; /* 방어 코드 추가 */
-
-    // fileReader.readAsText(file, 'utf-8'); // or euc-kr
-
-    // fileReader.onload = function () {
-    //   console.log(fileReader.result);
-    // };
-    // e.target.value = '';
-  };
   return (
     <div className="write">
       <TopWrapper>
@@ -234,7 +212,7 @@ export default function Writing() {
             </svg>
           </h1>
         </Link>
-        <button>올리기</button>
+        <button type="button">올리기</button>
       </TopWrapper>
       <CateArea>
         <a>사진</a>
@@ -243,38 +221,35 @@ export default function Writing() {
       <SelArea>
         <div>
           <select>
-            <option value="평수">평수</option>
-            <option value="10평대 미만">10평대 미만</option>
-            <option value="10평대">10평대</option>
-            <option value="20평대">20평대</option>
-            <option value="30평대">30평대</option>
-            <option value="40평대">40평대</option>
-            <option value="50평 이상">50평 이상</option>
+            {average_filter.map((value, key) => {
+              return (
+                <option key={key} value={value}>
+                  {value}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div>
           <select>
-            <option value="주거형태">주거형태</option>
-            <option value="원룸&오피스텔">원룸&오피스텔</option>
-            <option value="아파트">아파트</option>
-            <option value="빌라&연립">빌라&연립</option>
-            <option value="단독주택">단독주택</option>
-            <option value="사무공간">사무공간</option>
-            <option value="상업공간">상업공간</option>
-            <option value="기타">기타</option>
+            {type_filter.map((value, key) => {
+              return (
+                <option key={key} value={value}>
+                  {value}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div>
           <select>
-            <option value="스타일">스타일</option>
-            <option value="모던">모던</option>
-            <option value="북유럽">북유럽</option>
-            <option value="빈티지">빈티지</option>
-            <option value="내추럴">내추럴</option>
-            <option value="프로방스&로맨틱">프로방스&로맨틱</option>
-            <option value="클래식&앤틱">클래식&앤틱</option>
-            <option value="한국&아시아">한국&아시아</option>
-            <option value="유니크">유니크</option>
+            {style_filter.map((value, key) => {
+              return (
+                <option key={key} value={value}>
+                  {value}
+                </option>
+              );
+            })}
           </select>
         </div>
       </SelArea>
@@ -283,7 +258,7 @@ export default function Writing() {
         <PhotoArea onClick={() => inputRef.click()}>
           <input
             type="file"
-            onChange={uploadImage}
+            onChange={addImage}
             onClick={e => (e.target.value = null)}
             ref={refParam => (inputRef = refParam)}
             style={{ display: 'none' }}

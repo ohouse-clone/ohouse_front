@@ -30,7 +30,7 @@ const Price = styled.div`
 const LastPrice = styled.div`
   font-size: 30px;
   font-weight: 900;
-  color: #35c5f0;
+  color: var(--base-color-blue);
 `;
 
 const Discount = styled.span`
@@ -49,7 +49,7 @@ const DiscountPrice = styled.span`
 
 const Star = styled.div`
   font-size: 13px;
-  color: #35c5f0;
+  color: var(--base-color-blue);
   span:last-child {
     margin-left: 15px;
   }
@@ -58,7 +58,7 @@ const Star = styled.div`
 const FirstPay = styled.span`
   font-size: 14px;
   font-weight: 500;
-  color: #35c5f0;
+  color: var(--base-color-blue);
 `;
 
 const OptionSubject = styled.div`
