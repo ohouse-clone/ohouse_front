@@ -16,12 +16,12 @@ export const MENU_DATA = [
 export const USER_AREA = [
   {
     name: '로그인',
-    path: '/Login',
+    path: '/login',
     id: 1,
   },
   {
     name: '회원가입',
-    path: '/Register',
+    path: '/register',
     id: 2,
   },
   {

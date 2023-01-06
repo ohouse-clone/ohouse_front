@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AGREE_DATA } from '../../constants/Register';
+import { AGREE_DATA } from '../../constants/register';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -27,11 +27,11 @@ export const Forms = () => {
     email: yup.string().required('이메일을 입력해주세요.'),
     password: yup
       .string()
-      .min(8, '비밀번호는 최소 8자 이상이어야 합니다.')
+      .min(2, '비밀번호는 최소 2자 이상이어야 합니다.')
       .max(20, '비밀번호는 최대 20자 이하여야 합니다.')
       .required('비밀번호를 입력해주세요.')
       .matches(
-        /^[a-z]+[a-z0-9]{8,}$/,
+        /^[a-z]+[a-z0-9]{2,}$/,
         '비밀번호는 영문자와 숫자를 포함하여야 합니다.',
       ),
     confirm_password: yup
@@ -45,6 +45,37 @@ export const Forms = () => {
       .required('별명을 입력해주세요.'),
   });
 
+  const submit = async values => {
+    const { email, username, password, confirm_password } = values;
+    try {
+      await axios.post('/api/auth/signup', {
+        email,
+        username,
+        password,
+        confirm_password,
+      });
+      toast.success(
+        <h3>
+          회원가입이 완료되었습니다.
+          <br />
+          로그인 하세요😎
+        </h3>,
+        {
+          position: 'top-center',
+          autoClose: 2000,
+        },
+      );
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
+    } catch (e) {
+      // 서버에서 받은 에러 메시지 출력
+      toast.error(e.response.data.message + '😭', {
+        position: 'top-center',
+      });
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -53,15 +84,15 @@ export const Forms = () => {
       username: '',
     },
     validationSchema,
-
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: { submit },
+    // onSubmit: values => {
+    //   alert(JSON.stringify(values, null, 2));
+    // },
   });
 
   return (
     <div>
-      <form onSubmit={formik.handleSubmit}>
+      <form>
         <fieldset>
           <div className="section email">
             <h4>이메일</h4>
@@ -195,7 +226,9 @@ export const Forms = () => {
             </div>
           </div>
           <div className="submit">
-            <button>회원가입하기</button>
+            <button type="submit" onClick={formik.handleSubmit}>
+              회원가입하기
+            </button>
           </div>
         </fieldset>
       </form>
