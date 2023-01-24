@@ -181,7 +181,9 @@ const PriceWrapper = styled.div`
   font-size: 20px;
 `;
 
-const ProductRightDown = styled.div``;
+const ProductRightDown = styled.div`
+  width: 100%;
+`;
 
 const PurchasePrice = styled.div`
   font-size: 14px;
@@ -197,9 +199,15 @@ export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
     setSelectOptionPrice(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, []);
+  const isPurchasePriceselect = () => {
+    if (selectOptionPrice === 0) {
+      alert('상품을 선택해 주세요.');
+      return;
+    } else {
+      router.push(`/orders/${data.id}?price=${selectOptionPrice}`);
+    }
+  };
+
   return (
     <LayoutWrapper>
       <Wrapper>
@@ -242,10 +250,7 @@ export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
         <ProductDetailStickyMenu>
           <span></span>
           <h3>상품정보</h3>
-          <h3>리뷰</h3>
-          <h3>문의</h3>
-          <h3>배송/환불</h3>
-          <h3>추천</h3>
+
           <span></span>
         </ProductDetailStickyMenu>
         <HStack>
@@ -290,12 +295,8 @@ export default function ProductDetail({ data, brandName, breadcrumb = '' }) {
                 <div>{selectOptionPrice}원</div>
               </PriceWrapper>
               <HStack>
-                <SaveButton>찜</SaveButton>
-                <DetailButton backgroundColor="#fff" color="#09addb">
-                  장바구니
-                </DetailButton>
                 <DetailButton
-                  onClick={() => router.push(`/orders/${data.id}`)}
+                  onClick={isPurchasePriceselect}
                   backgroundColor="#09addb"
                   color="#fff"
                 >

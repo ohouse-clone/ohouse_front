@@ -5,7 +5,7 @@ export const MENU_DATA = [
   },
   {
     name: '스토어',
-    path: '/store',
+    path: '/store/category',
   },
   {
     name: '이사/시공/수리',
@@ -65,11 +65,11 @@ export const CATE_LIST = [
     path: '/',
   },
   {
-    name: '3D 인테리어',
+    name: '판매자 페이지',
     path: '/',
   },
   {
-    name: '이벤트',
-    path: '/',
+    name: '판매자 등록 페이지',
+    path: '/productions/add',
   },
 ];

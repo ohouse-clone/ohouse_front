@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -32,6 +33,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <style />
+          <Script src="https://js.tosspayments.com/v1/payment"></Script>
         </Head>
         <body>
           <Main />

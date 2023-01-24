@@ -4,6 +4,7 @@ import '/styles/style.css';
 import Layout from '../components/Layout';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import reset from 'styled-reset';
+import { RecoilRoot } from 'recoil';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}
@@ -34,7 +35,9 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <RecoilRoot>
+          <Component {...pageProps} />
+        </RecoilRoot>
       </ThemeProvider>
     </>
   ) : (
@@ -42,7 +45,9 @@ export default function MyApp({ Component, pageProps }) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Layout>
-          <Component {...pageProps} />
+          <RecoilRoot>
+            <Component {...pageProps} />
+          </RecoilRoot>
         </Layout>
       </ThemeProvider>
     </>

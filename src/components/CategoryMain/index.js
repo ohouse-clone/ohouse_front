@@ -159,24 +159,22 @@ export default function CategoryMain() {
           <CategoryBreadcrumb>{cateData.breadcrumb}</CategoryBreadcrumb>
           {cateData.carousel?.isActive && (
             <>
-              <div>슬라이더</div>
               <CategoryCarousel />
             </>
           )}
           {cateData.banner?.isActive && (
             <>
-              <div>홍보배너</div>
               <CategoryBanner />
             </>
           )}
-          <div>필터</div>
+
           <FilterHStack>
             {cateData.filter ? (
               cateData.filter.map((res, i) => (
                 <CategoryFilter key={'fil' + i} filter={res} />
               ))
             ) : (
-              <DummyFilter>Dummy</DummyFilter>
+              <></>
             )}
           </FilterHStack>
           <CategoryInfiniteProducts

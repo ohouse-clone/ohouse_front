@@ -148,6 +148,15 @@ export default function DetailInfo({ data, brandName }) {
     setSelectOptionPrice(e.target.value);
   };
 
+  const isPurchasePriceselect = () => {
+    if (selectOptionPrice === 0) {
+      alert('상품을 선택해 주세요.');
+      return;
+    } else {
+      router.push(`/orders/${data.id}?price=${selectOptionPrice}`);
+    }
+  };
+
   return (
     <>
       <ProductDetailContent>
@@ -237,18 +246,14 @@ export default function DetailInfo({ data, brandName }) {
             <div>{selectOptionPrice}원</div>
           </PriceWrapper>
           <HStack>
-            <DetailButton backgroundColor="#fff" color="#09addb">
-              장바구니
-            </DetailButton>
             <DetailButton
-              onClick={() => router.push(`/orders/${data.id}`)}
+              onClick={isPurchasePriceselect}
               backgroundColor="#09addb"
               color="#fff"
             >
               바로구매
             </DetailButton>
           </HStack>
-          <DetailBanner />
         </Dummy>
       </ProductDetailContent>
     </>
