@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { IoChevronDown } from 'react-icons/io5';
 import { useRouter } from 'next/router';
 
-import { USER_AREA } from '../../constants/Header';
+import { USER_AREA } from '../../constants/header';
 import { useState } from 'react';
 
 export const UserAreaBlock = styled.div`

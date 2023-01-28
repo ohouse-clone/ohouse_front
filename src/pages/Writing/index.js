@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { average_filter } from '../../constants/writing';
 import { type_filter } from '../../constants/writing';
 import { style_filter } from '../../constants/writing';
+// import { postComunity } from 'lib/apis/community';
 
 export const TopWrapper = styled.div`
   width: 1136px;
@@ -148,6 +149,20 @@ export default function Writing() {
   //   checkLogin();
   // }, []);
 
+  const [AverValue, setAverValue] = useState('');
+  const [TypeValue, setTypeValue] = useState('');
+  const [styleValue, setStyleValue] = useState('');
+
+  const handleAverSelect = e => {
+    setAverValue(e.target.value);
+  };
+  const handleTypeSelect = e => {
+    setTypeValue(e.target.value);
+  };
+  const handleStyleSelect = e => {
+    setStyleValue(e.target.value);
+  };
+
   const [image, setImage] = useState({
     image_file: '',
     preview_URL: '/img/default_image.png',
@@ -183,6 +198,41 @@ export default function Writing() {
     fileInput.current.value = '';
   };
 
+  /* [POST /bbs]: 게시글 작성 */
+  const postComunity = async () => {
+    await axios
+      .post(`/api/community/api/v1/card_collections/`)
+      .then(res => {
+        console.log('[BbsWrite.js] postComunity() success :D');
+        console.log(res.data);
+        alert('새로운 게시글을 성공적으로 등록했습니다 :D');
+        // navigate(`/Community/picture/`); // 새롭게 등록한 글 상세로 이동
+        // navigate(`/Community/picture/${res.data.seq}`); // 새롭게 등록한 글 상세로 이동
+      })
+      .catch(err => {
+        console.log('Register err : ', err.response);
+      });
+  };
+
+  // const submitPost = e => {
+  //   e.preventDefault();
+  //   const writeDate = {
+  //     AverValue,
+  //     TypeValue,
+  //     styleValue,
+  //   };
+
+  //   postComunity(writeDate)
+  //     .then(res => {
+  //       console.log('[BbsWrite.js] postComunity() success :D');
+  //       console.log(res.data);
+  //       alert('새로운 게시글을 성공적으로 등록했습니다 :D');
+  //     })
+  //     .catch(err => {
+  //       console.log('Register err : ', err.response);
+  //     });
+  // };
+
   return (
     <div className="write">
       <TopWrapper>
@@ -212,7 +262,9 @@ export default function Writing() {
             </svg>
           </h1>
         </Link>
-        <button type="button">올리기</button>
+        <button type="button" onClick={postComunity}>
+          올리기
+        </button>
       </TopWrapper>
       <CateArea>
         <a>사진</a>
@@ -220,7 +272,7 @@ export default function Writing() {
       </CateArea>
       <SelArea>
         <div>
-          <select>
+          <select value={AverValue} onChange={handleAverSelect}>
             {average_filter.map((value, key) => {
               return (
                 <option key={key} value={value}>
@@ -231,7 +283,7 @@ export default function Writing() {
           </select>
         </div>
         <div>
-          <select>
+          <select value={TypeValue} onChange={handleTypeSelect}>
             {type_filter.map((value, key) => {
               return (
                 <option key={key} value={value}>
@@ -242,7 +294,7 @@ export default function Writing() {
           </select>
         </div>
         <div>
-          <select>
+          <select value={styleValue} onChange={handleStyleSelect}>
             {style_filter.map((value, key) => {
               return (
                 <option key={key} value={value}>
@@ -275,7 +327,7 @@ export default function Writing() {
             </svg>
           </span>
           <strong>사진 올리기</strong>
-          <span>(*최대 10장까지)</span>
+          <span>(*최대 1장까지)</span>
         </PhotoArea>
       ) : (
         <ImgArea>

@@ -7,7 +7,7 @@ import Banner from './Banner';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { HeaderWrap, CateWrap } from './Header.styles';
-import { CATE_LIST } from '../../constants/Header';
+import { CATE_LIST } from '../../constants/header';
 import { Router } from 'next/router';
 function Header() {
   const [remove, setRemove] = useState(true);

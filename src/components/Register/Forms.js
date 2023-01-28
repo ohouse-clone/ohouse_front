@@ -69,7 +69,6 @@ export const Forms = () => {
         navigate('/login');
       }, 2000);
     } catch (e) {
-      // 서버에서 받은 에러 메시지 출력
       toast.error(e.response.data.message + '😭', {
         position: 'top-center',
       });

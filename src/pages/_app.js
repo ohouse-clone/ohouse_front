@@ -11,14 +11,15 @@ ${reset}
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    // font-family: "SanFrancisco";
+    font-family: "NanumSquareNeo-Variable";
     
   }
   @font-face {
-    font-family: "SanFrancisco";
-    font-weight: 400;
-    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
-  }
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
 `;
 
 const theme = {

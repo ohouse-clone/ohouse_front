@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { MENU_DATA } from 'constants/Header';
+import { MENU_DATA } from 'constants/header';
 import { NavBlock } from './Header.styles';
 
 function Nav() {
