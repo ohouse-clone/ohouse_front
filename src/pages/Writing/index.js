@@ -188,6 +188,7 @@ export default function Writing() {
   const [AverValue, setAverValue] = useState('');
   const [TypeValue, setTypeValue] = useState('');
   const [styleValue, setStyleValue] = useState('');
+  const [value, setValue] = useState('');
 
   const handleAverSelect = e => {
     setAverValue(e.target.value);
@@ -242,14 +243,12 @@ export default function Writing() {
       AverValue,
       TypeValue,
       styleValue,
-      // header: header,
     };
 
     postComunity(writeDate)
       .then(res => {
         console.log('[BbsWrite.js] postComunity() success :D');
         console.log(res.data);
-        alert('새로운 게시글을 성공적으로 등록했습니다 :D');
       })
       .catch(err => {
         console.log('Register err : ', err.response);

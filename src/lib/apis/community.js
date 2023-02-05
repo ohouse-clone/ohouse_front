@@ -3,7 +3,7 @@ import axios from 'axios';
 const URL = '/api';
 
 export const postComunity = async writeDate => {
-  await axios.post(`/community/api/v1/card_collections/${writeDate}`);
+  await axios.post(`${URL}/community/api/v1/card_collections/${writeDate}`);
 };
 
 /* [POST /bbs]: 게시글 작성 */
