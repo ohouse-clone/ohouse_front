@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 import axios from 'axios';
+import FormData from 'form-data';
+
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { average_filter } from '../../constants/writing';
 import { type_filter } from '../../constants/writing';
 import { style_filter } from '../../constants/writing';
-// import { postComunity } from 'lib/apis/community';
+import { postComunity } from 'lib/apis/community';
 
 export const TopWrapper = styled.div`
   width: 1136px;
@@ -63,7 +65,7 @@ export const SelArea = styled.div`
   select {
     width: 100%;
     font-size: 15px;
-    padding: 0 15px;
+    padding: 0 10px;
     background-color: #fff;
     border-color: #bdbdbd;
     line-height: 40px;
@@ -75,10 +77,16 @@ export const SelArea = styled.div`
     cursor: pointer;
   }
 `;
-export const PhotoArea = styled.div`
+export const Contents = styled.div`
   width: 960px;
   margin: 40px auto;
   display: flex;
+  margin-top: 40px;
+  gap: 0 24px;
+`;
+export const PhotoArea = styled.div`
+  display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
   justify-content: ceter;
@@ -134,6 +142,35 @@ export const ImgArea = styled.div`
     left: 0;
   }
 `;
+export const PhotoInput = styled.div`
+  flex: 0.5;
+  textarea {
+    /* background-color: rebeccapurple; */
+    padding: 8px 15px 9px;
+    width: 100%;
+    height: 144px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(218, 220, 224);
+    border-radius: 4px;
+    resize: none;
+    &::placeholder {
+      color: rgb(180, 180, 180);
+    }
+    &:hover {
+      background-color: #fdfdfd;
+    }
+    &:focus {
+      box-shadow: 0 0 0 3px rgb(59, 197, 240 / 30%) !important;
+      border-color: rgb(59, 197, 240 / 30%) !important;
+      border: 1px solid rgb(59, 197, 240 / 30%);
+      outline-color: rgb(59, 197, 240 / 30%);
+    }
+  }
+`;
 export default function Writing() {
   // const router = useRouter();
   // function checkLogin() {
@@ -148,7 +185,6 @@ export default function Writing() {
   // useEffect(() => {
   //   checkLogin();
   // }, []);
-
   const [AverValue, setAverValue] = useState('');
   const [TypeValue, setTypeValue] = useState('');
   const [styleValue, setStyleValue] = useState('');
@@ -198,40 +234,27 @@ export default function Writing() {
     fileInput.current.value = '';
   };
 
-  /* [POST /bbs]: 게시글 작성 */
-  const postComunity = async () => {
-    await axios
-      .post(`/api/community/api/v1/card_collections/`)
+  // formdata.append('image', img);
+
+  const submitPost = e => {
+    e.preventDefault();
+    const writeDate = {
+      AverValue,
+      TypeValue,
+      styleValue,
+      // header: header,
+    };
+
+    postComunity(writeDate)
       .then(res => {
         console.log('[BbsWrite.js] postComunity() success :D');
         console.log(res.data);
         alert('새로운 게시글을 성공적으로 등록했습니다 :D');
-        // navigate(`/Community/picture/`); // 새롭게 등록한 글 상세로 이동
-        // navigate(`/Community/picture/${res.data.seq}`); // 새롭게 등록한 글 상세로 이동
       })
       .catch(err => {
         console.log('Register err : ', err.response);
       });
   };
-
-  // const submitPost = e => {
-  //   e.preventDefault();
-  //   const writeDate = {
-  //     AverValue,
-  //     TypeValue,
-  //     styleValue,
-  //   };
-
-  //   postComunity(writeDate)
-  //     .then(res => {
-  //       console.log('[BbsWrite.js] postComunity() success :D');
-  //       console.log(res.data);
-  //       alert('새로운 게시글을 성공적으로 등록했습니다 :D');
-  //     })
-  //     .catch(err => {
-  //       console.log('Register err : ', err.response);
-  //     });
-  // };
 
   return (
     <div className="write">
@@ -262,7 +285,7 @@ export default function Writing() {
             </svg>
           </h1>
         </Link>
-        <button type="button" onClick={postComunity}>
+        <button type="button" onClick={submitPost}>
           올리기
         </button>
       </TopWrapper>
@@ -305,65 +328,74 @@ export default function Writing() {
           </select>
         </div>
       </SelArea>
+      <Contents>
+        {image.image_file == '' ? (
+          <PhotoArea onClick={() => inputRef.click()}>
+            <input
+              type="file"
+              name="profile_files"
+              multiple="multiple"
+              onChange={addImage}
+              onClick={e => (e.target.value = null)}
+              ref={refParam => (inputRef = refParam)}
+              style={{ display: 'none' }}
+            />
+            <span>
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="currentColor"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <path d="M11.952 9.778l2.397-5.994A1.778 1.778 0 0 1 16 2.667h16c.727 0 1.38.442 1.65 1.117l2.398 5.994h10.174c.982 0 1.778.796 1.778 1.778v32c0 .981-.796 1.777-1.778 1.777H1.778A1.778 1.778 0 0 1 0 43.556v-32c0-.982.796-1.778 1.778-1.778h10.174zM24 38c6.075 0 11-4.925 11-11s-4.925-11-11-11-11 4.925-11 11 4.925 11 11 11z"></path>
+              </svg>
+            </span>
+            <strong>사진 올리기</strong>
+            <span>(*최대 10장까지)</span>
+          </PhotoArea>
+        ) : (
+          <ImgArea>
+            <span>
+              <img src={image.preview_URL} ref={fileInput} />
+            </span>
 
-      {image.image_file == '' ? (
-        <PhotoArea onClick={() => inputRef.click()}>
-          <input
-            type="file"
-            onChange={addImage}
-            onClick={e => (e.target.value = null)}
-            ref={refParam => (inputRef = refParam)}
-            style={{ display: 'none' }}
+            <div className="controlArea">
+              <span>
+                <svg
+                  onClick={clearImage} // 재등록 기능 작업중
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <path d="M17.9 10a6.4 6.4 0 0 0-6-4.5c-3.6 0-6.4 2.9-6.4 6.5s2.8 6.5 6.3 6.5c2.2 0 4.1-1 5.3-2.9a.7.7 0 1 1 1.2.8 7.8 7.8 0 0 1-6.5 3.6C7.5 20 4 16.4 4 12s3.5-8 7.8-8c3.4 0 6.3 2.2 7.4 5.3l.7-1.4a.7.7 0 1 1 1.3.7l-1.8 3.1a.7.7 0 0 1-1 .3l-3-1.8a.7.7 0 1 1 .7-1.3l1.8 1z"></path>
+                </svg>
+              </span>
+              <span>
+                <svg
+                  onClick={deleteImage}
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  preserveAspectRatio="xMidYMid meet"
+                  alt="삭제"
+                >
+                  <path d="M6 19V7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM19 4v2H5V4h3.5l1-1h5l1 1H19z"></path>
+                </svg>
+              </span>
+            </div>
+          </ImgArea>
+        )}
+        <PhotoInput>
+          <textarea
+            className="photoDesc"
+            placeholder="사진에 대해 설명해주세요."
           />
-          <span>
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="currentColor"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              <path d="M11.952 9.778l2.397-5.994A1.778 1.778 0 0 1 16 2.667h16c.727 0 1.38.442 1.65 1.117l2.398 5.994h10.174c.982 0 1.778.796 1.778 1.778v32c0 .981-.796 1.777-1.778 1.777H1.778A1.778 1.778 0 0 1 0 43.556v-32c0-.982.796-1.778 1.778-1.778h10.174zM24 38c6.075 0 11-4.925 11-11s-4.925-11-11-11-11 4.925-11 11 4.925 11 11 11z"></path>
-            </svg>
-          </span>
-          <strong>사진 올리기</strong>
-          <span>(*최대 1장까지)</span>
-        </PhotoArea>
-      ) : (
-        <ImgArea>
-          <span>
-            <img src={image.preview_URL} ref={fileInput} />
-          </span>
-
-          <div className="controlArea">
-            <span>
-              <svg
-                onClick={clearImage} // 재등록 기능 작업중
-                width="24"
-                height="24"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                preserveAspectRatio="xMidYMid meet"
-              >
-                <path d="M17.9 10a6.4 6.4 0 0 0-6-4.5c-3.6 0-6.4 2.9-6.4 6.5s2.8 6.5 6.3 6.5c2.2 0 4.1-1 5.3-2.9a.7.7 0 1 1 1.2.8 7.8 7.8 0 0 1-6.5 3.6C7.5 20 4 16.4 4 12s3.5-8 7.8-8c3.4 0 6.3 2.2 7.4 5.3l.7-1.4a.7.7 0 1 1 1.3.7l-1.8 3.1a.7.7 0 0 1-1 .3l-3-1.8a.7.7 0 1 1 .7-1.3l1.8 1z"></path>
-              </svg>
-            </span>
-            <span>
-              <svg
-                onClick={deleteImage}
-                width="24"
-                height="24"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                preserveAspectRatio="xMidYMid meet"
-                alt="삭제"
-              >
-                <path d="M6 19V7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM19 4v2H5V4h3.5l1-1h5l1 1H19z"></path>
-              </svg>
-            </span>
-          </div>
-        </ImgArea>
-      )}
+        </PhotoInput>
+      </Contents>
     </div>
   );
 }

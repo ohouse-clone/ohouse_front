@@ -12,7 +12,10 @@ ${reset}
     padding: 0;
     box-sizing: border-box;
     font-family: "NanumSquareNeo-Variable";
-    
+  }
+  *{
+    font-family: "NanumSquareNeo-Variable";
+
   }
   @font-face {
     font-family: 'NanumSquareNeo-Variable';
